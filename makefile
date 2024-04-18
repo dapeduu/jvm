@@ -8,4 +8,4 @@ $(EXEC) : $(SRC_FILES)
 
 .PHONY: clean
 clean:
-	rm main
+	rm main $(EXEC)
