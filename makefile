@@ -1,11 +1,13 @@
-CC = gcc -std=c99 -g -Wall
-SRC_FILES = src/main.c
-EXEC = main
-OUTPUT = jvm
+CC = gcc 
+CFLAGS = -std=c99 -g -Wall
+OBJECTS = main.o
 
-$(EXEC) : $(SRC_FILES)
-	$(CC) $(SRC_FILES) -o build/$(OUTPUT)
+main: $(OBJECTS)
+	$(CC) $(CFLAGS) -o build/jvm $(OBJECTS) 
+
+main.o: src/main.c src/dot_class.h
+	$(CC) $(CFLAGS) -c src/main.c
 
 .PHONY: clean
 clean:
-	rm main $(EXEC)
+	rm main.o

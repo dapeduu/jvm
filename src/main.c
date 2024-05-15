@@ -1,17 +1,38 @@
 #include <stdio.h>
-#include <stdint.h>
+#include "dot_class.h"
 
-typedef unsigned char u1;
-typedef unsigned short u2;
-typedef uint16_t u4;
-typedef uint32_t u8; 
+u2_t read_u2(FILE* fptr) {
+   u2_t value; 
+   u1_t buffer[2];
 
-struct class_file
-{
-   u4 magic;
-};
+   fread(buffer, sizeof(u1_t), 2, fptr);
 
+   value = (buffer[0] << 8) | buffer[1];
 
+   return value;
+} 
+
+u4_t read_u4(FILE* fptr) {
+   u8_t value; 
+   u1_t buffer[4];
+
+   fread(buffer, sizeof(u1_t), 4, fptr);
+
+   value = (buffer[0] << 24) | (buffer[1] << 16) | (buffer[2] << 8) | buffer[3];
+
+   return value;
+} 
+
+class_file_t read_class_file(FILE* fptr) {
+   class_file_t class_file;
+
+   class_file.magic = read_u4(fptr);
+   class_file.minor_version = read_u2(fptr);
+   class_file.major_version = read_u2(fptr);
+   class_file.constant_pool_count = read_u2(fptr);
+
+   return class_file;
+}
 
 int main() {
    FILE *fptr;
@@ -21,10 +42,12 @@ int main() {
       return 1;
    } 
 
-   u1 buffer[4];
-   fread(buffer, sizeof(u1), 4, fptr);
+   class_file_t class_file = read_class_file(fptr);
 
-   printf("%x%x%x%x", buffer[0], buffer[1], buffer[2], buffer[3]);
+   printf("%x\n", class_file.magic);
+   printf("%i\n", class_file.minor_version);
+   printf("%i\n", class_file.major_version);
+   printf("%i\n", class_file.constant_pool_count);
 
    fclose(fptr);
    return 0;
