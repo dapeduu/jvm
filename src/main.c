@@ -13,7 +13,7 @@ u2_t read_u2(FILE* fptr) {
 } 
 
 u4_t read_u4(FILE* fptr) {
-   u8_t value; 
+   u4_t value; 
    u1_t buffer[4];
 
    fread(buffer, sizeof(u1_t), 4, fptr);
