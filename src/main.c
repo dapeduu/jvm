@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include "dot_class.h"
 
+u1_t read_u1(FILE* fptr) {
+   u1_t value; 
+
+   fread(value, sizeof(u1_t), 1, fptr);
+
+   return value;
+} 
+
 u2_t read_u2(FILE* fptr) {
    u2_t value; 
    u1_t buffer[2];
