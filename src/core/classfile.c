@@ -91,12 +91,79 @@ class_file_t *read_class_file(FILE *fptr)
     }
 
     class_file->fields_count = read_u2(fptr);
-    class_file->fields = malloc(sizeof(field_info) * class_file->fields_count);
-    class_file->attributes_count = read_u2(fptr);
-    class_file->attributes = malloc(sizeof(attribute_info) * class_file->attributes_count);
-    class_file->attributes->info = malloc(sizeof(u1_t) * class_file->attributes->attribute_length);
+    class_file->fields = malloc(sizeof(field_info_t) * class_file->fields_count);
+    if (class_file->fields_count) {
+        for (size_t i = 0; i < class_file->fields_count; i++) {
+            field_info_t field;
+            field.access_flags = read_u2(fptr);
+            field.name_index = read_u2(fptr);
+            field.descriptor_index = read_u2(fptr);
+            field.attributes_count = read_u2(fptr);
+
+            // TODO: extrair em uma função
+            field.attributes = malloc(sizeof(attribute_info_t) * field.attributes_count);
+            if (field.attributes_count) {
+                for (size_t j=0; j<field.attributes_count;j++) {
+                    attribute_info_t attribute;
+                    attribute.attribute_name_index = read_u2(fptr);
+                    attribute.attribute_length = read_u4(fptr);
+                    attribute.info = malloc(sizeof(u1_t) * attribute.attribute_length);
+
+                    for(size_t k = 0; k < attribute.attribute_length; k++) {
+                        attribute.info[k] = read_u1(fptr);
+                    }
+
+                    field.attributes[j] = attribute;
+                }
+            }
+            class_file->fields[i] = field;
+        }
+    }
+
     class_file->methods_count = read_u2(fptr);
-    class_file->methods = malloc(sizeof(method_info) * class_file->methods_count);
+    class_file->methods = malloc(sizeof(method_info_t) * class_file->methods_count);
+    for (size_t i=0; i<class_file->methods_count;i++) {
+        method_info_t method;
+            method.access_flags = read_u2(fptr);
+            method.name_index = read_u2(fptr);
+            method.descriptor_index = read_u2(fptr);
+            method.attributes_count = read_u2(fptr);
+
+            //TALVEZ ESTEJA ERRADO
+            method.attributes = malloc(sizeof(attribute_info_t) * method.attributes_count);
+            if (method.attributes_count) {
+                for (size_t j=0; j<method.attributes_count;j++) {
+                    attribute_info_t attribute;
+                    attribute.attribute_name_index = read_u2(fptr);
+                    attribute.attribute_length = read_u4(fptr);
+                    attribute.info = malloc(sizeof(u1_t) * attribute.attribute_length);
+
+                    for(size_t k = 0; k < attribute.attribute_length; k++) {
+                        attribute.info[k] = read_u1(fptr);
+                    }
+
+                    method.attributes[j] = attribute;
+                }
+            }
+            class_file->methods[i] = method;
+    }
+
+    class_file->attributes_count = read_u2(fptr);
+    class_file->attributes = malloc(sizeof(attribute_info_t) * class_file->attributes_count);
+    if (class_file->attributes_count) {
+        for (size_t i=0; i<class_file->attributes_count;i++) {
+            attribute_info_t attribute;
+            attribute.attribute_name_index = read_u2(fptr);
+            attribute.attribute_length = read_u4(fptr);
+            attribute.info = malloc(sizeof(u1_t) * attribute.attribute_length);
+
+            for(size_t k = 0; k < attribute.attribute_length; k++) {
+                attribute.info[k] = read_u1(fptr);
+            }
+
+            class_file->attributes[i] = attribute;
+        }
+    }
 
 
     return class_file;

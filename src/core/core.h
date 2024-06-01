@@ -92,7 +92,7 @@ typedef struct {
     u2_t attribute_name_index;
     u4_t attribute_length;
     u1_t *info;
-} attribute_info;
+} attribute_info_t;
 
 typedef struct
 {
@@ -100,8 +100,8 @@ typedef struct
     u2_t name_index;
     u2_t descriptor_index;
     u2_t attributes_count;
-    attribute_info *attributes;
-} field_info; 
+    attribute_info_t *attributes;
+} field_info_t;
 
 typedef struct
 {
@@ -109,8 +109,8 @@ typedef struct
     u2_t name_index;
     u2_t descriptor_index;
     u2_t attributes_count;
-    attribute_info *attributes;
-} method_info;
+    attribute_info_t *attributes;
+} method_info_t;
 
 typedef struct
 {
@@ -125,11 +125,11 @@ typedef struct
     u2_t interfaces_count;
     u2_t * interfaces;
     u2_t fields_count;
-    field_info *fields;
+    field_info_t *fields;
     u2_t attributes_count;
-    attribute_info *attributes;
+    attribute_info_t *attributes;
     u2_t methods_count;
-    method_info *methods;
+    method_info_t *methods;
 } class_file_t;
 
 // readers.c
