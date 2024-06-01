@@ -88,13 +88,19 @@ typedef struct
     } info;
 } cp_info_t;
 
+typedef struct {
+    u2_t attribute_name_index;
+    u4_t attribute_length;
+    // u1_t info[attribute_length];
+} attribute_info;
+
 typedef struct
 {
     u2_t access_flags;
     u2_t name_index;
     u2_t descriptor_index;
     u2_t attributes_count;
-    // attribute_info attributes [attributes_count];
+    attribute_info *attributes;
 } field_info; 
 
 typedef struct
@@ -111,10 +117,11 @@ typedef struct
     u2_t * interfaces;
     u2_t fields_count;
     field_info *fields;
+    u2_t attributes_count;
+    attribute_info *attributes;
     // TODO: Terminar essas
     // u2 methods_count;
     // method_info methods [methods_count];
-    // u2 attributes_count;
     // attribute_info attributes [attributes_count];
 } class_file_t;
 

@@ -95,7 +95,19 @@ int main(int argc, char *argv[])
         printf("name_index: cp_info #%i\n", class_file->fields[i].name_index);
         printf("descriptor_index: cp_info #%i\n", class_file->fields[i].descriptor_index);
         printf("attributes_count: %i\n", class_file->fields[i].attributes_count);
-        // attributes
+        
+        printf("\n### Attributes ###\n");
+        for(size_t j = 0; j < class_file->fields[i].attributes_count; j++) {
+            printf("Attribute #%zu\n", j);
+            printf("attribute_name_index: cp_info #%i\n", class_file->fields[i].attributes[j].attribute_name_index);
+            printf("attribute_length: %i\n", class_file->fields[i].attributes[j].attribute_length);
+            printf("info: ");
+            for(size_t k = 0; k < class_file->fields[i].attributes[j].attribute_length; k++) {
+                // printf("%02x ", class_file->fields[i].attributes[j].info[k]);
+            }
+            printf("\n");
+        }
+        printf("### End Attributes ###\n\n");
     }
     printf("### End Fields ###\n\n");
 

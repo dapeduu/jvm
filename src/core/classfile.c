@@ -14,8 +14,8 @@ class_file_t *read_class_file(FILE *fptr)
     class_file->constant_pool = malloc(sizeof(cp_info_t) * class_file->constant_pool_count);
     class_file->fields_count = read_u2(fptr);
     class_file->fields = malloc(sizeof(field_info) * class_file->fields_count);
+    class_file->attributes_count = read_u2(fptr);
     // class_file->methods_count = read_u2(fptr);
-    // class_file->attributes_count = read_u2(fptr);
 
 
     cp_info_t current_constant_pool;
