@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
+// Base types
 typedef uint8_t u1_t;
 typedef uint16_t u2_t;
 typedef uint32_t u4_t;
@@ -96,9 +97,11 @@ typedef struct
     cp_info_t *constant_pool;
 } class_file_t;
 
+// readers.c
 u4_t read_u4(FILE *fptr);
 u2_t read_u2(FILE *fptr);
 u1_t read_u1(FILE *fptr);
 
+// classfile.c
 class_file_t *read_class_file(FILE *fptr);
 int free_class_file(class_file_t *class_file);
