@@ -88,14 +88,16 @@ int main(int argc, char *argv[])
     printf("interfaces_count: %i\n", class_file->interfaces_count);
 
     printf("\n### Interfaces ###\n");
-    for (size_t i = 0; i <= class_file->interfaces_count - 1; i++)
+    if (class_file->interfaces_count > 0)
     {
-        printf("[%li] Interface: cp_info #%i\n", i, class_file->interfaces[i]);
+        for (size_t i = 0; i <= class_file->interfaces_count - 1; i++)
+        {
+            printf("[%li] Interface: cp_info #%i\n", i, class_file->interfaces[i]);
+        }
     }
     printf("### End Interfaces ###\n\n");
 
     printf("fields_count: %i\n", class_file->fields_count);
-
 
     free_class_file(class_file);
     fclose(fptr);

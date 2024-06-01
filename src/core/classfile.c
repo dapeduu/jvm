@@ -82,10 +82,12 @@ class_file_t *read_class_file(FILE *fptr)
     class_file->super_class = read_u2(fptr);
     class_file->interfaces_count = read_u2(fptr);
     
-    class_file->interfaces = malloc(sizeof(u2_t) * class_file->interfaces_count);
-    for (size_t i = 0; i <= class_file->interfaces_count - 1; i++)
-    {
-        class_file->interfaces[i] = read_u2(fptr);
+    if (class_file->interfaces_count > 0) {
+        class_file->interfaces = malloc(sizeof(u2_t) * class_file->interfaces_count);
+        for (size_t i = 0; i < class_file->interfaces_count; i++)
+        {
+            class_file->interfaces[i] = read_u2(fptr);
+        }
     }
 
     class_file->fields_count = read_u2(fptr);
