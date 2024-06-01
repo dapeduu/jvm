@@ -16,9 +16,9 @@ class_file_t *read_class_file(FILE *fptr)
     class_file->fields = malloc(sizeof(field_info) * class_file->fields_count);
     class_file->attributes_count = read_u2(fptr);
     class_file->attributes = malloc(sizeof(attribute_info) * class_file->attributes_count);
+    class_file->attributes->info = malloc(sizeof(u1_t) * class_file->attributes->attribute_length);
     class_file->methods_count = read_u2(fptr);
     class_file->methods = malloc(sizeof(method_info) * class_file->methods_count);
-
 
     cp_info_t current_constant_pool;
     for (size_t i = 0; i < class_file->constant_pool_count - 1; i++)
@@ -89,8 +89,6 @@ class_file_t *read_class_file(FILE *fptr)
     class_file->interfaces_count = read_u2(fptr);
     // class_file->interfaces = malloc(sizeof(u2_t) * class_file->interfaces_count);
 
-
-
     return class_file;
 }
 
@@ -106,6 +104,36 @@ int free_class_file(class_file_t *class_file)
         free(class_file->constant_pool[i].info.utf8.string);
     }
     free(class_file->constant_pool);
+
+    // Free fields and their attributes
+    for (size_t i = 0; i < class_file->fields_count; i++)
+    {
+        for (size_t j = 0; j < class_file->fields[i].attributes_count; j++)
+        {
+            free(class_file->fields[i].attributes[j].info);
+        }
+        free(class_file->fields[i].attributes);
+    }
+    free(class_file->fields);
+
+    // Free methods and their attributes
+    for (size_t i = 0; i < class_file->methods_count; i++)
+    {
+        for (size_t j = 0; j < class_file->methods[i].attributes_count; j++)
+        {
+            free(class_file->methods[i].attributes[j].info);
+        }
+        free(class_file->methods[i].attributes);
+    }
+    free(class_file->methods);
+
+    // Free class file attributes
+    for (size_t i = 0; i < class_file->attributes_count; i++)
+    {
+        free(class_file->attributes[i].info);
+    }
+    free(class_file->attributes);
+
     free(class_file);
 
     return 0;

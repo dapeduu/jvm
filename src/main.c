@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
             printf("attribute_length: %i\n", class_file->fields[i].attributes[j].attribute_length);
             printf("info: ");
             for(size_t k = 0; k < class_file->fields[i].attributes[j].attribute_length; k++) {
-                // printf("%02x ", class_file->fields[i].attributes[j].info[k]);
+                printf("%02x ", class_file->fields[i].attributes[j].info[k]);
             }
             printf("\n");
         }
@@ -127,7 +127,7 @@ int main(int argc, char *argv[])
             printf("attribute_length: %i\n", class_file->methods[i].attributes[j].attribute_length);
             printf("info: ");
             for(size_t k = 0; k < class_file->methods[i].attributes[j].attribute_length; k++) {
-                // printf("%02x ", class_file->methods[i].attributes[j].info[k]);
+                printf("%02x ", class_file->methods[i].attributes[j].info[k]);
             }
             printf("\n");
         }
