@@ -15,7 +15,7 @@ class_file_t *read_class_file(FILE *fptr)
 
     cp_info_t current_constant_pool;
 
-    for (size_t i = 0; i < class_file->constant_pool_count - 1; i++)
+    for (size_t i = 1; i < class_file->constant_pool_count - 1; i++)
     {
         current_constant_pool.tag = read_u1(fptr);
         switch (current_constant_pool.tag)
@@ -66,9 +66,12 @@ class_file_t *read_class_file(FILE *fptr)
                   current_constant_pool.info.utf8.length_of_byte_array,
                   fptr);
 
+            printf("String read: %s\n", current_constant_pool.info.utf8.string);
+
             break;
         default:
             printf("Unhandled constant pool tag: %i\n", current_constant_pool.tag);
+            printf("Current constant pool count: %i\n", class_file->constant_pool_count - 1);
             printf("Current constant pool entry: %li\n", i);
             exit(1);
             break;

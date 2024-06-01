@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     printf("magic: %x\n", class_file->magic);
     printf("minor_version: %i\n", class_file->minor_version);
     printf("major_verison: %i\n", class_file->major_version);
-    printf("constant_pool_count: %i\n", class_file->constant_pool_count);
+    printf("constant_pool_count: %i\n", class_file->constant_pool_count - 1);
     
     free_class_file(class_file);
     fclose(fptr);
