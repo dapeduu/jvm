@@ -12,14 +12,8 @@ class_file_t *read_class_file(FILE *fptr)
     class_file->major_version = read_u2(fptr);
     class_file->constant_pool_count = read_u2(fptr);
     class_file->constant_pool = malloc(sizeof(cp_info_t) * class_file->constant_pool_count);
-    class_file->fields_count = read_u2(fptr);
-    class_file->fields = malloc(sizeof(field_info) * class_file->fields_count);
-    class_file->attributes_count = read_u2(fptr);
-    class_file->attributes = malloc(sizeof(attribute_info) * class_file->attributes_count);
-    class_file->attributes->info = malloc(sizeof(u1_t) * class_file->attributes->attribute_length);
-    class_file->methods_count = read_u2(fptr);
-    class_file->methods = malloc(sizeof(method_info) * class_file->methods_count);
 
+    // INFO: Quando fazem referencia ao cp_info, precisamos remover um do indice
     cp_info_t current_constant_pool;
     for (size_t i = 0; i < class_file->constant_pool_count - 1; i++)
     {
@@ -86,8 +80,24 @@ class_file_t *read_class_file(FILE *fptr)
     class_file->access_flags = read_u2(fptr);
     class_file->this_class = read_u2(fptr);
     class_file->super_class = read_u2(fptr);
+
     class_file->interfaces_count = read_u2(fptr);
-    // class_file->interfaces = malloc(sizeof(u2_t) * class_file->interfaces_count);
+    if (class_file->interfaces_count > 0) {
+        class_file->interfaces = malloc(sizeof(u2_t) * class_file->interfaces_count);
+        for (size_t i = 0; i < class_file->interfaces_count; i++)
+        {
+            class_file->interfaces[i] = read_u2(fptr);
+        }
+    }
+
+    class_file->fields_count = read_u2(fptr);
+    class_file->fields = malloc(sizeof(field_info) * class_file->fields_count);
+    class_file->attributes_count = read_u2(fptr);
+    class_file->attributes = malloc(sizeof(attribute_info) * class_file->attributes_count);
+    class_file->attributes->info = malloc(sizeof(u1_t) * class_file->attributes->attribute_length);
+    class_file->methods_count = read_u2(fptr);
+    class_file->methods = malloc(sizeof(method_info) * class_file->methods_count);
+
 
     return class_file;
 }

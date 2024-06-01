@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     printf("\n### Constant Pool ###\n");
     for (size_t i = 0; i < class_file->constant_pool_count - 1; i++)
     {
-        printf("[%zu] Tag: %u\n", i + 1, class_file->constant_pool[i].tag);
+        printf("[%zu] Tag: %u\n", i, class_file->constant_pool[i].tag);
         switch (class_file->constant_pool[i].tag)
         {
         case CONSTANT_Class:
@@ -85,10 +85,21 @@ int main(int argc, char *argv[])
     printf("access_flags: 0x%04x\n", class_file->access_flags);
     printf("this_class: cp_info #%i\n", class_file->this_class);
     printf("super_class: cp_info #%i\n", class_file->super_class);
-    printf("interfaces_count: %i\n", class_file->interfaces_count);
 
-    printf("fields_count: %i\n", class_file->fields_count);
+    printf("\n### Interfaces ###\n");
+    printf("interfaces_count: %i\n", class_file->interfaces_count);
+    if (class_file->interfaces_count > 0)
+    {
+        for (size_t i = 0; i <= class_file->interfaces_count - 1; i++)
+        {
+            printf("[%li] Interface: cp_info #%i\n", i, class_file->interfaces[i]);
+        }
+    }
+    printf("### End Interfaces ###\n\n");
+
+
     printf("\n### Fields ###\n");
+    printf("fields_count: %i\n", class_file->fields_count);
     for(size_t i = 0; i < class_file->fields_count; i++) {
         printf("Field #%zu\n", i);
         printf("access_flags: 0x%04x\n", class_file->fields[i].access_flags);
@@ -119,7 +130,7 @@ int main(int argc, char *argv[])
         printf("name_index: cp_info #%i\n", class_file->methods[i].name_index);
         printf("descriptor_index: cp_info #%i\n", class_file->methods[i].descriptor_index);
         printf("attributes_count: %i\n", class_file->methods[i].attributes_count);
-        
+
         printf("\n### Attributes ###\n");
         for(size_t j = 0; j < class_file->methods[i].attributes_count; j++) {
             printf("Attribute #%zu\n", j);
