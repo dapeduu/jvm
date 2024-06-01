@@ -90,6 +90,15 @@ typedef struct
 
 typedef struct
 {
+    u2_t access_flags;
+    u2_t name_index;
+    u2_t descriptor_index;
+    u2_t attributes_count;
+    // attribute_info attributes [attributes_count];
+} field_info; 
+
+typedef struct
+{
     u4_t magic;
     u2_t minor_version;
     u2_t major_version;
@@ -101,8 +110,8 @@ typedef struct
     u2_t interfaces_count;
     u2_t * interfaces;
     u2_t fields_count;
+    field_info *fields;
     // TODO: Terminar essas
-    // field_info fields [fields_count];
     // u2 methods_count;
     // method_info methods [methods_count];
     // u2 attributes_count;
