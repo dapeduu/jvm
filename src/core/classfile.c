@@ -13,6 +13,7 @@ class_file_t *read_class_file(FILE *fptr)
     class_file->constant_pool_count = read_u2(fptr);
     class_file->constant_pool = malloc(sizeof(cp_info_t) * class_file->constant_pool_count);
 
+    // INFO: Quando fazem referencia ao cp_info, precisamos remover um do indice
     cp_info_t current_constant_pool;
     for (size_t i = 0; i < class_file->constant_pool_count - 1; i++)
     {
@@ -80,7 +81,16 @@ class_file_t *read_class_file(FILE *fptr)
     class_file->this_class = read_u2(fptr);
     class_file->super_class = read_u2(fptr);
     class_file->interfaces_count = read_u2(fptr);
-    // class_file->interfaces = malloc(sizeof(u2_t) * class_file->interfaces_count);
+    
+    class_file->interfaces = malloc(sizeof(u2_t) * class_file->interfaces_count);
+    for (size_t i = 0; i <= class_file->interfaces_count - 1; i++)
+    {
+        class_file->interfaces[i] = read_u2(fptr);
+    }
+
+    class_file->fields_count = read_u2(fptr);
+    
+
 
 
 

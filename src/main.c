@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     printf("\n### Constant Pool ###\n");
     for (size_t i = 0; i < class_file->constant_pool_count - 1; i++)
     {
-        printf("[%zu] Tag: %u\n", i + 1, class_file->constant_pool[i].tag);
+        printf("[%zu] Tag: %u\n", i, class_file->constant_pool[i].tag);
         switch (class_file->constant_pool[i].tag)
         {
         case CONSTANT_Class:
@@ -86,6 +86,17 @@ int main(int argc, char *argv[])
     printf("this_class: cp_info #%i\n", class_file->this_class);
     printf("super_class: cp_info #%i\n", class_file->super_class);
     printf("interfaces_count: %i\n", class_file->interfaces_count);
+
+    printf("\n### Interfaces ###\n");
+    for (size_t i = 0; i <= class_file->interfaces_count - 1; i++)
+    {
+        printf("[%li] Interface: cp_info #%i\n", i, class_file->interfaces[i]);
+    }
+    printf("### End Interfaces ###\n\n");
+
+    printf("fields_count: %i\n", class_file->fields_count);
+
+
     free_class_file(class_file);
     fclose(fptr);
 
