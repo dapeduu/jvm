@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "./core/core.h"
+#include "./core/consts.h"
 
 int main(int argc, char *argv[])
 {
@@ -20,7 +21,71 @@ int main(int argc, char *argv[])
     printf("minor_version: %i\n", class_file->minor_version);
     printf("major_verison: %i\n", class_file->major_version);
     printf("constant_pool_count: %i\n", class_file->constant_pool_count - 1);
-    
+
+    printf("\n### Constant Pool ###\n");
+    for (size_t i = 0; i < class_file->constant_pool_count - 1; i++)
+    {
+        printf("[%zu] Tag: %u\n", i + 1, class_file->constant_pool[i].tag);
+        switch (class_file->constant_pool[i].tag)
+        {
+        case CONSTANT_Class:
+            printf("Class name index: %u\n", class_file->constant_pool[i].info.class.name_index);
+            break;
+        case CONSTANT_Fieldref:
+            printf("Fieldref class index: %u, name and type index: %u\n",
+                   class_file->constant_pool[i].info.fieldref.class_index,
+                   class_file->constant_pool[i].info.fieldref.name_and_type_index);
+            break;
+        case CONSTANT_Methodref:
+            printf("Methodref class index: %u, name and type index: %u\n",
+                   class_file->constant_pool[i].info.methodref.class_index,
+                   class_file->constant_pool[i].info.methodref.name_and_type_index);
+            break;
+        case CONSTANT_InterfaceMethodref:
+            printf("InterfaceMethodref class index: %u, name and type index: %u\n",
+                   class_file->constant_pool[i].info.interface_methodref.class_index,
+                   class_file->constant_pool[i].info.interface_methodref.name_and_type_index);
+            break;
+        case CONSTANT_String:
+            printf("String index: %u\n", class_file->constant_pool[i].info.string.string_index);
+            break;
+        case CONSTANT_Integer:
+            printf("Integer bytes: %u\n", class_file->constant_pool[i].info.integer.bytes);
+            break;
+        case CONSTANT_Float:
+            printf("Float bytes: %u\n", class_file->constant_pool[i].info.float_num.bytes);
+            break;
+        case CONSTANT_Long:
+            printf("Long high bytes: %u, low bytes: %u\n",
+                   class_file->constant_pool[i].info.long_num.high_bytes,
+                   class_file->constant_pool[i].info.long_num.low_bytes);
+            break;
+        case CONSTANT_Double:
+            printf("Double high bytes: %u, low bytes: %u\n",
+                   class_file->constant_pool[i].info.double_num.high_bytes,
+                   class_file->constant_pool[i].info.double_num.low_bytes);
+            break;
+        case CONSTANT_NameAndType:
+            printf("NameAndType name index: %u, descriptor index: %u\n",
+                   class_file->constant_pool[i].info.name_and_type.name_index,
+                   class_file->constant_pool[i].info.name_and_type.descriptor_index);
+            break;
+        case CONSTANT_Utf8:
+            printf("UTF8 length: %u, string: %s\n",
+                   class_file->constant_pool[i].info.utf8.length_of_byte_array,
+                   class_file->constant_pool[i].info.utf8.string);
+            break;
+        default:
+            printf("Unhandled constant pool tag: %u\n", class_file->constant_pool[i].tag);
+            break;
+        }
+    }
+    printf("### End Constant Pool ###\n\n");
+
+    printf("access_flags: 0x%04x\n", class_file->access_flags);
+    printf("this_class: cp_info #%i\n", class_file->this_class);
+    printf("super_class: cp_info #%i\n", class_file->super_class);
+    printf("interfaces_count: %i\n", class_file->interfaces_count);
     free_class_file(class_file);
     fclose(fptr);
 

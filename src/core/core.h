@@ -95,6 +95,18 @@ typedef struct
     u2_t major_version;
     u2_t constant_pool_count;
     cp_info_t *constant_pool;
+    u2_t access_flags;
+    u2_t this_class;
+    u2_t super_class;
+    u2_t interfaces_count;
+    u2_t * interfaces;
+    u2_t fields_count;
+    // TODO: Terminar essas
+    // field_info fields [fields_count];
+    // u2 methods_count;
+    // method_info methods [methods_count];
+    // u2 attributes_count;
+    // attribute_info attributes [attributes_count];
 } class_file_t;
 
 // readers.c

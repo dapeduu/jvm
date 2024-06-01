@@ -14,8 +14,7 @@ class_file_t *read_class_file(FILE *fptr)
     class_file->constant_pool = malloc(sizeof(cp_info_t) * class_file->constant_pool_count);
 
     cp_info_t current_constant_pool;
-
-    for (size_t i = 1; i < class_file->constant_pool_count - 1; i++)
+    for (size_t i = 0; i < class_file->constant_pool_count - 1; i++)
     {
         current_constant_pool.tag = read_u1(fptr);
         switch (current_constant_pool.tag)
@@ -65,9 +64,6 @@ class_file_t *read_class_file(FILE *fptr)
                   1,
                   current_constant_pool.info.utf8.length_of_byte_array,
                   fptr);
-
-            printf("String read: %s\n", current_constant_pool.info.utf8.string);
-
             break;
         default:
             printf("Unhandled constant pool tag: %i\n", current_constant_pool.tag);
@@ -79,6 +75,15 @@ class_file_t *read_class_file(FILE *fptr)
 
         class_file->constant_pool[i] = current_constant_pool;
     }
+
+    class_file->access_flags = read_u2(fptr);
+    class_file->this_class = read_u2(fptr);
+    class_file->super_class = read_u2(fptr);
+    class_file->interfaces_count = read_u2(fptr);
+    // class_file->interfaces = malloc(sizeof(u2_t) * class_file->interfaces_count);
+
+
+
     return class_file;
 }
 

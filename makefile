@@ -5,7 +5,7 @@ OBJECTS = main.o readers.o classfile.o
 main: $(OBJECTS)
 	$(CC) $(CFLAGS) -o build/jvm $(OBJECTS) 
 
-main.o: src/main.c src/core/core.h
+main.o: src/main.c src/core/core.h src/core/consts.h
 	$(CC) $(CFLAGS) -c src/main.c
 
 readers.o: src/core/readers.c src/core/core.h
