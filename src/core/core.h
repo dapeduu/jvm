@@ -105,6 +105,15 @@ typedef struct
 
 typedef struct
 {
+    u2_t access_flags;
+    u2_t name_index;
+    u2_t descriptor_index;
+    u2_t attributes_count;
+    attribute_info *attributes;
+} method_info;
+
+typedef struct
+{
     u4_t magic;
     u2_t minor_version;
     u2_t major_version;
@@ -119,10 +128,8 @@ typedef struct
     field_info *fields;
     u2_t attributes_count;
     attribute_info *attributes;
-    // TODO: Terminar essas
-    // u2 methods_count;
-    // method_info methods [methods_count];
-    // attribute_info attributes [attributes_count];
+    u2_t methods_count;
+    method_info *methods;
 } class_file_t;
 
 // readers.c
