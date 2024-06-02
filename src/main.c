@@ -88,6 +88,7 @@ int main(int argc, char *argv[])
 
     printf("\n### Interfaces ###\n");
     printf("interfaces_count: %i\n", class_file->interfaces_count);
+
     if (class_file->interfaces_count > 0)
     {
         for (size_t i = 0; i <= class_file->interfaces_count - 1; i++)
@@ -96,7 +97,6 @@ int main(int argc, char *argv[])
         }
     }
     printf("### End Interfaces ###\n\n");
-
 
     printf("\n### Fields ###\n");
     printf("fields_count: %i\n", class_file->fields_count);
