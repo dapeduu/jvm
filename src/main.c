@@ -13,9 +13,11 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    printf("\n============================== %s ==============================\n", argv[1]);
+    printf("\n===== %s =====\n", argv[1]);
 
     class_file_t *class_file = read_class_file(fptr);
+
+    printf("\n##### General Information #####\n\n");
 
     printf("magic: %x\n", class_file->magic);
     printf("minor_version: %i\n", class_file->minor_version);
@@ -26,9 +28,11 @@ int main(int argc, char *argv[])
     printf("super_class: cp_info #%i\n", class_file->super_class);
     printf("fields_count: %i\n", class_file->fields_count);
     printf("methods_count: %i\n", class_file->methods_count);
-    printf("attributes_count: %d\n\n", class_file->attributes_count);
+    printf("attributes_count: %d\n", class_file->attributes_count);
 
-    printf("\n################################ Constant Pool ################################\n");
+    printf("\n##### End General Information #####\n");
+
+    printf("\n##### Constant Pool #####\n\n");
     for (size_t i = 0; i < class_file->constant_pool_count - 1; i++)
     {
         printf("[%zu] Tag: %u\n", i, class_file->constant_pool[i].tag);
@@ -86,13 +90,9 @@ int main(int argc, char *argv[])
             break;
         }
     }
-    printf("################################ End Constant Pool ################################\n");
+    printf("\n##### End Constant Pool #####\n");
 
-    printf("access_flags: 0x%04x\n", class_file->access_flags);
-    printf("this_class: cp_info #%i\n", class_file->this_class);
-    printf("super_class: cp_info #%i\n", class_file->super_class);
-
-    printf("\n### Interfaces ###\n");
+    printf("\n##### Interfaces #####\n\n");
     printf("interfaces_count: %i\n", class_file->interfaces_count);
 
     if (class_file->interfaces_count > 0)
@@ -102,9 +102,9 @@ int main(int argc, char *argv[])
             printf("[%li] Interface: cp_info #%i\n", i, class_file->interfaces[i]);
         }
     }
-    printf("### End Interfaces ###\n\n");
+    printf("\n##### End Interfaces #####\n");
 
-    printf("\n### Fields ###\n");
+    printf("\n##### Fields #####\n\n");
     printf("fields_count: %i\n", class_file->fields_count);
     for(size_t i = 0; i < class_file->fields_count; i++) {
         printf("Field #%zu\n", i);
@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
         printf("descriptor_index: cp_info #%i\n", class_file->fields[i].descriptor_index);
         printf("attributes_count: %i\n", class_file->fields[i].attributes_count);
         
-        printf("\n### Attributes ###\n");
+        printf("\n### Attributes (Field %zu) ###\n", i);
         for(size_t j = 0; j < class_file->fields[i].attributes_count; j++) {
             printf("Attribute #%zu\n", j);
             printf("attribute_name_index: cp_info #%i\n", class_file->fields[i].attributes[j].attribute_name_index);
@@ -122,32 +122,33 @@ int main(int argc, char *argv[])
             for(size_t k = 0; k < class_file->fields[i].attributes[j].attribute_length; k++) {
                 printf("%02x ", class_file->fields[i].attributes[j].info[k]);
             }
-            printf("\n");
         }
-        printf("### End Attributes ###\n\n");
+        printf("\n### End Attributes (Field %zu) ###\n", i);
     }
-    printf("### End Fields ###\n\n");
+    printf("\n### End Fields ###\n\n");
 
-    printf("\n### Methods ###\n");
+    printf("\n### Methods ###\n\n");
     printf("methods_count: %i\n", class_file->methods_count);
     for(size_t i = 0; i < class_file->methods_count; i++) {
-        printf("Method #%zu\n", i);
+        printf("--- Method #%zu --- \n", i);
         printf("access_flags: 0x%04x\n", class_file->methods[i].access_flags);
         printf("name_index: cp_info #%i\n", class_file->methods[i].name_index);
         printf("descriptor_index: cp_info #%i\n", class_file->methods[i].descriptor_index);
         printf("attributes_count: %i\n", class_file->methods[i].attributes_count);
 
-        printf("\n### Attributes (Method %zu) ###\n", i);
+        printf("\n### Attributes (Method %zu) ###\n\n", i);
         for(size_t j = 0; j < class_file->methods[i].attributes_count; j++) {
             printf("Attribute #%zu\n", j);
             printf("attribute_name_index: cp_info #%i\n", class_file->methods[i].attributes[j].attribute_name_index);
             printf("attribute_length: %i\n", class_file->methods[i].attributes[j].attribute_length);
             printf("\n");
         }
-        printf("### End Attributes ###\n\n");
+        printf("\n### End Attributes (Method %zu) ###\n\n", i);
     }
 
-    printf("### CLASSFILE Attributes ###\n\n");
+    printf("\n##### End Methods #####\n");
+
+    printf("\n##### Classfile Attributes #####\n");
     printf("attributes_count: %d\n\n", class_file->attributes_count);
     for(size_t i = 0; i < class_file->attributes_count; i++) {
         printf("Attribute #%zu\n", i);
