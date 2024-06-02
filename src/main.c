@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    printf("\n============ %s ============\n", argv[1]);
+    printf("\n============================== %s ==============================\n", argv[1]);
 
     class_file_t *class_file = read_class_file(fptr);
 
@@ -21,8 +21,14 @@ int main(int argc, char *argv[])
     printf("minor_version: %i\n", class_file->minor_version);
     printf("major_version: %i\n", class_file->major_version);
     printf("constant_pool_count: %i\n", class_file->constant_pool_count - 1);
+    printf("access_flags: 0x%04x\n", class_file->access_flags);
+    printf("this_class: cp_info #%i\n", class_file->this_class);
+    printf("super_class: cp_info #%i\n", class_file->super_class);
+    printf("fields_count: %i\n", class_file->fields_count);
+    printf("methods_count: %i\n", class_file->methods_count);
+    printf("attributes_count: %d\n\n", class_file->attributes_count);
 
-    printf("\n### Constant Pool ###\n");
+    printf("\n################################ Constant Pool ################################\n");
     for (size_t i = 0; i < class_file->constant_pool_count - 1; i++)
     {
         printf("[%zu] Tag: %u\n", i, class_file->constant_pool[i].tag);
@@ -80,7 +86,7 @@ int main(int argc, char *argv[])
             break;
         }
     }
-    printf("### End Constant Pool ###\n\n");
+    printf("################################ End Constant Pool ################################\n");
 
     printf("access_flags: 0x%04x\n", class_file->access_flags);
     printf("this_class: cp_info #%i\n", class_file->this_class);
@@ -150,6 +156,7 @@ int main(int argc, char *argv[])
         printf("\n");
     }
     printf("### End Classfile Attributes ###\n\n");
+    printf("\n============ %s ============\n", argv[1]);
 
     free_class_file(class_file);
     fclose(fptr);
