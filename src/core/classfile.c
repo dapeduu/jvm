@@ -3,6 +3,57 @@
 #include "core.h"
 #include "consts.h"
 
+
+static attribute_info_t* get_attributes(int attributes_count, FILE* fptr) {
+    attribute_info_t* attributes = malloc(sizeof(attribute_info_t) * attributes_count);
+    for (size_t j=0; j<attributes_count;j++) {
+        attribute_info_t attribute;
+        attribute.attribute_name_index = read_u2(fptr);
+        attribute.attribute_length = read_u4(fptr);
+        attribute.info = malloc(sizeof(u1_t) * attribute.attribute_length);
+
+        for(size_t k = 0; k < attribute.attribute_length; k++) {
+            attribute.info[k] = read_u1(fptr);
+        }
+        attributes[j] = attribute;
+    }
+    return attributes;
+}
+
+static field_info_t* get_fields(int fields_count, FILE* fptr) {
+    field_info_t* fields = malloc(sizeof(field_info_t) * fields_count);
+    for (size_t i = 0; i < fields_count; i++) {
+        field_info_t field;
+        field.access_flags = read_u2(fptr);
+        field.name_index = read_u2(fptr);
+        field.descriptor_index = read_u2(fptr);
+        field.attributes_count = read_u2(fptr);
+
+        field.attributes = get_attributes(field.attributes_count, fptr);
+
+        fields[i] = field;
+    }
+
+    return fields;
+}
+
+static method_info_t* get_methods(int methods_count, FILE* fptr) {
+    method_info_t *methods = malloc(sizeof(method_info_t) * methods_count);
+
+    for (size_t i=0; i<methods_count;i++) {
+        method_info_t method;
+            method.access_flags = read_u2(fptr);
+            method.name_index = read_u2(fptr);
+            method.descriptor_index = read_u2(fptr);
+            method.attributes_count = read_u2(fptr);
+
+            //TALVEZ ESTEJA ERRADO
+            method.attributes = get_attributes(method.attributes_count, fptr);
+            methods[i] = method;
+    }
+    return methods;
+}
+
 class_file_t *read_class_file(FILE *fptr)
 {
     class_file_t *class_file = malloc(sizeof(class_file_t));
@@ -148,55 +199,4 @@ int free_class_file(class_file_t *class_file)
 
     return 0;
 }
-
-field_info_t* get_fields(int fields_count, FILE* fptr) {
-    field_info_t* fields = malloc(sizeof(field_info_t) * fields_count);
-    for (size_t i = 0; i < fields_count; i++) {
-        field_info_t field;
-        field.access_flags = read_u2(fptr);
-        field.name_index = read_u2(fptr);
-        field.descriptor_index = read_u2(fptr);
-        field.attributes_count = read_u2(fptr);
-
-        field.attributes = get_attributes(field.attributes_count, fptr);
-
-        fields[i] = field;
-    }
-
-    return fields;
-}
-
-attribute_info_t* get_attributes(int attributes_count, FILE* fptr) {
-    attribute_info_t* attributes = malloc(sizeof(attribute_info_t) * attributes_count);
-    for (size_t j=0; j<attributes_count;j++) {
-        attribute_info_t attribute;
-        attribute.attribute_name_index = read_u2(fptr);
-        attribute.attribute_length = read_u4(fptr);
-        attribute.info = malloc(sizeof(u1_t) * attribute.attribute_length);
-
-        for(size_t k = 0; k < attribute.attribute_length; k++) {
-            attribute.info[k] = read_u1(fptr);
-        }
-        attributes[j] = attribute;
-    }
-    return attributes;
-}
-
-method_info_t* get_methods(int methods_count, FILE* fptr) {
-    method_info_t *methods = malloc(sizeof(method_info_t) * methods_count);
-
-    for (size_t i=0; i<methods_count;i++) {
-        method_info_t method;
-            method.access_flags = read_u2(fptr);
-            method.name_index = read_u2(fptr);
-            method.descriptor_index = read_u2(fptr);
-            method.attributes_count = read_u2(fptr);
-
-            //TALVEZ ESTEJA ERRADO
-            method.attributes = get_attributes(method.attributes_count, fptr);
-            methods[i] = method;
-    }
-    return methods;
-}
-
 
