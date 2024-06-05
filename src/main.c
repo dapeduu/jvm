@@ -141,6 +141,14 @@ int main(int argc, char *argv[])
             printf("Attribute #%zu\n", j);
             printf("attribute_name_index: cp_info #%i\n", class_file->methods[i].attributes[j].attribute_name_index);
             printf("attribute_length: %i\n", class_file->methods[i].attributes[j].attribute_length);
+
+            printf("bytecode: ");
+            for (size_t k = 0; k < class_file->methods[i].attributes_count; k++)
+            {
+                u1_t byte = class_file->methods[i].attributes[j].info[k];
+                printf("%02x ", byte);
+            }
+            printf("\n");
             printf("\n");
         }
         printf("\n### End Attributes (Method %zu) ###\n\n", i);
@@ -154,6 +162,13 @@ int main(int argc, char *argv[])
         printf("Attribute #%zu\n", i);
         printf("attribute_name_index: cp_info #%i\n", class_file->attributes[i].attribute_name_index);
         printf("attribute_length: %i\n", class_file->attributes[i].attribute_length);
+        printf("bytecode: ");
+        for (size_t j = 0; j < class_file->attributes[i].attribute_length; j++)
+        {
+            u1_t byte = class_file->attributes[i].info[i];
+            printf("%02x ", byte);
+        }
+        printf("\n");
         printf("\n");
     }
     printf("### End Classfile Attributes ###\n\n");
