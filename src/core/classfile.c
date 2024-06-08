@@ -56,8 +56,6 @@ static method_info_t *get_methods(int methods_count, FILE *fptr)
         method.name_index = read_u2(fptr);
         method.descriptor_index = read_u2(fptr);
         method.attributes_count = read_u2(fptr);
-
-        // TALVEZ ESTEJA ERRADO
         method.attributes = get_attributes(method.attributes_count, fptr);
         methods[i] = method;
     }

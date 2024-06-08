@@ -139,7 +139,6 @@ u1_t read_u1(FILE *fptr);
 
 // classfile.c
 class_file_t *read_class_file(FILE *fptr);
-int free_class_file(class_file_t *class_file);
 // Não precisamos declarar no header as funções estaticas
 // static field_info_t* get_fields(int fields_count, FILE* fptr);
 // static method_info_t* get_methods(int methods_count, FILE* fptr);
