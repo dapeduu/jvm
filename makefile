@@ -1,5 +1,5 @@
 CC = gcc 
-CFLAGS = -std=c99 -g -Wall
+CFLAGS = -m32 -std=c99 -g -Wall
 OBJECTS = main.o readers.o classfile.o
 
 main: $(OBJECTS)

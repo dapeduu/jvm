@@ -3,21 +3,27 @@
 #include "core.h"
 #include "consts.h"
 
+static char* get_constant_pool_value(cp_info_t * cp_info, u2_t name_index) {
+    if (cp_info->tag == CONSTANT_String) {
+        return (char *)cp_info[name_index-1].info.utf8.string;
+    }
+
+    return "";
+}
+
 static attribute_info_t *get_attributes(int attributes_count, FILE *fptr)
 {
     attribute_info_t *attributes = malloc(sizeof(attribute_info_t) * attributes_count);
-    attribute_info_t attribute;
     for (size_t j = 0; j < attributes_count; j++)
     {
-        attribute.attribute_name_index = read_u2(fptr);
-        attribute.attribute_length = read_u4(fptr);
-        attribute.info = malloc(sizeof(u1_t) * attribute.attribute_length);
+        attributes[j].attribute_name_index = read_u2(fptr);
+        attributes[j].attribute_length = read_u4(fptr);
+        attributes[j].bytes = malloc(sizeof(u1_t) * attributes[j].attribute_length);
 
-        for (size_t k = 0; k < attribute.attribute_length; k++)
+        for (size_t k = 0; k < attributes[j].attribute_length; k++)
         {
-            attribute.info[k] = read_u1(fptr);
+            attributes[j].bytes[k] = read_u1(fptr);
         }
-        attributes[j] = attribute;
     }
     return attributes;
 }
@@ -32,9 +38,7 @@ static field_info_t *get_fields(int fields_count, FILE *fptr)
         field.name_index = read_u2(fptr);
         field.descriptor_index = read_u2(fptr);
         field.attributes_count = read_u2(fptr);
-
         field.attributes = get_attributes(field.attributes_count, fptr);
-
         fields[i] = field;
     }
 
@@ -45,7 +49,7 @@ static method_info_t *get_methods(int methods_count, FILE *fptr)
 {
     method_info_t *methods = malloc(sizeof(method_info_t) * methods_count);
     method_info_t method;
-    
+
     for (size_t i = 0; i < methods_count; i++)
     {
         method.access_flags = read_u2(fptr);
@@ -126,7 +130,7 @@ class_file_t *read_class_file(FILE *fptr)
         default:
             printf("Unhandled constant pool tag: %i\n", current_constant_pool.tag);
             printf("Current constant pool count: %i\n", class_file->constant_pool_count - 1);
-            printf("Current constant pool entry: %li\n", i);
+            printf("Current constant pool entry: %i\n", i);
             exit(1);
             break;
         }
@@ -158,51 +162,4 @@ class_file_t *read_class_file(FILE *fptr)
     class_file->attributes = get_attributes(class_file->attributes_count, fptr);
 
     return class_file;
-}
-
-int free_class_file(class_file_t *class_file)
-{
-
-    // Free all utf8 strings from constant pool
-    for (size_t i = 0; i < class_file->constant_pool_count; i++)
-    {
-        if (class_file->constant_pool[i].tag != CONSTANT_Utf8)
-            continue;
-
-        free(class_file->constant_pool[i].info.utf8.string);
-    }
-    free(class_file->constant_pool);
-
-    // Free fields and their attributes
-    for (size_t i = 0; i < class_file->fields_count; i++)
-    {
-        for (size_t j = 0; j < class_file->fields[i].attributes_count; j++)
-        {
-            free(class_file->fields[i].attributes[j].info);
-        }
-        free(class_file->fields[i].attributes);
-    }
-    free(class_file->fields);
-
-    // Free methods and their attributes
-    for (size_t i = 0; i < class_file->methods_count; i++)
-    {
-        for (size_t j = 0; j < class_file->methods[i].attributes_count; j++)
-        {
-            free(class_file->methods[i].attributes[j].info);
-        }
-        free(class_file->methods[i].attributes);
-    }
-    free(class_file->methods);
-
-    // Free class file attributes
-    for (size_t i = 0; i < class_file->attributes_count; i++)
-    {
-        free(class_file->attributes[i].info);
-    }
-    free(class_file->attributes);
-
-    free(class_file);
-
-    return 0;
 }

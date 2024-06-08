@@ -91,7 +91,7 @@ typedef struct
 typedef struct {
     u2_t attribute_name_index;
     u4_t attribute_length;
-    u1_t *info;
+    u1_t *bytes;
 } attribute_info_t;
 
 typedef struct

@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
     {
         for (size_t i = 0; i <= class_file->interfaces_count - 1; i++)
         {
-            printf("[%li] Interface: cp_info #%i\n", i, class_file->interfaces[i]);
+            printf("[%i] Interface: cp_info #%i\n", i, class_file->interfaces[i]);
         }
     }
     printf("\n##### End Interfaces #####\n");
@@ -120,7 +120,7 @@ int main(int argc, char *argv[])
             printf("attribute_length: %i\n", class_file->fields[i].attributes[j].attribute_length);
             printf("info: ");
             for(size_t k = 0; k < class_file->fields[i].attributes[j].attribute_length; k++) {
-                printf("%02x ", class_file->fields[i].attributes[j].info[k]);
+                printf("%02x ", class_file->fields[i].attributes[j].bytes[k]);
             }
         }
         printf("\n### End Attributes (Field %zu) ###\n", i);
@@ -142,10 +142,10 @@ int main(int argc, char *argv[])
             printf("attribute_name_index: cp_info #%i\n", class_file->methods[i].attributes[j].attribute_name_index);
             printf("attribute_length: %i\n", class_file->methods[i].attributes[j].attribute_length);
 
-            printf("bytecode: ");
-            for (size_t k = 0; k < class_file->methods[i].attributes_count; k++)
+            printf("bytes: ");
+            for (size_t k = 0; k < class_file->methods[i].attributes[j].attribute_length; k++)
             {
-                u1_t byte = class_file->methods[i].attributes[j].info[k];
+                u1_t byte = class_file->methods[i].attributes[j].bytes[k];
                 printf("%02x ", byte);
             }
             printf("\n");
@@ -162,10 +162,10 @@ int main(int argc, char *argv[])
         printf("Attribute #%zu\n", i);
         printf("attribute_name_index: cp_info #%i\n", class_file->attributes[i].attribute_name_index);
         printf("attribute_length: %i\n", class_file->attributes[i].attribute_length);
-        printf("bytecode: ");
+        printf("bytes: ");
         for (size_t j = 0; j < class_file->attributes[i].attribute_length; j++)
         {
-            u1_t byte = class_file->attributes[i].info[i];
+            u1_t byte = class_file->attributes[i].bytes[j];
             printf("%02x ", byte);
         }
         printf("\n");
@@ -174,7 +174,6 @@ int main(int argc, char *argv[])
     printf("### End Classfile Attributes ###\n\n");
     printf("\n============ %s ============\n", argv[1]);
 
-    free_class_file(class_file);
     fclose(fptr);
 
     return 0;
