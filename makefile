@@ -19,4 +19,4 @@ display.o: src/display.c src/core/core.h src/core/consts.h
 
 .PHONY: clean
 clean:
-	rm main.o readers.o classfile.o
+	rm main.o readers.o classfile.o display.o

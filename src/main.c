@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "./core/core.h"
-#include "./core/consts.h"
 #include "./display.h"
 
 int main(int argc, char *argv[])
