@@ -132,6 +132,18 @@ typedef struct
     method_info_t *methods;
 } class_file_t;
 
+// table and key_value structs
+typedef struct {
+    char* key;
+    void* value;
+} key_value_t;
+
+typedef struct {
+    short capacity;
+    short data_size;
+    key_value_t** entries;
+} hash_table_t;
+
 // readers.c
 u4_t read_u4(FILE *fptr);
 u2_t read_u2(FILE *fptr);

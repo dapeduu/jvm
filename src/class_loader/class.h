@@ -10,17 +10,6 @@ typedef enum {
 } class_status_t;
 
 typedef struct {
-    char* key;
-    void* value;
-} key_value_t;
-
-typedef struct {
-    short capacity;
-    short data_size;
-    key_value_t** entries;
-} hash_table_t;
-
-typedef struct {
   u4_t magic;
   u2_t minor_version;
   u2_t major_version;
@@ -38,4 +27,6 @@ typedef struct {
   u2_t methods_count;
   method_info_t *methods;
   class_status_t status;
+  hash_table_t *methods_table;
+  hash_table_t *fields_table;
 } class_t;
