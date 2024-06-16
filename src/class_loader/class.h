@@ -1,5 +1,25 @@
 #include "./core/core.h"
 
+typedef enum {
+  unloaded,
+  loading,
+  loaded,
+  initializing,
+  initialized,
+  error
+} class_status_t;
+
+typedef struct {
+    char* key;
+    void* value;
+} key_value_t;
+
+typedef struct {
+    short capacity;
+    short data_size;
+    key_value_t** entries;
+} hash_table_t;
+
 typedef struct {
   u4_t magic;
   u2_t minor_version;
@@ -17,5 +37,5 @@ typedef struct {
   attribute_info_t *attributes;
   u2_t methods_count;
   method_info_t *methods;
-  // TODO: adapt this to class_t instead of class_file_t
+  class_status_t status;
 } class_t;
