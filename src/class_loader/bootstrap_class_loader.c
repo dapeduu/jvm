@@ -1,5 +1,7 @@
 #include "./core/class.h"
+#include "./runtime_data_area/method_area.h"
 
 class_t load_class_file(char *class_name) {
-//  TODO: implement this function
+  // method_area_t *method_area;
+  
 }

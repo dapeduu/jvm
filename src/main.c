@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include "./core/core.h"
 #include "./display.h"
+#include "./runtime_data_area/method_area.h"
+#include "./class_loader/bootstrap_class_loader.c"
+
+#define IS_READER 0
 
 int main(int argc, char *argv[])
 {
@@ -14,7 +18,13 @@ int main(int argc, char *argv[])
     }
 
     class_file_t *class_file = read_class_file(fptr);
-    display_class_file(class_file, argv[1]);
+    
+    if (IS_READER) {
+        display_class_file(class_file, argv[1]);
+    } else {
+        method_area_t *method_area = newHashTable();
+        // display_class(class);
+    }
 
     fclose(fptr);
 

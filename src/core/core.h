@@ -139,7 +139,7 @@ typedef struct {
 } key_value_t;
 
 typedef struct {
-    short capacity;
+    short table_size;
     short data_size;
     key_value_t** entries;
 } hash_table_t;
