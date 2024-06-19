@@ -1,4 +1,7 @@
-#include "./core/core.h"
+#ifndef CLASS_H
+#define CLASS_H
+
+#include "core.h"
 
 typedef enum {
   unloaded,
@@ -30,3 +33,5 @@ typedef struct {
   hash_table_t *methods_table;
   hash_table_t *fields_table;
 } class_t;
+
+#endif // CLASS_H
