@@ -3,8 +3,6 @@
 #include <string.h>
 #include "./core/core.h"
 #include "./display.h"
-#include "./helpers/class_helpers.h"
-#include "./helpers/class_helpers.c"
 #include "./runtime_data_area/method_area.h"
 #include "./class_loader/bootstrap_class_loader.c"
 #include "./helpers/hash_table_helpers.c"
@@ -31,9 +29,6 @@ int main(int argc, char *argv[])
     int is_not_reader = strcmp(argv[1], "-r");
     if (is_not_reader) {
         printf("Execução\n");
-        char* className = getClassName(argv[2]);
-        printf("Executing class file - %s\n", className);
-        free(className);
     } else {
         display_class_file(class_file, argv[1]);
         // display_class(class);
