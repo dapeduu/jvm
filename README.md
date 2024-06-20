@@ -1,13 +1,24 @@
 # JVM
 
+## Instalar dependencias
+
+```bash
+sudo apt update
+sudo apt install build-essential cppcheck gcc-multilib
+```
+
 ## Como rodar
 
-- Executar o make: `make`
-- Executar o projeto: `build/jvm.exe caminho/para/class`
+```bash
+# Para rodar um arquivo especifico
+make
+./build/jvm.exe caminho/para/class
 
-Para executar todos os arquivos de teste no linux:
+# Para rodar todos os arquivos
+# - O comando busca todos os arquivos na pasta ./test
+# - Depois executa o ./build/jvm passando cada um como argumento
 
-- Executar o make: `make``
-- Executar o comando: `find ./test -type f | xargs -I {} ./build/jvm "{}"`
-  - O comando busca todos os arquivos na pasta ./test
-  - Depois executa o ./build/jvm passando cada um como argumento
+make
+find ./test -type f | xargs -I {} ./build/jvm "{}"
+
+```
