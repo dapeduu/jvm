@@ -29,6 +29,8 @@ int main(int argc, char *argv[])
     int is_not_reader = strcmp(argv[1], "-r");
     if (is_not_reader) {
         printf("Execução\n");
+        // printf("Class file: %s\n", argv[2]);
+        load_class_file(class_file);
     } else {
         display_class_file(class_file, argv[1]);
         // display_class(class);
