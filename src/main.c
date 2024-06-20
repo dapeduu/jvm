@@ -3,17 +3,11 @@
 #include <string.h>
 #include "./core/core.h"
 #include "./display.h"
+#include "./helpers/class_helpers.h"
+#include "./helpers/class_helpers.c"
 #include "./runtime_data_area/method_area.h"
 #include "./class_loader/bootstrap_class_loader.c"
-
-hash_table_t* newHashTable(short table_size) {
-  hash_table_t* hash_table = (hash_table_t*) malloc(sizeof(hash_table_t));
-  hash_table->table_size = table_size;
-  hash_table->data_size = 0;
-  hash_table->entries = calloc(hash_table->table_size, sizeof(key_value_t*));
-  
-  return hash_table;
-}
+#include "./helpers/hash_table_helpers.c"
 
 int main(int argc, char *argv[])
 {
@@ -36,10 +30,12 @@ int main(int argc, char *argv[])
 
     int is_not_reader = strcmp(argv[1], "-r");
     if (is_not_reader) {
-        printf("Execução");
+        printf("Execução\n");
+        char* className = getClassName(argv[2]);
+        printf("Executing class file - %s\n", className);
+        free(className);
     } else {
         display_class_file(class_file, argv[1]);
-        // method_area_t *method_area = newHashTable();
         // display_class(class);
     }
 
