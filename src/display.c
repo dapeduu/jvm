@@ -22,7 +22,7 @@ void display_class_file(class_file_t *class_file, char * filename)
     printf("\n##### Constant Pool #####\n\n");
     for (size_t i = 0; i < class_file->constant_pool_count - 1; i++)
     {
-        printf("[%zu] Tag: %u\n", i, class_file->constant_pool[i].tag);
+        printf("[%zu] Tag: %u\n", i + 1, class_file->constant_pool[i].tag);
         switch (class_file->constant_pool[i].tag)
         {
         case CONSTANT_Class:

@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     }
 
     class_file_t *class_file = read_class_file(fptr);
-
+    
     int is_not_reader = strcmp(PROGRAM_OPTION, "-r");
     if (is_not_reader) {
         printf("Execução:\n");
@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
     } else {
         printf("Exibidor:\n");
         display_class_file(class_file, FILE_PATH);
+        printf("Teste: %s", get_constant_pool_value(class_file->constant_pool, 4));
         // display_class(class);
     }
 

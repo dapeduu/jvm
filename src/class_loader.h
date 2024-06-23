@@ -96,7 +96,7 @@ typedef struct
 {
     u2_t access_flags;
     u2_t name_index;
-    u2_t descriptor_index;
+    u2_t descriptor_index; 
     u2_t attributes_count;
     attribute_info_t *attributes;
 } field_method_info_t;
@@ -125,6 +125,7 @@ typedef struct
 u4_t read_u4(FILE *fptr);
 u2_t read_u2(FILE *fptr);
 u1_t read_u1(FILE *fptr);
+char* get_constant_pool_value(cp_info_t * cp_info, u2_t name_index);
 class_file_t *read_class_file(FILE *fptr);
 
 #endif // CLASS_LOADER_H

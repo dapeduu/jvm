@@ -35,12 +35,14 @@ u4_t read_u4(FILE *fptr)
     return value;
 }
 
-static char* get_constant_pool_value(cp_info_t * cp_info, u2_t name_index) {
-    if (cp_info->tag == CONSTANT_String) {
-        return (char *)cp_info[name_index-1].info.utf8.string;
+char* get_constant_pool_value(cp_info_t * cp_info, u2_t name_index) {
+    if ((int)cp_info[name_index-1].tag == CONSTANT_Utf8) {
+        return (char *)cp_info[name_index - 1].info.utf8.string;
     }
 
-    return "";
+    printf("Error: Couldnt resolve constant pool value\n");
+    printf("Index: %i\n", name_index);
+    exit(1);
 }
 
 static attribute_info_t *get_attributes(int attributes_count, FILE *fptr)
