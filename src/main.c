@@ -4,6 +4,7 @@
 #include "display.h"
 #include "class_loader.h"
 #include "runtime_data_area.h"
+#include "execution_engine.h"
 
 int main(int argc, char *argv[]) {
     if (argc != 3) {
@@ -33,12 +34,14 @@ int main(int argc, char *argv[]) {
 
     if (is_not_reader) {
         printf("Execução:\n");
-        get_frame(  class_file->methods_count,
+        frame_t * frame = get_frame(  class_file->methods_count,
                     class_file->methods,
                     "add",
                     2,
                     args,
                     class_file->constant_pool);
+        u4_t result = run_frame(frame);
+        printf("Resultado da execução: %i\n", result);
     } else {
         printf("Exibidor:\n");
         display_class_file(class_file, FILE_PATH);
