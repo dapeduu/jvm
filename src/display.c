@@ -1,5 +1,5 @@
-#include "./core/core.h"
-#include "./core/consts.h"
+#include "core.h"
+#include "class_loader.h"
 
 void display_class_file(class_file_t *class_file, char * filename)
 {

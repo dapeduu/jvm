@@ -22,3 +22,7 @@ make
 find ./test -type f | xargs -I {} ./build/jvm "{}"
 
 ```
+
+## Conteúdos úteis
+
+- [Java Virtual Machine Architecture Explained for Beginners](https://www.youtube.com/watch?v=jnpuRvRdTgI)

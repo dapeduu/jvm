@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "./core/core.h"
-#include "./display.h"
-#include "./runtime_data_area/method_area.h"
-#include "./class_loader/bootstrap_class_loader.c"
-#include "./helpers/hash_table_helpers.c"
+#include "display.h"
+#include "class_loader.h"
 
 int main(int argc, char *argv[])
 {
@@ -16,8 +13,11 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    char * PROGRAM_OPTION = argv[1]; 
+    char * FILE_PATH = argv[2]; 
+
     FILE *fptr;
-    fptr = fopen(argv[2], "rb");
+    fptr = fopen(FILE_PATH, "rb");
     if (fptr == NULL)
     {
         printf("Not able to open the file.\n");
@@ -26,13 +26,14 @@ int main(int argc, char *argv[])
 
     class_file_t *class_file = read_class_file(fptr);
 
-    int is_not_reader = strcmp(argv[1], "-r");
+    int is_not_reader = strcmp(PROGRAM_OPTION, "-r");
     if (is_not_reader) {
-        printf("Execução\n");
+        printf("Execução:\n");
         // printf("Class file: %s\n", argv[2]);
-        load_class_file(class_file);
+        display_class_file(class_file, FILE_PATH);
     } else {
-        display_class_file(class_file, argv[1]);
+        printf("Exibidor:\n");
+        display_class_file(class_file, FILE_PATH);
         // display_class(class);
     }
 

@@ -1,15 +1,10 @@
-#ifndef CORE_H
-#define CORE_H
+#if !defined(CLASS_LOADER_H)
+#define CLASS_LOADER_H
 
-#include <stdint.h>
 #include <stdio.h>
+#include "core.h"
 
-// Base types
-typedef uint8_t u1_t;
-typedef uint16_t u2_t;
-typedef uint32_t u4_t;
-// typedef unsigned long u8_t; N será possível ler u8 com 32bits
-
+// Class definitions
 typedef struct
 {
     u1_t tag;
@@ -104,16 +99,7 @@ typedef struct
     u2_t descriptor_index;
     u2_t attributes_count;
     attribute_info_t *attributes;
-} field_info_t;
-
-typedef struct
-{
-    u2_t access_flags;
-    u2_t name_index;
-    u2_t descriptor_index;
-    u2_t attributes_count;
-    attribute_info_t *attributes;
-} method_info_t;
+} field_method_info_t;
 
 typedef struct
 {
@@ -128,35 +114,17 @@ typedef struct
     u2_t interfaces_count;
     u2_t * interfaces;
     u2_t fields_count;
-    field_info_t *fields;
+    field_method_info_t *fields;
     u2_t attributes_count;
     attribute_info_t *attributes;
     u2_t methods_count;
-    method_info_t *methods;
+    field_method_info_t *methods;
 } class_file_t;
 
-// table and key_value structs
-typedef struct {
-    char* key;
-    void* value;
-} key_value_t;
-
-typedef struct {
-    short table_size;
-    short data_size;
-    key_value_t** entries;
-} hash_table_t;
-
-// readers.c
+// Reader functions
 u4_t read_u4(FILE *fptr);
 u2_t read_u2(FILE *fptr);
 u1_t read_u1(FILE *fptr);
-
-// classfile.c
 class_file_t *read_class_file(FILE *fptr);
-// Não precisamos declarar no header as funções estaticas
-// static field_info_t* get_fields(int fields_count, FILE* fptr);
-// static method_info_t* get_methods(int methods_count, FILE* fptr);
-// static attribute_info_t* get_attributes(int attributes_count, FILE* fptr);
 
-#endif // CORE_H
+#endif // CLASS_LOADER_H
