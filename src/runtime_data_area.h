@@ -11,8 +11,10 @@ typedef struct {
     u4_t code_length;
     u2_t max_stack;
     u2_t max_locals;
-    int32_t *locals;
-    int32_t *stack;
+    u4_t *locals;
+    u4_t *stack;
 } frame_t;
+
+frame_t get_frame(int method_count, field_method_info_t * methods ,char * name, int args_count, u4_t * args, cp_info_t * constant_pool);
 
 #endif // RUNTIME_DATA_AREA

@@ -3,9 +3,9 @@
 #include <string.h>
 #include "display.h"
 #include "class_loader.h"
+#include "runtime_data_area.h"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     if (argc != 3) {
         printf("You have to pass 2 args.\n");
         printf("Reader: jvm -r ./path/to/file\n");
@@ -27,10 +27,18 @@ int main(int argc, char *argv[])
     class_file_t *class_file = read_class_file(fptr);
     
     int is_not_reader = strcmp(PROGRAM_OPTION, "-r");
+    u4_t * args = calloc(2, sizeof(u4_t));
+    args[0] = 2;
+    args[1] = 3;
+
     if (is_not_reader) {
         printf("Execução:\n");
-        // printf("Class file: %s\n", argv[2]);
-        display_class_file(class_file, FILE_PATH);
+        get_frame(  class_file->methods_count,
+                    class_file->methods,
+                    "add",
+                    2,
+                    args,
+                    class_file->constant_pool);
     } else {
         printf("Exibidor:\n");
         display_class_file(class_file, FILE_PATH);
