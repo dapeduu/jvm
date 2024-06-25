@@ -25,55 +25,15 @@ u4_t run_frame(frame_t * frame) {
         }
         printf("\n");
 
-        switch (opcode)
-        {
-        case 26: // iload_0
-            push(frame, frame->locals[0]);
-            break;
-
-        case 27: // iload_1
-            push(frame, frame->locals[1]);
-            break;
-        case 96: // add
-            u4_t value1 = pop(frame);
-            u4_t value2 = pop(frame);
-            push(frame, value1 + value2);
-            break;
-        case 112: // irem
-            irem(frame);
-            break;
-        case 113: // lrem
-            lrem(frame);
-            break;
-        case 114: // frem
-            frem(frame);
-            break;
-        case 115: // drem
-            drem_handler(frame);
-            break;
-        case 126: // iand
-            iand(frame);
-            break;
-        case 127: // land
-            land(frame);
-            break;
-        case 130: // ixor
-            ixor(frame);
-            break;
-        case 131: // ixor
-            lxor(frame);
-            break;
-        case 172: // ireturn
-            return pop(frame);
-        default:
-            break;
+        if (inst_vector[opcode]) {
+            inst_vector[opcode](frame);
+        } else {
+            printf("Instrução não encontrada");
+            exit(1);
         }
 
         frame->instruction_pointer++;
     }
 
-    printf("Erro: Não entrou no return");
-    exit(1);
 }
-
 
