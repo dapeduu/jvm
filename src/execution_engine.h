@@ -18,5 +18,7 @@ void irem(frame_t * frame);
 void lrem(frame_t * frame);
 void frem(frame_t * frame);
 void drem_handler(frame_t * frame);
+void ixor(frame_t * frame);
+void lxor(frame_t * frame);
 
 #endif // EXECUTION_ENGINE_H
