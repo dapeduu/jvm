@@ -1,9 +1,10 @@
 CC = gcc 
 CFLAGS = -m32 -std=c99 -g -Wall
 OBJECTS = main.o class_loader.o display.o runtime_data_area.o execution_engine.o
+LIB = -lm
 
 main: $(OBJECTS)
-	$(CC) $(CFLAGS) -o build/jvm $(OBJECTS) 
+	$(CC) $(CFLAGS) -o build/jvm $(OBJECTS) $(LIB)
 
 main.o: src/main.c src/display.h src/class_loader.h 
 	$(CC) $(CFLAGS) -c src/main.c

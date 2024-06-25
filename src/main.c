@@ -34,9 +34,9 @@ int main(int argc, char *argv[]) {
 
     if (is_not_reader) {
         printf("Execução:\n");
-        frame_t * frame = get_frame(  class_file->methods_count,
+        frame_t * frame = get_frame(class_file->methods_count,
                     class_file->methods,
-                    "add",
+                    "test",
                     2,
                     args,
                     class_file->constant_pool);
