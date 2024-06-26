@@ -21,5 +21,11 @@ typedef uint64_t u8_t;
 #define CONSTANT_Double 6
 #define CONSTANT_NameAndType 12
 #define CONSTANT_Utf8 1
+#define CONSTANT_MethodHandle 15
+#define CONSTANT_MethodType 16
+#define CONSTANT_Dynamic 17
+#define CONSTANT_InvokeDynamic 18
+#define CONSTANT_Module 19
+#define CONSTANT_Package 20
 
 #endif // CORE_H
