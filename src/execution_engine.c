@@ -34,6 +34,7 @@ u4_t run_frame(frame_t * frame) {
 
         frame->instruction_pointer++;
     }
+    return 0;
 
 }
 
