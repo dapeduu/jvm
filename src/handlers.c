@@ -139,3 +139,42 @@ void lxor(frame_t *frame) {
 void ireturn(frame_t *frame) {
     // TODO
 }
+
+void ineg(frame_t *frame) {
+  u4_t value = pop(frame);
+  push(frame, -value);
+}
+
+void lneg(frame_t *frame) {
+  u4_t value_hi = pop(frame);
+  u4_t value_lo = pop(frame);
+
+  long value = make_long(value_hi, value_lo);
+  long res = -value;
+
+  u4_t res_hi = (u4_t)(res >> 32) & 0x00000000FFFFFFFF;
+  u4_t res_lo = (u4_t)res & 0x00000000FFFFFFFF;
+
+  push(frame, res_hi);
+  push(frame, res_lo);
+}
+
+void fneg(frame_t *frame) {
+  u4_t value = pop(frame);
+  float res = -make_float(value);
+  push(frame, float_to_uint32(res));
+}
+
+void dneg(frame_t *frame) {
+  u4_t value_hi = pop(frame);
+  u4_t value_lo = pop(frame);
+
+  u8_t value = make_double(value_hi, value_lo);
+  u8_t res = -value;
+
+  u4_t res_hi = (u4_t)(res >> 32) & 0x00000000FFFFFFFF;
+  u4_t res_lo = (u4_t)res & 0x00000000FFFFFFFF;
+
+  push(frame, res_hi);
+  push(frame, res_lo);
+}
