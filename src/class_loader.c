@@ -4,6 +4,7 @@
 #include "core.h"
 #include "class_loader.h"
 
+// Funções para leitura de bytes
 u1_t read_u1(FILE *fptr)
 {
     u1_t value;
@@ -37,6 +38,7 @@ u4_t read_u4(FILE *fptr)
     return value;
 }
 
+// Retorna o valor do constant pool de acordo com o index
 char* get_constant_pool_value(cp_info_t * cp_info, u2_t name_index) {
     if ((int)cp_info[name_index-1].tag == CONSTANT_Utf8) {
         return (char *)cp_info[name_index - 1].info.utf8.string;
@@ -47,6 +49,7 @@ char* get_constant_pool_value(cp_info_t * cp_info, u2_t name_index) {
     exit(1);
 }
 
+// Carrega informações de attribute e retorna um ponteiro para um array de attribute_info_t
 static attribute_info_t *get_attributes(int attributes_count, FILE *fptr)
 {
     attribute_info_t *attributes = calloc(attributes_count, sizeof(attribute_info_t));
@@ -64,6 +67,7 @@ static attribute_info_t *get_attributes(int attributes_count, FILE *fptr)
     return attributes;
 }
 
+// Carrega informações de field e retorna um ponteiro para um array de field_method_info_t
 static field_method_info_t *get_field_method_info(int fields_count, FILE *fptr)
 {
     field_method_info_t *fields = calloc(fields_count, sizeof(field_method_info_t));
@@ -81,6 +85,7 @@ static field_method_info_t *get_field_method_info(int fields_count, FILE *fptr)
     return fields;
 }
 
+// Faz checagem de magic number e versão do class file
 int is_linking_check_successful(class_file_t *class_file, FILE *fptr)
 {
     if (class_file->magic != 0xCAFEBABE)
@@ -98,6 +103,7 @@ int is_linking_check_successful(class_file_t *class_file, FILE *fptr)
     return 1;
 }
 
+// Lê o arquivo .class e retorna um ponteiro para a struct class_file_t
 class_file_t *read_class_file(FILE *fptr)
 {
     class_file_t *class_file = malloc(sizeof(class_file_t));
