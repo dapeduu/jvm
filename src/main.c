@@ -26,6 +26,7 @@ int main(int argc, char *argv[]) {
     }
 
     class_file_t *class_file = read_class_file(fptr);
+    loaded_classes_t * loaded_classes = malloc(sizeof(loaded_classes_t));
 
     int is_not_reader = strcmp(PROGRAM_OPTION, "-r");
     u4_t * args = calloc(2, sizeof(u4_t));

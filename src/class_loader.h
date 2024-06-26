@@ -173,6 +173,6 @@ typedef struct loaded_classes
     u1_t* name;
     field_method_info_t* static_fields;
     struct loaded_classes* next;
-} loaded_classes;
+} loaded_classes_t;
 
 #endif // CLASS_LOADER_H
