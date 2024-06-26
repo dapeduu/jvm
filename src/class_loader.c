@@ -1,4 +1,6 @@
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 #include "core.h"
 #include "class_loader.h"
 
@@ -221,4 +223,56 @@ class_file_t *read_class_file(FILE *fptr)
     class_file->attributes = get_attributes(class_file->attributes_count, fptr);
 
     return class_file;
+}
+
+loaded_classes_t* load_class(class_file_t *class_file, const char *filepath) {
+    loaded_classes_t *loaded_class = malloc(sizeof(loaded_classes_t));
+    if (!loaded_class) {
+        printf("Memory allocation failed");
+        return NULL;
+    }
+
+    // Extrai nome da classe do path
+    const char *last_slash = strrchr(filepath, '/');
+    const char *dot_class = strstr(filepath, ".class");
+
+    if (last_slash == NULL || dot_class == NULL) {
+        fprintf(stderr, "Invalid file path format.\n");
+        free(loaded_class);
+        return NULL;
+    }
+
+    size_t start_index = last_slash - filepath + 1; // Pula o '/'
+    size_t length = dot_class - filepath - start_index;
+
+    // Aloca memória para o nome da classe
+    loaded_class->name = malloc(length + 1); // +1 por causa do '\0'
+    if (!loaded_class->name) {
+        printf("Memory allocation failed");
+        free(loaded_class);
+        return NULL;
+    }
+
+    // Inicializa os campos de loaded_class
+    strncpy((char *)loaded_class->name, filepath + start_index, length);
+
+    loaded_class->name[length] = '\0';
+    loaded_class->class_file = class_file;
+    loaded_class->next = NULL;
+    
+    // Conta campos estáticos da classe e salva número na loaded_class
+    int static_fields_count = 0;
+    for (size_t i = 0; i < class_file->fields_count; i++) {
+        if (class_file->fields[i].access_flags & ACC_STATIC) {
+            static_fields_count++;
+        }
+    }
+    loaded_class->static_fields_count = static_fields_count;
+    loaded_class->static_fields = calloc(static_fields_count, sizeof(field_method_info_t));
+
+    // Imprime classe carregada
+    printf("Loaded class: %s\n", loaded_class->name);
+    printf("Static fields count: %d\n", loaded_class->static_fields_count);
+
+    return loaded_class;
 }

@@ -26,7 +26,8 @@ int main(int argc, char *argv[]) {
     }
 
     class_file_t *class_file = read_class_file(fptr);
-    loaded_classes_t * loaded_classes = malloc(sizeof(loaded_classes_t));
+    loaded_classes_t *loaded_class = malloc(sizeof(loaded_classes_t));
+    char *file_path = argv[2];
 
     int is_not_reader = strcmp(PROGRAM_OPTION, "-r");
     u4_t * args = calloc(2, sizeof(u4_t));
@@ -34,6 +35,8 @@ int main(int argc, char *argv[]) {
     args[1] = 3;
 
     if (is_not_reader) {
+        printf("Carregador:\n");
+        load_class(class_file, file_path);
         printf("Execução:\n");
         frame_t * frame = get_frame(class_file->methods_count,
                     class_file->methods,

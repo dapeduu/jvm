@@ -172,7 +172,11 @@ typedef struct loaded_classes
     class_file_t* class_file;
     u1_t* name;
     field_method_info_t* static_fields;
+    u2_t static_fields_count;
     struct loaded_classes* next;
 } loaded_classes_t;
+
+// Class loader functions
+loaded_classes_t* load_class(class_file_t *class_file, const char *filepath);
 
 #endif // CLASS_LOADER_H
