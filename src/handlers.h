@@ -47,6 +47,10 @@ void drem_handler(frame_t *frame);
 void ixor(frame_t *frame);
 void lxor(frame_t *frame);
 void ireturn(frame_t *frame);
+void ineg(frame_t *frame);
+void lneg(frame_t *frame);
+void fneg(frame_t *frame);
+void dneg(frame_t *frame);
 
 void (*inst_vector[256])(frame_t *) = {
     /* 0x00 (0) */ nop,
@@ -165,10 +169,10 @@ void (*inst_vector[256])(frame_t *) = {
     /* 0x71 (113) */ lrem,
     /* 0x72 (114) */ frem,
     /* 0x73 (115) */ drem_handler,
-    /* 0x74 (116) */ NULL,
-    /* 0x75 (117) */ NULL,
-    /* 0x76 (118) */ NULL,
-    /* 0x77 (119) */ NULL,
+    /* 0x74 (116) */ ineg,
+    /* 0x75 (117) */ lneg,
+    /* 0x76 (118) */ fneg,
+    /* 0x77 (119) */ dneg,
     /* 0x78 (120) */ NULL,
     /* 0x79 (121) */ NULL,
     /* 0x7a (122) */ NULL,
