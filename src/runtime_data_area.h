@@ -16,6 +16,11 @@ typedef struct {
     u4_t *stack;
 } frame_t;
 
+typedef struct {
+    frame_t *top;
+    int stack_size;
+} jvm_stack_t;
+
 frame_t * get_frame(int method_count, field_method_info_t * methods ,char * name, int args_count, u4_t * args, cp_info_t * constant_pool);
 
 #endif // RUNTIME_DATA_AREA_H
