@@ -79,6 +79,23 @@ static field_method_info_t *get_field_method_info(int fields_count, FILE *fptr)
     return fields;
 }
 
+int is_linking_check_successful(class_file_t *class_file, FILE *fptr)
+{
+    if (class_file->magic != 0xCAFEBABE)
+    {
+        printf("Error: Invalid magic number\n");
+        exit(1);
+    }
+
+    if (class_file->major_version < 45 || class_file->major_version > 52)
+    {
+        printf("Error: major version not supported\n");
+        exit(1);
+    }
+
+    return 1;
+}
+
 class_file_t *read_class_file(FILE *fptr)
 {
     class_file_t *class_file = malloc(sizeof(class_file_t));
@@ -88,6 +105,10 @@ class_file_t *read_class_file(FILE *fptr)
     class_file->major_version = read_u2(fptr);
     class_file->constant_pool_count = read_u2(fptr);
     class_file->constant_pool = malloc(sizeof(cp_info_t) * class_file->constant_pool_count);
+
+    if (is_linking_check_successful(class_file, fptr)) {
+        printf("Linking check successful\n");
+    }
 
     // INFO: Quando fazem referencia ao cp_info, precisamos remover um do indice
     cp_info_t current_constant_pool;
