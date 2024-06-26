@@ -25,9 +25,47 @@ u8_t double_to_uint64(double number) { return *(u8_t *)&number; }
 
 void nop(frame_t *frame) {}
 
-void iload_0(frame_t *frame) { push(frame, frame->locals[0]); }
+void iload(frame_t *frame) {
+  frame->instruction_pointer++;
+  u4_t index = frame->code[frame->instruction_pointer];
+  // NOTE: pode não sei se esse acesso da certo
+  push(frame, frame->locals[index]);
+}
 
+void iload_0(frame_t *frame) { push(frame, frame->locals[0]); }
 void iload_1(frame_t *frame) { push(frame, frame->locals[1]); }
+void iload_2(frame_t *frame) { push(frame, frame->locals[2]); }
+void iload_3(frame_t *frame) { push(frame, frame->locals[3]); }
+
+void lload(frame_t *frame) {
+  frame->instruction_pointer++;
+  u4_t index_hi = frame->code[frame->instruction_pointer];
+  u4_t value_hi = frame->locals[index_hi];
+  u4_t value_lo = frame->locals[index_hi+1];
+
+  push(frame, frame->locals[value_hi]);
+  push(frame, frame->locals[value_lo]);
+}
+
+void lload_0(frame_t *frame) {
+  push(frame, frame->locals[0]);
+  push(frame, frame->locals[1]);
+}
+
+void lload_1(frame_t *frame) {
+  push(frame, frame->locals[1]);
+  push(frame, frame->locals[2]);
+}
+
+void lload_2(frame_t *frame) {
+  push(frame, frame->locals[2]);
+  push(frame, frame->locals[3]);
+}
+
+void lload_3(frame_t *frame) {
+  push(frame, frame->locals[3]);
+  push(frame, frame->locals[4]);
+}
 
 void iadd(frame_t *frame) {
   u4_t value1 = pop(frame);
@@ -137,5 +175,5 @@ void lxor(frame_t *frame) {
 };
 
 void ireturn(frame_t *frame) {
-    // TODO
+  // TODO
 }

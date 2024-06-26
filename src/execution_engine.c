@@ -25,6 +25,10 @@ u4_t run_frame(frame_t * frame) {
         }
         printf("\n");
 
+        if (opcode == 172) {
+            return pop(frame);
+        }
+
         if (inst_vector[opcode]) {
             inst_vector[opcode](frame);
         } else {

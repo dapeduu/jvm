@@ -11,8 +11,16 @@ u4_t float_to_uint32(float number);
 u8_t double_to_uint64(double number);
 
 void nop(frame_t * frame);
+void iload(frame_t * frame);
 void iload_0(frame_t * frame);
 void iload_1(frame_t * frame);
+void iload_2(frame_t * frame);
+void iload_3(frame_t * frame);
+void lload(frame_t * frame);
+void lload_0(frame_t * frame);
+void lload_1(frame_t * frame);
+void lload_2(frame_t * frame);
+void lload_3(frame_t * frame);
 void iadd(frame_t * frame);
 void iand(frame_t * frame);
 void land(frame_t * frame);
@@ -46,19 +54,19 @@ void (*inst_vector[256])(frame_t *) = {
 /* 0x12 (18) */      NULL,
 /* 0x13 (19) */      NULL,
 /* 0x14 (20) */      NULL,
-/* 0x15 (21) */      NULL,
-/* 0x16 (22) */      NULL,
+/* 0x15 (21) */      iload,
+/* 0x16 (22) */      lload,
 /* 0x17 (23) */      NULL,
 /* 0x18 (24) */      NULL,
 /* 0x19 (25) */      NULL,
 /* 0x1a (26) */      iload_0,
 /* 0x1b (27) */      iload_1,
-/* 0x1c (28) */      NULL,
-/* 0x1d (29) */      NULL,
-/* 0x1e (30) */      NULL,
-/* 0x1f (31) */      NULL,
-/* 0x20 (32) */      NULL,
-/* 0x21 (33) */      NULL,
+/* 0x1c (28) */      iload_2,
+/* 0x1d (29) */      iload_3,
+/* 0x1e (30) */      lload_0,
+/* 0x1f (31) */      lload_1,
+/* 0x20 (32) */      lload_2,
+/* 0x21 (33) */      lload_3,
 /* 0x22 (34) */      NULL,
 /* 0x23 (35) */      NULL,
 /* 0x24 (36) */      NULL,
