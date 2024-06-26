@@ -166,4 +166,13 @@ u1_t read_u1(FILE *fptr);
 char* get_constant_pool_value(cp_info_t * cp_info, u2_t name_index);
 class_file_t *read_class_file(FILE *fptr);
 
+// Loaded classes structure with name, class file, static fields and next
+typedef struct loaded_classes
+{
+    class_file_t* class_file;
+    u1_t* name;
+    field_method_info_t* static_fields;
+    struct loaded_classes* next;
+} loaded_classes;
+
 #endif // CLASS_LOADER_H
