@@ -91,7 +91,7 @@ class_file_t *read_class_file(FILE *fptr)
 
     // INFO: Quando fazem referencia ao cp_info, precisamos remover um do indice
     cp_info_t current_constant_pool;
-    for (size_t i = 0; i < class_file->constant_pool_count - 1; i++)
+    for (size_t i = 1; i < class_file->constant_pool_count; i++)
     {
         current_constant_pool.tag = read_u1(fptr);
         switch (current_constant_pool.tag)
