@@ -31,7 +31,6 @@ void iload(frame_t *frame) {
   // NOTE: pode não sei se esse acesso da certo
   push(frame, frame->locals[index]);
 }
-
 void iload_0(frame_t *frame) { push(frame, frame->locals[0]); }
 void iload_1(frame_t *frame) { push(frame, frame->locals[1]); }
 void iload_2(frame_t *frame) { push(frame, frame->locals[2]); }
@@ -41,7 +40,7 @@ void lload(frame_t *frame) {
   frame->instruction_pointer++;
   u4_t index_hi = frame->code[frame->instruction_pointer];
   u4_t value_hi = frame->locals[index_hi];
-  u4_t value_lo = frame->locals[index_hi+1];
+  u4_t value_lo = frame->locals[index_hi + 1];
 
   push(frame, frame->locals[value_hi]);
   push(frame, frame->locals[value_lo]);
@@ -67,10 +66,75 @@ void lload_3(frame_t *frame) {
   push(frame, frame->locals[4]);
 }
 
+void fload(frame_t *frame) {
+  frame->instruction_pointer++;
+  u4_t index = frame->instruction_pointer;
+  push(frame, frame->locals[index]);
+}
+void fload_0(frame_t *frame) { push(frame, frame->locals[0]); };
+void fload_1(frame_t *frame) { push(frame, frame->locals[1]); };
+void fload_2(frame_t *frame) { push(frame, frame->locals[2]); };
+void fload_3(frame_t *frame) { push(frame, frame->locals[3]); };
+
+void dload(frame_t *frame) {
+  frame->instruction_pointer++;
+  u4_t index_hi = frame->instruction_pointer;
+  u4_t value_hi = frame->locals[index_hi];
+  u4_t value_lo = frame->locals[index_hi + 1];
+  push(frame, value_hi);
+  push(frame, value_lo);
+};
+
+void dload_0(frame_t *frame) {
+  push(frame, frame->locals[0]);
+  push(frame, frame->locals[1]);
+};
+
+void dload_1(frame_t *frame) {
+  push(frame, frame->locals[1]);
+  push(frame, frame->locals[2]);
+};
+
+void dload_2(frame_t *frame) {
+  push(frame, frame->locals[2]);
+  push(frame, frame->locals[3]);
+};
+
+void dload_3(frame_t *frame) {
+  push(frame, frame->locals[3]);
+  push(frame, frame->locals[4]);
+};
+
+void aload(frame_t *frame) {
+  frame->instruction_pointer++;
+  u4_t index = frame->instruction_pointer;
+};
+void aload_0(frame_t *frame) { push(frame, frame->locals[0]); };
+void aload_1(frame_t *frame) { push(frame, frame->locals[1]); };
+void aload_2(frame_t *frame) { push(frame, frame->locals[2]); };
+void aload_3(frame_t *frame) { push(frame, frame->locals[3]); };
+
 void iadd(frame_t *frame) {
   u4_t value1 = pop(frame);
   u4_t value2 = pop(frame);
   push(frame, value1 + value2);
+}
+
+void ladd(frame_t *frame) {
+  u4_t value1_hi = pop(frame);
+  u4_t value1_lo = pop(frame);
+  u4_t value2_hi = pop(frame);
+  u4_t value2_lo = pop(frame);
+
+  long value1 = make_long(value1_hi, value1_lo);
+  long value2 = make_long(value2_hi, value2_lo);
+  long res = value1 + value2;
+
+  u4_t res_hi = (u4_t)(res >> 32) & 0x00000000FFFFFFFF;
+  u4_t res_lo = (u4_t)res & 0x00000000FFFFFFFF;
+
+  push(frame, res_hi);
+  push(frame, res_lo);
 }
 
 void iand(frame_t *frame) {

@@ -1,5 +1,5 @@
 public class Test {
-  public static int test(int a, int b) {
-    return a & b;
+  public static long test(long a, long b) {
+    return a + b;
   }
 }
