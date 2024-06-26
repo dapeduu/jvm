@@ -83,6 +83,44 @@ typedef struct
             u1_t *string;
         } utf8;
 
+        // Tag: 15
+        struct
+        {
+            u1_t reference_kind;
+            u2_t reference_index;
+        } method_handle;
+
+        // Tag: 16
+        struct
+        {
+            u2_t descriptor_index;
+        } method_type;
+
+        // Tag: 17
+        struct
+        {
+            u2_t bootstrap_method_attr_index;
+            u2_t name_and_type_index;
+        } dynamic;
+
+        // Tag: 18
+        struct
+        {
+            u2_t bootstrap_method_attr_index;
+            u2_t name_and_type_index;
+        } invoke_dynamic;
+
+        // Tag: 19
+        struct
+        {
+            u2_t name_index;
+        } module;
+
+        // Tag: 20
+        struct
+        {
+            u2_t name_index;
+        } package;
     } info;
 } cp_info_t;
 

@@ -142,6 +142,29 @@ class_file_t *read_class_file(FILE *fptr)
                   current_constant_pool.info.utf8.length_of_byte_array,
                   fptr);
             break;
+        case CONSTANT_MethodHandle:
+            current_constant_pool.info.method_handle.reference_kind = read_u1(fptr);
+            current_constant_pool.info.method_handle.reference_index = read_u2(fptr);
+            break;
+        case CONSTANT_MethodType:
+            current_constant_pool.info.method_type.descriptor_index = read_u2(fptr);
+            break;
+        case CONSTANT_Dynamic:
+            current_constant_pool.info.dynamic.bootstrap_method_attr_index = read_u2(fptr);
+            current_constant_pool.info.dynamic.name_and_type_index = read_u2(fptr);
+            break;
+        case CONSTANT_InvokeDynamic:
+            current_constant_pool.info.invoke_dynamic.bootstrap_method_attr_index = read_u2(fptr);
+            current_constant_pool.info.invoke_dynamic.name_and_type_index = read_u2(fptr);
+            break;
+        case CONSTANT_Module:
+            current_constant_pool.info.module.name_index = read_u2(fptr);
+            break;
+        case CONSTANT_Package:
+            current_constant_pool.info.package.name_index = read_u2(fptr);
+            break;
+        
+
         default:
             printf("Unhandled constant pool tag: %i\n", current_constant_pool.tag);
             printf("Current constant pool count: %i\n", class_file->constant_pool_count - 1);
