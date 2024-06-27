@@ -6,6 +6,7 @@
 #include "runtime_data_area.h"
 #include "execution_engine.h"
 
+
 int main(int argc, char *argv[]) {
     if (argc != 3) {
         printf("You have to pass 2 args.\n");
@@ -38,19 +39,44 @@ int main(int argc, char *argv[]) {
         printf("Carregador:\n");
         load_class(class_file, file_path);
         printf("Execução:\n");
-        frame_t * frame = get_frame(class_file->methods_count,
-                    class_file->methods,
-                    "test",
-                    2,
-                    args,
-                    class_file->constant_pool);
-        u4_t result = run_frame(frame);
-        printf("Resultado da execução: %i\n", result);
+
+        // encontrar main
+        loaded_classes_t * classes = load_class(class_file, file_path);
+
+        field_method_info_t * main_method_info;
+        for (size_t i = 0; i < classes->class_file->methods_count; i++)
+        {
+            field_method_info_t * current_method = &classes->class_file->methods[i];
+            u2_t name_index = current_method->name_index;
+            char * method_name = get_constant_pool_value(classes->class_file->constant_pool, name_index);
+
+            if (strcmp(method_name, "main")) { continue; }
+
+            main_method_info = current_method;
+        }
+        
+        if (main_method_info == NULL) {
+            printf("Erro: Não existe o método main nessa classe");
+            exit(1);
+        }
+
+
+        // empilhar frames a partir dela
+
+        // frame_t * frame = get_frame(
+        //             class_file->methods_count,
+        //             class_file->methods,
+        //             "test",
+        //             2,
+        //             args,
+        //             class_file->constant_pool);
+        // u4_t result = run_frame(frame);
+        // printf("Resultado da execução: %i\n", result);
+
+        printf("Chegou ao fim da execução");
     } else {
         printf("Exibidor:\n");
         display_class_file(class_file, FILE_PATH);
-        printf("Teste: %s", get_constant_pool_value(class_file->constant_pool, 4));
-        // display_class(class);
     }
 
     fclose(fptr);

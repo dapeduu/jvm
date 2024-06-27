@@ -3,7 +3,12 @@
 #include "class_loader.h"
 #include "runtime_data_area.h"
 
-frame_t * get_frame(int method_count, field_method_info_t * methods ,char * name, int args_count, u4_t * args, cp_info_t * constant_pool) {
+frame_t * get_frame(int method_count, 
+                    field_method_info_t * methods ,
+                    char * name, 
+                    int args_count, 
+                    u4_t * args, 
+                    cp_info_t * constant_pool) {
     for (size_t i = 0; i < method_count; i++)
     {
         field_method_info_t current_method = methods[i];
@@ -44,3 +49,4 @@ frame_t * get_frame(int method_count, field_method_info_t * methods ,char * name
     printf("Erro: não encontrou um frame");
     exit(1);
 }
+

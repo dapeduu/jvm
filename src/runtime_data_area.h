@@ -17,7 +17,7 @@ typedef struct {
 } frame_t;
 
 typedef struct {
-    frame_t *top;
+    frame_t *top_frame;
     int stack_size;
 } jvm_stack_t;
 
