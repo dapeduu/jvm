@@ -50,6 +50,8 @@ void irem(frame_t *frame);
 void lrem(frame_t *frame);
 void frem(frame_t *frame);
 void drem_handler(frame_t *frame);
+void ior(frame_t *frame);
+void lor(frame_t *frame);
 void ixor(frame_t *frame);
 void lxor(frame_t *frame);
 void ireturn(frame_t *frame);
@@ -211,8 +213,8 @@ void (*inst_vector[256])(frame_t *) = {
     /* 0x7d (125) */ NULL,
     /* 0x7e (126) */ iand,
     /* 0x7f (127) */ land,
-    /* 0x80 (128) */ NULL,
-    /* 0x81 (129) */ NULL,
+    /* 0x80 (128) */ ior,
+    /* 0x81 (129) */ lor,
     /* 0x82 (130) */ ixor,
     /* 0x83 (131) */ lxor,
     /* 0x84 (132) */ NULL,
