@@ -1,7 +1,21 @@
+/**
+ * @file display.c
+ * @brief Funções para exibição de arquivos .class.
+ * Acessa, abre e imprime informações de arquivos .class.
+ * 
+ */
+
 #include "core.h"
 #include "class_loader.h"
 
 // Display (exibidor) de arquivos .class
+/**
+ * @brief Exibe as informações de um arquivo .class.
+ * 
+ * @param[in] class_file Ponteiro para a estrutura de classe.
+ * @param[in] filename Nome do arquivo .class.
+ * @return void
+ */
 void display_class_file(class_file_t *class_file, char * filename)
 {
     printf("\n===== %s =====\n", filename);

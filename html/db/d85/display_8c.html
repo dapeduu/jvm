@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Trabalho Final - Máquina Virtual Java: Código-Fonte de src/display.h</title>
+<title>Trabalho Final - Máquina Virtual Java: Referência do Arquivo src/display.c</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -88,15 +88,58 @@ $(function(){ initResizable(false); });
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
-  <div class="headertitle"><div class="title">display.h</div></div>
+  <div class="summary">
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle"><div class="title">Referência do Arquivo display.c</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;class_loader.h&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d85/display_8c.html#a0133f022bb11662bfe3138d56e394796">display_class_file</a>(<a class="code hl_struct" href="../../db/dba/structclass__file__t.html">class_file_t</a> *class_file, <span class="keywordtype">char</span> * filename);</div>
-<div class="ttc" id="adisplay_8c_html_a0133f022bb11662bfe3138d56e394796"><div class="ttname"><a href="../../db/d85/display_8c.html#a0133f022bb11662bfe3138d56e394796">display_class_file</a></div><div class="ttdeci">void display_class_file(class_file_t *class_file, char *filename)</div><div class="ttdoc">Exibe as informações de um arquivo .class.</div><div class="ttdef"><b>Definição</b> display.c:19</div></div>
-<div class="ttc" id="astructclass__file__t_html"><div class="ttname"><a href="../../db/dba/structclass__file__t.html">class_file_t</a></div><div class="ttdef"><b>Definição</b> class_loader.h:143</div></div>
-</div><!-- fragment --></div><!-- contents -->
+
+<p>Funções para exibição de arquivos .class. Acessa, abre e imprime informações de arquivos .class.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &quot;core.h&quot;</code><br />
+<code>#include &quot;class_loader.h&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a0133f022bb11662bfe3138d56e394796" id="r_a0133f022bb11662bfe3138d56e394796"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0133f022bb11662bfe3138d56e394796">display_class_file</a> (<a class="el" href="../../db/dba/structclass__file__t.html">class_file_t</a> *class_file, char *filename)</td></tr>
+<tr class="memdesc:a0133f022bb11662bfe3138d56e394796"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exibe as informações de um arquivo .class.  <br /></td></tr>
+<tr class="separator:a0133f022bb11662bfe3138d56e394796"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Funções para exibição de arquivos .class. Acessa, abre e imprime informações de arquivos .class. </p>
+</div><h2 class="groupheader">Funções</h2>
+<a id="a0133f022bb11662bfe3138d56e394796" name="a0133f022bb11662bfe3138d56e394796"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0133f022bb11662bfe3138d56e394796">&#9670;&#160;</a></span>display_class_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_class_file </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/dba/structclass__file__t.html">class_file_t</a> *</td>          <td class="paramname"><span class="paramname"><em>class_file</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>filename</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Exibe as informações de um arquivo .class. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">class_file</td><td>Ponteiro para a estrutura de classe. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>Nome do arquivo .class. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0

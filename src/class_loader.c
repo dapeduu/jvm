@@ -75,7 +75,7 @@ u4_t read_u4(FILE *fptr)
  * Função que retorna o valor do constant pool de acordo com o index.
  *
  * @param[in]  param1  Ponteiro para o constant pool.
- * @param[out] param2  Index do valor a ser retornado.
+ * @param[in] param2  Index do valor a ser retornado.
  * @return Valor do constant pool.
  */
 
@@ -95,7 +95,7 @@ char* get_constant_pool_value(cp_info_t * cp_info, u2_t name_index) {
  * Função que carrega informações de attribute e retorna um ponteiro para um array de attribute_info_t.
  *
  * @param[in]  param1  Número de attributes.
- * @param[out] param2  Ponteiro para o arquivo.
+ * @param[in] param2  Ponteiro para o arquivo.
  * @return Ponteiro para um array de attribute_info_t.
  */
 
@@ -122,7 +122,7 @@ static attribute_info_t *get_attributes(int attributes_count, FILE *fptr)
  * Função que carrega informações de field e retorna um ponteiro para um array de field_method_info_t.
  *
  * @param[in]  param1  Número de fields.
- * @param[out] param2  Ponteiro para o arquivo.
+ * @param[in] param2  Ponteiro para o arquivo.
  * @return Ponteiro para um array de field_method_info_t.
  */
 
@@ -149,7 +149,7 @@ static field_method_info_t *get_field_method_info(int fields_count, FILE *fptr)
  * Função que faz a checagem do magic number e da versão do class file.
  * 
  * @param[in]  param1  Ponteiro para o arquivo.
- * @param[out]  param2  Ponteiro para a struct class_file_t.
+ * @param[in]  param2  Ponteiro para a struct class_file_t.
  * @return 1 se a checagem foi bem sucedida, 0 caso contrário.
  */
 
@@ -318,7 +318,7 @@ class_file_t *read_class_file(FILE *fptr)
  * para sinalizar que a classe foi carregada.
  *
  * @param[in]  param1  class_file_t que contém as informações da classe.
- * @param[out] param2  filepath que contém o caminho do arquivo .class.
+ * @param[in] param2  filepath que contém o caminho do arquivo .class.
  * @return loaded_classes_t* que contém as informações da classe carregada.
  */
 
