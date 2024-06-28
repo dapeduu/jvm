@@ -1,7 +1,25 @@
+/**
+ * @file runtime_data_area.c
+ * @brief Implementação das funções de manipulação da área de dados em tempo de execução.
+ * Declara e usa funções da pilha de frames.
+ */
+
 #include <string.h>
 #include <stdlib.h>
 #include "class_loader.h"
 #include "runtime_data_area.h"
+
+/**
+ * @brief Get the frame object
+ * 
+ * Retorna um frame a partir do nome do método, quantidade de argumentos, argumentos e ponteiro para o arquivo .class.
+ * 
+ * @param name  nome do método
+ * @param args_count  quantidade de argumentos
+ * @param args  argumentos
+ * @param class_file  ponteiro para o arquivo .class
+ * @return frame_t*  ponteiro para o frame
+ */
 
 frame_t * get_frame(char * name, 
                     int args_count, 
