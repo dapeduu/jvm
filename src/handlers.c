@@ -1,7 +1,8 @@
+#include <math.h>
+#include <stdlib.h>
 #include "core.h"
 #include "execution_engine.h"
 #include "runtime_data_area.h"
-#include <math.h>
 
 float make_float(u4_t number) { return *(float *)&number; }
 
@@ -473,9 +474,23 @@ void invokestatic(frame_t *frame) {
       frame->class_data->constant_pool[class_index.info.methodref.name_and_type_index - 1];
   char *method_name = get_constant_pool_value(frame->class_data->constant_pool,
                                              method_utf8_index.info.name_and_type.name_index);
+  char *type = get_constant_pool_value(frame->class_data->constant_pool,
+                                             method_utf8_index.info.name_and_type.descriptor_index);
+
 
   printf("class name: %s\n", class_name);
   printf("method name: %s\n", method_name);
+  printf("type: %s\n", type);
+
+  // Carregar os argumentos
+
+  int args_count = 2;
+  u4_t * args = malloc(sizeof(u4_t) * args_count);
+  for (size_t i = 0; i < args_count; i++)
+  {
+    args[i] = pop(frame);
+    printf("args[%i]: %i\n", i, args[i]);
+  }
 
   // TODO: 
   //  - carregar a classe

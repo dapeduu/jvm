@@ -46,9 +46,10 @@ int main(int argc, char *argv[]) {
 
         frame_t * frame = get_frame(
                     "main",
-                    2,
-                    args,
+                    0,
+                    NULL,
                     class_file);
+                    
         u4_t result = run_frame(frame);
         // printf("Resultado da execução: %i\n", result);
 
