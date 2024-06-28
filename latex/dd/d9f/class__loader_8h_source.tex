@@ -164,11 +164,11 @@
 \DoxyCodeLine{00160\ \}\ \mbox{\hyperlink{structclass__file__t}{class\_file\_t}};}
 \DoxyCodeLine{00161\ }
 \DoxyCodeLine{00162\ \textcolor{comment}{//\ Reader\ functions}}
-\DoxyCodeLine{00163\ u4\_t\ read\_u4(FILE\ *fptr);}
-\DoxyCodeLine{00164\ u2\_t\ read\_u2(FILE\ *fptr);}
-\DoxyCodeLine{00165\ u1\_t\ read\_u1(FILE\ *fptr);}
-\DoxyCodeLine{00166\ \textcolor{keywordtype}{char}*\ get\_constant\_pool\_value(\mbox{\hyperlink{structcp__info__t}{cp\_info\_t}}\ *\ cp\_info,\ u2\_t\ name\_index);}
-\DoxyCodeLine{00167\ \mbox{\hyperlink{structclass__file__t}{class\_file\_t}}\ *read\_class\_file(FILE\ *fptr);}
+\DoxyCodeLine{00163\ u4\_t\ \mbox{\hyperlink{class__loader_8c_ac70609e32c77ce3dc8c96ffa390697ac}{read\_u4}}(FILE\ *fptr);}
+\DoxyCodeLine{00164\ u2\_t\ \mbox{\hyperlink{class__loader_8c_ad707bafcf4fec166f8e995e60675d504}{read\_u2}}(FILE\ *fptr);}
+\DoxyCodeLine{00165\ u1\_t\ \mbox{\hyperlink{class__loader_8c_a180bfadbf8207a3832ca0af09e53762d}{read\_u1}}(FILE\ *fptr);}
+\DoxyCodeLine{00166\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class__loader_8c_a3e07a39b119a061031dd7e3304ce30d5}{get\_constant\_pool\_value}}(\mbox{\hyperlink{structcp__info__t}{cp\_info\_t}}\ *\ cp\_info,\ u2\_t\ name\_index);}
+\DoxyCodeLine{00167\ \mbox{\hyperlink{structclass__file__t}{class\_file\_t}}\ *\mbox{\hyperlink{class__loader_8c_abed65950acee57ee4a43e16f3ad2be0f}{read\_class\_file}}(FILE\ *fptr);}
 \DoxyCodeLine{00168\ }
 \DoxyCodeLine{00169\ \textcolor{comment}{//\ Loaded\ classes\ structure\ with\ name,\ class\ file,\ static\ fields\ and\ next}}
 \DoxyCodeLine{00170\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structloaded__classes}{loaded\_classes}}}
@@ -181,7 +181,7 @@
 \DoxyCodeLine{00177\ \}\ \mbox{\hyperlink{structloaded__classes}{loaded\_classes\_t}};}
 \DoxyCodeLine{00178\ }
 \DoxyCodeLine{00179\ \textcolor{comment}{//\ Class\ loader\ functions}}
-\DoxyCodeLine{00180\ \mbox{\hyperlink{structloaded__classes}{loaded\_classes\_t}}*\ load\_class(\mbox{\hyperlink{structclass__file__t}{class\_file\_t}}\ *class\_file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filepath);}
+\DoxyCodeLine{00180\ \mbox{\hyperlink{structloaded__classes}{loaded\_classes\_t}}*\ \mbox{\hyperlink{class__loader_8c_a1bc91b26d02e5ef38b3f50165c4f7f99}{load\_class}}(\mbox{\hyperlink{structclass__file__t}{class\_file\_t}}\ *class\_file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filepath);}
 \DoxyCodeLine{00181\ }
 \DoxyCodeLine{00182\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CLASS\_LOADER\_H}}
 
