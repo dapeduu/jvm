@@ -51,7 +51,7 @@ Função que retorna o valor do constant pool de acordo com o index.
 \begin{DoxyParams}[1]{Parâmetros}
 \mbox{\texttt{ in}}  & {\em param1} & Ponteiro para o constant pool. \\
 \hline
-\mbox{\texttt{ out}}  & {\em param2} & Index do valor a ser retornado. \\
+\mbox{\texttt{ in}}  & {\em param2} & Index do valor a ser retornado. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Retorna}
@@ -73,7 +73,7 @@ Função que faz a checagem do magic number e da versão do class file.
 \begin{DoxyParams}[1]{Parâmetros}
 \mbox{\texttt{ in}}  & {\em param1} & Ponteiro para o arquivo. \\
 \hline
-\mbox{\texttt{ out}}  & {\em param2} & Ponteiro para a struct \doxylink{structclass__file__t}{class\+\_\+file\+\_\+t}. \\
+\mbox{\texttt{ in}}  & {\em param2} & Ponteiro para a struct \doxylink{structclass__file__t}{class\+\_\+file\+\_\+t}. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Retorna}
@@ -95,7 +95,7 @@ Faz a leitura de um arquivo .class e carrega as informações em uma estrutura d
 \begin{DoxyParams}[1]{Parâmetros}
 \mbox{\texttt{ in}}  & {\em param1} & \doxylink{structclass__file__t}{class\+\_\+file\+\_\+t} que contém as informações da classe. \\
 \hline
-\mbox{\texttt{ out}}  & {\em param2} & filepath que contém o caminho do arquivo .class. \\
+\mbox{\texttt{ in}}  & {\em param2} & filepath que contém o caminho do arquivo .class. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Retorna}

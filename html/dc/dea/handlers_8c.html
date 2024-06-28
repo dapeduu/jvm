@@ -1,0 +1,2160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Trabalho Final - Máquina Virtual Java: Referência do Arquivo src/handlers.c</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Trabalho Final - Máquina Virtual Java
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Busca',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle"><div class="title">Referência do Arquivo handlers.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implementação das funções de manipulação de dados. Declara funções para converter tipos de dados, e contém a implementação das funções gerais da JVM, como iload, lload, fload, dload, nop, iadd, etc.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &quot;core.h&quot;</code><br />
+<code>#include &quot;execution_engine.h&quot;</code><br />
+<code>#include &quot;runtime_data_area.h&quot;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a3321d9c81fb80354afd7267fc2363bb2" id="r_a3321d9c81fb80354afd7267fc2363bb2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3321d9c81fb80354afd7267fc2363bb2">make_float</a> (u4_t number)</td></tr>
+<tr class="memdesc:a3321d9c81fb80354afd7267fc2363bb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">make_float Converte um 32-bit unsigned integer para float.  <br /></td></tr>
+<tr class="separator:a3321d9c81fb80354afd7267fc2363bb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9076900c1ba7e4f47fbaf291798bc26c" id="r_a9076900c1ba7e4f47fbaf291798bc26c"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9076900c1ba7e4f47fbaf291798bc26c">make_long</a> (u4_t high, u4_t low)</td></tr>
+<tr class="memdesc:a9076900c1ba7e4f47fbaf291798bc26c"><td class="mdescLeft">&#160;</td><td class="mdescRight">make_long Converte dois 32-bit unsigned integers para long.  <br /></td></tr>
+<tr class="separator:a9076900c1ba7e4f47fbaf291798bc26c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08afff2aa08475aa8f4b83d12a222014" id="r_a08afff2aa08475aa8f4b83d12a222014"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08afff2aa08475aa8f4b83d12a222014">make_double</a> (u4_t high, u4_t low)</td></tr>
+<tr class="memdesc:a08afff2aa08475aa8f4b83d12a222014"><td class="mdescLeft">&#160;</td><td class="mdescRight">make_double Converte dois 32-bit unsigned integers para double.  <br /></td></tr>
+<tr class="separator:a08afff2aa08475aa8f4b83d12a222014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6c1c5ebb02e2bedfd4172a6525688d3" id="r_aa6c1c5ebb02e2bedfd4172a6525688d3"><td class="memItemLeft" align="right" valign="top">u4_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6c1c5ebb02e2bedfd4172a6525688d3">float_to_uint32</a> (float number)</td></tr>
+<tr class="memdesc:aa6c1c5ebb02e2bedfd4172a6525688d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">float_to_uint32 Converte um float para 32-bit unsigned integer.  <br /></td></tr>
+<tr class="separator:aa6c1c5ebb02e2bedfd4172a6525688d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a484c142d6feca9e9d0380ce8fe287e10" id="r_a484c142d6feca9e9d0380ce8fe287e10"><td class="memItemLeft" align="right" valign="top">u8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a484c142d6feca9e9d0380ce8fe287e10">double_to_uint64</a> (double number)</td></tr>
+<tr class="memdesc:a484c142d6feca9e9d0380ce8fe287e10"><td class="mdescLeft">&#160;</td><td class="mdescRight">double_to_uint64 Converte um double para 64-bit unsigned integer.  <br /></td></tr>
+<tr class="separator:a484c142d6feca9e9d0380ce8fe287e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dac0e4b892d87fe99028b9c655e0b4f" id="r_a2dac0e4b892d87fe99028b9c655e0b4f"><td class="memItemLeft" align="right" valign="top">u8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2dac0e4b892d87fe99028b9c655e0b4f">long_to_uint64</a> (long long number)</td></tr>
+<tr class="memdesc:a2dac0e4b892d87fe99028b9c655e0b4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">long_to_uint64 Converte long para 64-bit unsigned integer.  <br /></td></tr>
+<tr class="separator:a2dac0e4b892d87fe99028b9c655e0b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d6b96a1e7a6a4347e5cf2b42472cb73" id="r_a2d6b96a1e7a6a4347e5cf2b42472cb73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d6b96a1e7a6a4347e5cf2b42472cb73">nop</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a2d6b96a1e7a6a4347e5cf2b42472cb73"><td class="mdescLeft">&#160;</td><td class="mdescRight">nop Não faz nada.  <br /></td></tr>
+<tr class="separator:a2d6b96a1e7a6a4347e5cf2b42472cb73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a051467101189bfb1efb53594daaa2a14" id="r_a051467101189bfb1efb53594daaa2a14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a051467101189bfb1efb53594daaa2a14">iload</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a051467101189bfb1efb53594daaa2a14"><td class="mdescLeft">&#160;</td><td class="mdescRight">iload Carrega um inteiro de uma variável local.  <br /></td></tr>
+<tr class="separator:a051467101189bfb1efb53594daaa2a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af43772fb245e8d3eaaa09c07e3369e24" id="r_af43772fb245e8d3eaaa09c07e3369e24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af43772fb245e8d3eaaa09c07e3369e24">iload_0</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:af43772fb245e8d3eaaa09c07e3369e24"><td class="mdescLeft">&#160;</td><td class="mdescRight">iload_0 Carrega um inteiro da primeira variável local.  <br /></td></tr>
+<tr class="separator:af43772fb245e8d3eaaa09c07e3369e24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe3daf661be20abdcf39b4325841c20b" id="r_afe3daf661be20abdcf39b4325841c20b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe3daf661be20abdcf39b4325841c20b">iload_1</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:afe3daf661be20abdcf39b4325841c20b"><td class="mdescLeft">&#160;</td><td class="mdescRight">iload_1 Carrega um inteiro da segunda variável local.  <br /></td></tr>
+<tr class="separator:afe3daf661be20abdcf39b4325841c20b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee53ca39d2e599228400ab711a689f0b" id="r_aee53ca39d2e599228400ab711a689f0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee53ca39d2e599228400ab711a689f0b">iload_2</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:aee53ca39d2e599228400ab711a689f0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">iload_2 Carrega um inteiro da terceira variável local.  <br /></td></tr>
+<tr class="separator:aee53ca39d2e599228400ab711a689f0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9ef6d586f5d57311d6681eafd22385d" id="r_ad9ef6d586f5d57311d6681eafd22385d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9ef6d586f5d57311d6681eafd22385d">iload_3</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:ad9ef6d586f5d57311d6681eafd22385d"><td class="mdescLeft">&#160;</td><td class="mdescRight">iload_3 Carrega um inteiro da quarta variável local.  <br /></td></tr>
+<tr class="separator:ad9ef6d586f5d57311d6681eafd22385d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e5ff0139712d2216bf3cf99087468ea" id="r_a4e5ff0139712d2216bf3cf99087468ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e5ff0139712d2216bf3cf99087468ea">lload</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a4e5ff0139712d2216bf3cf99087468ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">lload Carrega um long de uma variável local.  <br /></td></tr>
+<tr class="separator:a4e5ff0139712d2216bf3cf99087468ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4f74fb6ed2abc6e6629484449156230" id="r_af4f74fb6ed2abc6e6629484449156230"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4f74fb6ed2abc6e6629484449156230">lload_0</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:af4f74fb6ed2abc6e6629484449156230"><td class="mdescLeft">&#160;</td><td class="mdescRight">lload_0 Carrega um long da primeira variável local  <br /></td></tr>
+<tr class="separator:af4f74fb6ed2abc6e6629484449156230"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b27544be58ce4ae65d4f361d49bde94" id="r_a3b27544be58ce4ae65d4f361d49bde94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b27544be58ce4ae65d4f361d49bde94">lload_1</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a3b27544be58ce4ae65d4f361d49bde94"><td class="mdescLeft">&#160;</td><td class="mdescRight">lload_1 Carrega um long da segunda variável local.  <br /></td></tr>
+<tr class="separator:a3b27544be58ce4ae65d4f361d49bde94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ddfc42c5a6b1ad8a67b9be3757a3a79" id="r_a9ddfc42c5a6b1ad8a67b9be3757a3a79"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ddfc42c5a6b1ad8a67b9be3757a3a79">lload_2</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a9ddfc42c5a6b1ad8a67b9be3757a3a79"><td class="mdescLeft">&#160;</td><td class="mdescRight">lload_2 Carrega um long da terceira variável local.  <br /></td></tr>
+<tr class="separator:a9ddfc42c5a6b1ad8a67b9be3757a3a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a731fc01fe19442462321c362b45df464" id="r_a731fc01fe19442462321c362b45df464"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a731fc01fe19442462321c362b45df464">lload_3</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a731fc01fe19442462321c362b45df464"><td class="mdescLeft">&#160;</td><td class="mdescRight">lload_3 Carrega um long da quarta variável local.  <br /></td></tr>
+<tr class="separator:a731fc01fe19442462321c362b45df464"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ce323d34f1911c147165179c6cfc5f2" id="r_a2ce323d34f1911c147165179c6cfc5f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ce323d34f1911c147165179c6cfc5f2">fload</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a2ce323d34f1911c147165179c6cfc5f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">fload Carrega um float de uma variável local.  <br /></td></tr>
+<tr class="separator:a2ce323d34f1911c147165179c6cfc5f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a63609dc38ef196ffd328906ac621e2" id="r_a2a63609dc38ef196ffd328906ac621e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a63609dc38ef196ffd328906ac621e2">fload_0</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a2a63609dc38ef196ffd328906ac621e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">fload_0 Carrega um float da primeira variável local.  <br /></td></tr>
+<tr class="separator:a2a63609dc38ef196ffd328906ac621e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee3edeae620bfe7e2cf036f2df0071a6" id="r_aee3edeae620bfe7e2cf036f2df0071a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee3edeae620bfe7e2cf036f2df0071a6">fload_1</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:aee3edeae620bfe7e2cf036f2df0071a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">fload_1 Carrega um float da segunda variável local.  <br /></td></tr>
+<tr class="separator:aee3edeae620bfe7e2cf036f2df0071a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c70d4c7eea55d757c330631bb8cd78e" id="r_a8c70d4c7eea55d757c330631bb8cd78e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c70d4c7eea55d757c330631bb8cd78e">fload_2</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a8c70d4c7eea55d757c330631bb8cd78e"><td class="mdescLeft">&#160;</td><td class="mdescRight">fload_2 Carrega um float da terceira variável local.  <br /></td></tr>
+<tr class="separator:a8c70d4c7eea55d757c330631bb8cd78e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f3a758422d38805b8e141e7066d3fec" id="r_a6f3a758422d38805b8e141e7066d3fec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f3a758422d38805b8e141e7066d3fec">fload_3</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a6f3a758422d38805b8e141e7066d3fec"><td class="mdescLeft">&#160;</td><td class="mdescRight">fload_3 Carrega um float da quarta variável local.  <br /></td></tr>
+<tr class="separator:a6f3a758422d38805b8e141e7066d3fec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a597c6c7917c961477edf481537a73f69" id="r_a597c6c7917c961477edf481537a73f69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a597c6c7917c961477edf481537a73f69">dload</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a597c6c7917c961477edf481537a73f69"><td class="mdescLeft">&#160;</td><td class="mdescRight">dload Carrega um double de uma variável local.  <br /></td></tr>
+<tr class="separator:a597c6c7917c961477edf481537a73f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a133d35bff45aec33fc66a3860a047977" id="r_a133d35bff45aec33fc66a3860a047977"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a133d35bff45aec33fc66a3860a047977">dload_0</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a133d35bff45aec33fc66a3860a047977"><td class="mdescLeft">&#160;</td><td class="mdescRight">dload_0 Carrega um double da primeira variável local.  <br /></td></tr>
+<tr class="separator:a133d35bff45aec33fc66a3860a047977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3c37778aa988d76c8c9361240f7863b" id="r_ad3c37778aa988d76c8c9361240f7863b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3c37778aa988d76c8c9361240f7863b">dload_1</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:ad3c37778aa988d76c8c9361240f7863b"><td class="mdescLeft">&#160;</td><td class="mdescRight">dload_1 Carrega um double da segunda variável local.  <br /></td></tr>
+<tr class="separator:ad3c37778aa988d76c8c9361240f7863b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28dfa9c58dc07ee51c5eb64f8f394660" id="r_a28dfa9c58dc07ee51c5eb64f8f394660"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28dfa9c58dc07ee51c5eb64f8f394660">dload_2</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a28dfa9c58dc07ee51c5eb64f8f394660"><td class="mdescLeft">&#160;</td><td class="mdescRight">dload_2 Carrega um double da terceira variável local.  <br /></td></tr>
+<tr class="separator:a28dfa9c58dc07ee51c5eb64f8f394660"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05c467ff1cf866f48efc3037e10c74e4" id="r_a05c467ff1cf866f48efc3037e10c74e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05c467ff1cf866f48efc3037e10c74e4">dload_3</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a05c467ff1cf866f48efc3037e10c74e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">dload_3 Carrega um double da quarta variável local.  <br /></td></tr>
+<tr class="separator:a05c467ff1cf866f48efc3037e10c74e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1a98f9a021f2cb496590174267f7f56" id="r_aa1a98f9a021f2cb496590174267f7f56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1a98f9a021f2cb496590174267f7f56">aload</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:aa1a98f9a021f2cb496590174267f7f56"><td class="mdescLeft">&#160;</td><td class="mdescRight">aload Carrega uma referência de uma variável local.  <br /></td></tr>
+<tr class="separator:aa1a98f9a021f2cb496590174267f7f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88994dea0172a0de7091b609798dcf6e" id="r_a88994dea0172a0de7091b609798dcf6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88994dea0172a0de7091b609798dcf6e">aload_0</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a88994dea0172a0de7091b609798dcf6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">aload_0 Carrega uma referência da primeira variável local.  <br /></td></tr>
+<tr class="separator:a88994dea0172a0de7091b609798dcf6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaf3c98933f9dc1bc750b94e436513f0" id="r_aaaf3c98933f9dc1bc750b94e436513f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaaf3c98933f9dc1bc750b94e436513f0">aload_1</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:aaaf3c98933f9dc1bc750b94e436513f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">aload_1 Carrega uma referência da segunda variável local.  <br /></td></tr>
+<tr class="separator:aaaf3c98933f9dc1bc750b94e436513f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2133ebc2753199797d06254208bb4869" id="r_a2133ebc2753199797d06254208bb4869"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2133ebc2753199797d06254208bb4869">aload_2</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a2133ebc2753199797d06254208bb4869"><td class="mdescLeft">&#160;</td><td class="mdescRight">aload_2 Carrega uma referência da terceira variável local.  <br /></td></tr>
+<tr class="separator:a2133ebc2753199797d06254208bb4869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad963f6052e0eedc47b1f7f02c5a887a3" id="r_ad963f6052e0eedc47b1f7f02c5a887a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad963f6052e0eedc47b1f7f02c5a887a3">aload_3</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:ad963f6052e0eedc47b1f7f02c5a887a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">aload_3 Carrega uma referência da quarta variável local.  <br /></td></tr>
+<tr class="separator:ad963f6052e0eedc47b1f7f02c5a887a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8f973f76b99809a772b8c70bc3d8f65" id="r_af8f973f76b99809a772b8c70bc3d8f65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8f973f76b99809a772b8c70bc3d8f65">iadd</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:af8f973f76b99809a772b8c70bc3d8f65"><td class="mdescLeft">&#160;</td><td class="mdescRight">iadd Soma dois inteiros e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:af8f973f76b99809a772b8c70bc3d8f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdedb8baa7420ca3ce43308cd101b92d" id="r_afdedb8baa7420ca3ce43308cd101b92d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdedb8baa7420ca3ce43308cd101b92d">fadd</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:afdedb8baa7420ca3ce43308cd101b92d"><td class="mdescLeft">&#160;</td><td class="mdescRight">fadd Soma dois floats e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:afdedb8baa7420ca3ce43308cd101b92d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a024446f4aa382fab43240a607697a5d3" id="r_a024446f4aa382fab43240a607697a5d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a024446f4aa382fab43240a607697a5d3">ladd</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a024446f4aa382fab43240a607697a5d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">ladd Soma dois longs e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a024446f4aa382fab43240a607697a5d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45333d45e5a599da3290d2144d33fe8d" id="r_a45333d45e5a599da3290d2144d33fe8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45333d45e5a599da3290d2144d33fe8d">dadd</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a45333d45e5a599da3290d2144d33fe8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">dadd Soma dois doubles e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a45333d45e5a599da3290d2144d33fe8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a581f0f5ba040fec5527e8cac736e0f59" id="r_a581f0f5ba040fec5527e8cac736e0f59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a581f0f5ba040fec5527e8cac736e0f59">isub</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a581f0f5ba040fec5527e8cac736e0f59"><td class="mdescLeft">&#160;</td><td class="mdescRight">isub Subtrai dois inteiros e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a581f0f5ba040fec5527e8cac736e0f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a508e715662486c41a67ca1f05a3442dd" id="r_a508e715662486c41a67ca1f05a3442dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a508e715662486c41a67ca1f05a3442dd">fsub</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a508e715662486c41a67ca1f05a3442dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">fsub Subtrai dois floats e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a508e715662486c41a67ca1f05a3442dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d19ab628306e86cdd5e99bc56c031ef" id="r_a1d19ab628306e86cdd5e99bc56c031ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d19ab628306e86cdd5e99bc56c031ef">lsub</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a1d19ab628306e86cdd5e99bc56c031ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">lsub Subtrai dois longs e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a1d19ab628306e86cdd5e99bc56c031ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fccdbd1d481416d05fa3e788cd0f229" id="r_a9fccdbd1d481416d05fa3e788cd0f229"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fccdbd1d481416d05fa3e788cd0f229">dsub</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a9fccdbd1d481416d05fa3e788cd0f229"><td class="mdescLeft">&#160;</td><td class="mdescRight">dsub Subtrai dois doubles e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a9fccdbd1d481416d05fa3e788cd0f229"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabb8957c84f668b7963576da579e808b" id="r_aabb8957c84f668b7963576da579e808b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aabb8957c84f668b7963576da579e808b">idiv</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:aabb8957c84f668b7963576da579e808b"><td class="mdescLeft">&#160;</td><td class="mdescRight">idiv Divide dois inteiros e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:aabb8957c84f668b7963576da579e808b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47af3032fa37e9c3d295e538e5bea8b7" id="r_a47af3032fa37e9c3d295e538e5bea8b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47af3032fa37e9c3d295e538e5bea8b7">ldiv_handler</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a47af3032fa37e9c3d295e538e5bea8b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">fdiv_handler Lida com a divisão de longs.  <br /></td></tr>
+<tr class="separator:a47af3032fa37e9c3d295e538e5bea8b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cdde7a8abcc0bee284f424692845df7" id="r_a9cdde7a8abcc0bee284f424692845df7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cdde7a8abcc0bee284f424692845df7">fdiv</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a9cdde7a8abcc0bee284f424692845df7"><td class="mdescLeft">&#160;</td><td class="mdescRight">fdiv Divide dois floats e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a9cdde7a8abcc0bee284f424692845df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f9cc92a1cc96bbf230de0b3cdd5850c" id="r_a5f9cc92a1cc96bbf230de0b3cdd5850c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f9cc92a1cc96bbf230de0b3cdd5850c">ddiv</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a5f9cc92a1cc96bbf230de0b3cdd5850c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ddiv Divide dois doubles e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a5f9cc92a1cc96bbf230de0b3cdd5850c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81027035c924fa65665b0a10da3cea25" id="r_a81027035c924fa65665b0a10da3cea25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81027035c924fa65665b0a10da3cea25">imul</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a81027035c924fa65665b0a10da3cea25"><td class="mdescLeft">&#160;</td><td class="mdescRight">imul Multiplica dois inteiros e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a81027035c924fa65665b0a10da3cea25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7d560d15720ab8097ff673cf980b412" id="r_aa7d560d15720ab8097ff673cf980b412"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7d560d15720ab8097ff673cf980b412">lmul</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:aa7d560d15720ab8097ff673cf980b412"><td class="mdescLeft">&#160;</td><td class="mdescRight">lmul Multiplica dois longs e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:aa7d560d15720ab8097ff673cf980b412"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b0e29672970753d5669fcff6f8fca28" id="r_a5b0e29672970753d5669fcff6f8fca28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b0e29672970753d5669fcff6f8fca28">fmul</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a5b0e29672970753d5669fcff6f8fca28"><td class="mdescLeft">&#160;</td><td class="mdescRight">fmul Multiplica dois floats e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a5b0e29672970753d5669fcff6f8fca28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1845d1192a270a759ea857020e3ddad" id="r_ac1845d1192a270a759ea857020e3ddad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1845d1192a270a759ea857020e3ddad">dmul</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:ac1845d1192a270a759ea857020e3ddad"><td class="mdescLeft">&#160;</td><td class="mdescRight">dmul Multiplica dois doubles e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:ac1845d1192a270a759ea857020e3ddad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8601d78e1daf1e5e47c7e5dd056df56b" id="r_a8601d78e1daf1e5e47c7e5dd056df56b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8601d78e1daf1e5e47c7e5dd056df56b">iand</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a8601d78e1daf1e5e47c7e5dd056df56b"><td class="mdescLeft">&#160;</td><td class="mdescRight">idiv Divide dois inteiros e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a8601d78e1daf1e5e47c7e5dd056df56b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e74a6539c6e18ee770ef1ce6ea0e992" id="r_a1e74a6539c6e18ee770ef1ce6ea0e992"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e74a6539c6e18ee770ef1ce6ea0e992">land</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a1e74a6539c6e18ee770ef1ce6ea0e992"><td class="mdescLeft">&#160;</td><td class="mdescRight">land Faz a operação AND entre dois longs e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a1e74a6539c6e18ee770ef1ce6ea0e992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a6f0c96b1c0a10e456e28a7a9542e9f" id="r_a2a6f0c96b1c0a10e456e28a7a9542e9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a6f0c96b1c0a10e456e28a7a9542e9f">irem</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a2a6f0c96b1c0a10e456e28a7a9542e9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">irem Calcula o resto da divisão de dois inteiros e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a2a6f0c96b1c0a10e456e28a7a9542e9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74d0dae90c1418661ff3e24638eeda88" id="r_a74d0dae90c1418661ff3e24638eeda88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74d0dae90c1418661ff3e24638eeda88">lrem</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a74d0dae90c1418661ff3e24638eeda88"><td class="mdescLeft">&#160;</td><td class="mdescRight">lrem Calcula o resto da divisão de dois longs e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a74d0dae90c1418661ff3e24638eeda88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66499df22f9488fa869dd3ff23ab03c8" id="r_a66499df22f9488fa869dd3ff23ab03c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66499df22f9488fa869dd3ff23ab03c8">frem</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a66499df22f9488fa869dd3ff23ab03c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">frem Calcula o resto da divisão de dois floats e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a66499df22f9488fa869dd3ff23ab03c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a407bf952b8c06447882c5855ef6fbd44" id="r_a407bf952b8c06447882c5855ef6fbd44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a407bf952b8c06447882c5855ef6fbd44">drem_handler</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a407bf952b8c06447882c5855ef6fbd44"><td class="mdescLeft">&#160;</td><td class="mdescRight">drem_handler Calcula o resto da divisão de dois doubles e coloca o resultado na pilha. É o equivalente a drem, mas com outro nome para evitar conflito.  <br /></td></tr>
+<tr class="separator:a407bf952b8c06447882c5855ef6fbd44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfc49c06085b0880b79f5219a5395032" id="r_adfc49c06085b0880b79f5219a5395032"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfc49c06085b0880b79f5219a5395032">ixor</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:adfc49c06085b0880b79f5219a5395032"><td class="mdescLeft">&#160;</td><td class="mdescRight">ixor Faz a operação XOR entre dois inteiros e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:adfc49c06085b0880b79f5219a5395032"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2de0892ca5d4f99b49cf358e5bb7f89a" id="r_a2de0892ca5d4f99b49cf358e5bb7f89a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2de0892ca5d4f99b49cf358e5bb7f89a">lxor</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a2de0892ca5d4f99b49cf358e5bb7f89a"><td class="mdescLeft">&#160;</td><td class="mdescRight">lxor Faz a operação XOR entre dois longs e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a2de0892ca5d4f99b49cf358e5bb7f89a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbd528e707f357a1aa0add425320cc14" id="r_acbd528e707f357a1aa0add425320cc14"><td class="memItemLeft" align="right" valign="top"><a id="acbd528e707f357a1aa0add425320cc14" name="acbd528e707f357a1aa0add425320cc14"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ireturn</b> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="separator:acbd528e707f357a1aa0add425320cc14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af148bf9420cc90a563983a5478b78629" id="r_af148bf9420cc90a563983a5478b78629"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af148bf9420cc90a563983a5478b78629">ineg</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:af148bf9420cc90a563983a5478b78629"><td class="mdescLeft">&#160;</td><td class="mdescRight">ineg Inverte o sinal de um inteiro e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:af148bf9420cc90a563983a5478b78629"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85775acd1ecc3eca7a8b614a35ea86f9" id="r_a85775acd1ecc3eca7a8b614a35ea86f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85775acd1ecc3eca7a8b614a35ea86f9">lneg</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a85775acd1ecc3eca7a8b614a35ea86f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">lneg Inverte o sinal de um long e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a85775acd1ecc3eca7a8b614a35ea86f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61b5286632473b6b5fb1db2bcaa9a636" id="r_a61b5286632473b6b5fb1db2bcaa9a636"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61b5286632473b6b5fb1db2bcaa9a636">fneg</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a61b5286632473b6b5fb1db2bcaa9a636"><td class="mdescLeft">&#160;</td><td class="mdescRight">fneg Inverte o sinal de um float e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a61b5286632473b6b5fb1db2bcaa9a636"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95e4e5bce7a736e9aba38e767391b856" id="r_a95e4e5bce7a736e9aba38e767391b856"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95e4e5bce7a736e9aba38e767391b856">dneg</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a95e4e5bce7a736e9aba38e767391b856"><td class="mdescLeft">&#160;</td><td class="mdescRight">dneg Inverte o sinal de um double e coloca o resultado na pilha.  <br /></td></tr>
+<tr class="separator:a95e4e5bce7a736e9aba38e767391b856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59e0335176a47f7028fae727aaab0071" id="r_a59e0335176a47f7028fae727aaab0071"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59e0335176a47f7028fae727aaab0071">iconst_m1</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a59e0335176a47f7028fae727aaab0071"><td class="mdescLeft">&#160;</td><td class="mdescRight">iconst_m1 Coloca o valor -1 na pilha.  <br /></td></tr>
+<tr class="separator:a59e0335176a47f7028fae727aaab0071"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5d11f4df70bd49fb4a2e829ee931145" id="r_ad5d11f4df70bd49fb4a2e829ee931145"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5d11f4df70bd49fb4a2e829ee931145">iconst_0</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:ad5d11f4df70bd49fb4a2e829ee931145"><td class="mdescLeft">&#160;</td><td class="mdescRight">iconst_0 Coloca o valor 0 na pilha.  <br /></td></tr>
+<tr class="separator:ad5d11f4df70bd49fb4a2e829ee931145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76fb5f02993169c2367f8ecbbfd9dbda" id="r_a76fb5f02993169c2367f8ecbbfd9dbda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76fb5f02993169c2367f8ecbbfd9dbda">iconst_1</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a76fb5f02993169c2367f8ecbbfd9dbda"><td class="mdescLeft">&#160;</td><td class="mdescRight">iconst_1 Coloca o valor 1 na pilha.  <br /></td></tr>
+<tr class="separator:a76fb5f02993169c2367f8ecbbfd9dbda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae90a23d9cb3b4431fed3f64d68628b8a" id="r_ae90a23d9cb3b4431fed3f64d68628b8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae90a23d9cb3b4431fed3f64d68628b8a">iconst_2</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:ae90a23d9cb3b4431fed3f64d68628b8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">iconst_2 Coloca o valor 2 na pilha.  <br /></td></tr>
+<tr class="separator:ae90a23d9cb3b4431fed3f64d68628b8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3553aa7b4f9e88fce7261bdc1621477" id="r_ab3553aa7b4f9e88fce7261bdc1621477"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3553aa7b4f9e88fce7261bdc1621477">iconst_3</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:ab3553aa7b4f9e88fce7261bdc1621477"><td class="mdescLeft">&#160;</td><td class="mdescRight">iconst_3 Coloca o valor 3 na pilha.  <br /></td></tr>
+<tr class="separator:ab3553aa7b4f9e88fce7261bdc1621477"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0f18a62efdd0fd27365b42713b88ca7" id="r_ad0f18a62efdd0fd27365b42713b88ca7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0f18a62efdd0fd27365b42713b88ca7">iconst_4</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:ad0f18a62efdd0fd27365b42713b88ca7"><td class="mdescLeft">&#160;</td><td class="mdescRight">iconst_4 Coloca o valor 4 na pilha.  <br /></td></tr>
+<tr class="separator:ad0f18a62efdd0fd27365b42713b88ca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20130a723ae4a82d36ccf656b5b8fc68" id="r_a20130a723ae4a82d36ccf656b5b8fc68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20130a723ae4a82d36ccf656b5b8fc68">iconst_5</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a20130a723ae4a82d36ccf656b5b8fc68"><td class="mdescLeft">&#160;</td><td class="mdescRight">iconst_5 Coloca o valor 5 na pilha.  <br /></td></tr>
+<tr class="separator:a20130a723ae4a82d36ccf656b5b8fc68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49a05436b739e7483211bc14128478e8" id="r_a49a05436b739e7483211bc14128478e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49a05436b739e7483211bc14128478e8">bipush</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:a49a05436b739e7483211bc14128478e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">bipush Coloca um byte na pilha.  <br /></td></tr>
+<tr class="separator:a49a05436b739e7483211bc14128478e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca4c225a80f03ffdd5c02dbda302c6eb" id="r_aca4c225a80f03ffdd5c02dbda302c6eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca4c225a80f03ffdd5c02dbda302c6eb">pop_op</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:aca4c225a80f03ffdd5c02dbda302c6eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">pop_op Remove um valor do topo da pilha.  <br /></td></tr>
+<tr class="separator:aca4c225a80f03ffdd5c02dbda302c6eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac52e22874fa64cd4d723bd9ef1eacb4f" id="r_ac52e22874fa64cd4d723bd9ef1eacb4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac52e22874fa64cd4d723bd9ef1eacb4f">invokestatic</a> (<a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *frame)</td></tr>
+<tr class="memdesc:ac52e22874fa64cd4d723bd9ef1eacb4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">invokestatic Invoca um método estático.  <br /></td></tr>
+<tr class="separator:ac52e22874fa64cd4d723bd9ef1eacb4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Implementação das funções de manipulação de dados. Declara funções para converter tipos de dados, e contém a implementação das funções gerais da JVM, como iload, lload, fload, dload, nop, iadd, etc. </p>
+</div><h2 class="groupheader">Funções</h2>
+<a id="aa1a98f9a021f2cb496590174267f7f56" name="aa1a98f9a021f2cb496590174267f7f56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1a98f9a021f2cb496590174267f7f56">&#9670;&#160;</a></span>aload()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void aload </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>aload Carrega uma referência de uma variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a88994dea0172a0de7091b609798dcf6e" name="a88994dea0172a0de7091b609798dcf6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88994dea0172a0de7091b609798dcf6e">&#9670;&#160;</a></span>aload_0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void aload_0 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>aload_0 Carrega uma referência da primeira variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="aaaf3c98933f9dc1bc750b94e436513f0" name="aaaf3c98933f9dc1bc750b94e436513f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaf3c98933f9dc1bc750b94e436513f0">&#9670;&#160;</a></span>aload_1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void aload_1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>aload_1 Carrega uma referência da segunda variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a2133ebc2753199797d06254208bb4869" name="a2133ebc2753199797d06254208bb4869"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2133ebc2753199797d06254208bb4869">&#9670;&#160;</a></span>aload_2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void aload_2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>aload_2 Carrega uma referência da terceira variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="ad963f6052e0eedc47b1f7f02c5a887a3" name="ad963f6052e0eedc47b1f7f02c5a887a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad963f6052e0eedc47b1f7f02c5a887a3">&#9670;&#160;</a></span>aload_3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void aload_3 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>aload_3 Carrega uma referência da quarta variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a49a05436b739e7483211bc14128478e8" name="a49a05436b739e7483211bc14128478e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49a05436b739e7483211bc14128478e8">&#9670;&#160;</a></span>bipush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bipush </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>bipush Coloca um byte na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a45333d45e5a599da3290d2144d33fe8d" name="a45333d45e5a599da3290d2144d33fe8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45333d45e5a599da3290d2144d33fe8d">&#9670;&#160;</a></span>dadd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dadd </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>dadd Soma dois doubles e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a5f9cc92a1cc96bbf230de0b3cdd5850c" name="a5f9cc92a1cc96bbf230de0b3cdd5850c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f9cc92a1cc96bbf230de0b3cdd5850c">&#9670;&#160;</a></span>ddiv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ddiv </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ddiv Divide dois doubles e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a597c6c7917c961477edf481537a73f69" name="a597c6c7917c961477edf481537a73f69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a597c6c7917c961477edf481537a73f69">&#9670;&#160;</a></span>dload()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dload </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>dload Carrega um double de uma variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a133d35bff45aec33fc66a3860a047977" name="a133d35bff45aec33fc66a3860a047977"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a133d35bff45aec33fc66a3860a047977">&#9670;&#160;</a></span>dload_0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dload_0 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>dload_0 Carrega um double da primeira variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="ad3c37778aa988d76c8c9361240f7863b" name="ad3c37778aa988d76c8c9361240f7863b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3c37778aa988d76c8c9361240f7863b">&#9670;&#160;</a></span>dload_1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dload_1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>dload_1 Carrega um double da segunda variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a28dfa9c58dc07ee51c5eb64f8f394660" name="a28dfa9c58dc07ee51c5eb64f8f394660"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28dfa9c58dc07ee51c5eb64f8f394660">&#9670;&#160;</a></span>dload_2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dload_2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>dload_2 Carrega um double da terceira variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a05c467ff1cf866f48efc3037e10c74e4" name="a05c467ff1cf866f48efc3037e10c74e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05c467ff1cf866f48efc3037e10c74e4">&#9670;&#160;</a></span>dload_3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dload_3 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>dload_3 Carrega um double da quarta variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="ac1845d1192a270a759ea857020e3ddad" name="ac1845d1192a270a759ea857020e3ddad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1845d1192a270a759ea857020e3ddad">&#9670;&#160;</a></span>dmul()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dmul </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>dmul Multiplica dois doubles e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a95e4e5bce7a736e9aba38e767391b856" name="a95e4e5bce7a736e9aba38e767391b856"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95e4e5bce7a736e9aba38e767391b856">&#9670;&#160;</a></span>dneg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dneg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>dneg Inverte o sinal de um double e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a484c142d6feca9e9d0380ce8fe287e10" name="a484c142d6feca9e9d0380ce8fe287e10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a484c142d6feca9e9d0380ce8fe287e10">&#9670;&#160;</a></span>double_to_uint64()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u8_t double_to_uint64 </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>number</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>double_to_uint64 Converte um double para 64-bit unsigned integer. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>u8_t </dd></dl>
+
+</div>
+</div>
+<a id="a407bf952b8c06447882c5855ef6fbd44" name="a407bf952b8c06447882c5855ef6fbd44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a407bf952b8c06447882c5855ef6fbd44">&#9670;&#160;</a></span>drem_handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void drem_handler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>drem_handler Calcula o resto da divisão de dois doubles e coloca o resultado na pilha. É o equivalente a drem, mas com outro nome para evitar conflito. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a9fccdbd1d481416d05fa3e788cd0f229" name="a9fccdbd1d481416d05fa3e788cd0f229"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fccdbd1d481416d05fa3e788cd0f229">&#9670;&#160;</a></span>dsub()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dsub </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>dsub Subtrai dois doubles e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="afdedb8baa7420ca3ce43308cd101b92d" name="afdedb8baa7420ca3ce43308cd101b92d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdedb8baa7420ca3ce43308cd101b92d">&#9670;&#160;</a></span>fadd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fadd </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fadd Soma dois floats e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a9cdde7a8abcc0bee284f424692845df7" name="a9cdde7a8abcc0bee284f424692845df7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cdde7a8abcc0bee284f424692845df7">&#9670;&#160;</a></span>fdiv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fdiv </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fdiv Divide dois floats e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a2ce323d34f1911c147165179c6cfc5f2" name="a2ce323d34f1911c147165179c6cfc5f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ce323d34f1911c147165179c6cfc5f2">&#9670;&#160;</a></span>fload()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fload </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fload Carrega um float de uma variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a2a63609dc38ef196ffd328906ac621e2" name="a2a63609dc38ef196ffd328906ac621e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a63609dc38ef196ffd328906ac621e2">&#9670;&#160;</a></span>fload_0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fload_0 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fload_0 Carrega um float da primeira variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="aee3edeae620bfe7e2cf036f2df0071a6" name="aee3edeae620bfe7e2cf036f2df0071a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee3edeae620bfe7e2cf036f2df0071a6">&#9670;&#160;</a></span>fload_1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fload_1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fload_1 Carrega um float da segunda variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a8c70d4c7eea55d757c330631bb8cd78e" name="a8c70d4c7eea55d757c330631bb8cd78e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c70d4c7eea55d757c330631bb8cd78e">&#9670;&#160;</a></span>fload_2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fload_2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fload_2 Carrega um float da terceira variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a6f3a758422d38805b8e141e7066d3fec" name="a6f3a758422d38805b8e141e7066d3fec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f3a758422d38805b8e141e7066d3fec">&#9670;&#160;</a></span>fload_3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fload_3 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fload_3 Carrega um float da quarta variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="aa6c1c5ebb02e2bedfd4172a6525688d3" name="aa6c1c5ebb02e2bedfd4172a6525688d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6c1c5ebb02e2bedfd4172a6525688d3">&#9670;&#160;</a></span>float_to_uint32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u4_t float_to_uint32 </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>number</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>float_to_uint32 Converte um float para 32-bit unsigned integer. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>u4_t </dd></dl>
+
+</div>
+</div>
+<a id="a5b0e29672970753d5669fcff6f8fca28" name="a5b0e29672970753d5669fcff6f8fca28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b0e29672970753d5669fcff6f8fca28">&#9670;&#160;</a></span>fmul()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fmul </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fmul Multiplica dois floats e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a61b5286632473b6b5fb1db2bcaa9a636" name="a61b5286632473b6b5fb1db2bcaa9a636"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61b5286632473b6b5fb1db2bcaa9a636">&#9670;&#160;</a></span>fneg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fneg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fneg Inverte o sinal de um float e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a66499df22f9488fa869dd3ff23ab03c8" name="a66499df22f9488fa869dd3ff23ab03c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66499df22f9488fa869dd3ff23ab03c8">&#9670;&#160;</a></span>frem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void frem </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>frem Calcula o resto da divisão de dois floats e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a508e715662486c41a67ca1f05a3442dd" name="a508e715662486c41a67ca1f05a3442dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a508e715662486c41a67ca1f05a3442dd">&#9670;&#160;</a></span>fsub()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fsub </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fsub Subtrai dois floats e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="af8f973f76b99809a772b8c70bc3d8f65" name="af8f973f76b99809a772b8c70bc3d8f65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8f973f76b99809a772b8c70bc3d8f65">&#9670;&#160;</a></span>iadd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iadd </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>iadd Soma dois inteiros e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a8601d78e1daf1e5e47c7e5dd056df56b" name="a8601d78e1daf1e5e47c7e5dd056df56b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8601d78e1daf1e5e47c7e5dd056df56b">&#9670;&#160;</a></span>iand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iand </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>idiv Divide dois inteiros e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="ad5d11f4df70bd49fb4a2e829ee931145" name="ad5d11f4df70bd49fb4a2e829ee931145"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5d11f4df70bd49fb4a2e829ee931145">&#9670;&#160;</a></span>iconst_0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iconst_0 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>iconst_0 Coloca o valor 0 na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a76fb5f02993169c2367f8ecbbfd9dbda" name="a76fb5f02993169c2367f8ecbbfd9dbda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76fb5f02993169c2367f8ecbbfd9dbda">&#9670;&#160;</a></span>iconst_1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iconst_1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>iconst_1 Coloca o valor 1 na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="ae90a23d9cb3b4431fed3f64d68628b8a" name="ae90a23d9cb3b4431fed3f64d68628b8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae90a23d9cb3b4431fed3f64d68628b8a">&#9670;&#160;</a></span>iconst_2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iconst_2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>iconst_2 Coloca o valor 2 na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="ab3553aa7b4f9e88fce7261bdc1621477" name="ab3553aa7b4f9e88fce7261bdc1621477"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3553aa7b4f9e88fce7261bdc1621477">&#9670;&#160;</a></span>iconst_3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iconst_3 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>iconst_3 Coloca o valor 3 na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="ad0f18a62efdd0fd27365b42713b88ca7" name="ad0f18a62efdd0fd27365b42713b88ca7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0f18a62efdd0fd27365b42713b88ca7">&#9670;&#160;</a></span>iconst_4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iconst_4 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>iconst_4 Coloca o valor 4 na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a20130a723ae4a82d36ccf656b5b8fc68" name="a20130a723ae4a82d36ccf656b5b8fc68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20130a723ae4a82d36ccf656b5b8fc68">&#9670;&#160;</a></span>iconst_5()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iconst_5 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>iconst_5 Coloca o valor 5 na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a59e0335176a47f7028fae727aaab0071" name="a59e0335176a47f7028fae727aaab0071"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59e0335176a47f7028fae727aaab0071">&#9670;&#160;</a></span>iconst_m1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iconst_m1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>iconst_m1 Coloca o valor -1 na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="aabb8957c84f668b7963576da579e808b" name="aabb8957c84f668b7963576da579e808b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabb8957c84f668b7963576da579e808b">&#9670;&#160;</a></span>idiv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void idiv </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>idiv Divide dois inteiros e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a051467101189bfb1efb53594daaa2a14" name="a051467101189bfb1efb53594daaa2a14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a051467101189bfb1efb53594daaa2a14">&#9670;&#160;</a></span>iload()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iload </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>iload Carrega um inteiro de uma variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="af43772fb245e8d3eaaa09c07e3369e24" name="af43772fb245e8d3eaaa09c07e3369e24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af43772fb245e8d3eaaa09c07e3369e24">&#9670;&#160;</a></span>iload_0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iload_0 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>iload_0 Carrega um inteiro da primeira variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="afe3daf661be20abdcf39b4325841c20b" name="afe3daf661be20abdcf39b4325841c20b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe3daf661be20abdcf39b4325841c20b">&#9670;&#160;</a></span>iload_1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iload_1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>iload_1 Carrega um inteiro da segunda variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="aee53ca39d2e599228400ab711a689f0b" name="aee53ca39d2e599228400ab711a689f0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee53ca39d2e599228400ab711a689f0b">&#9670;&#160;</a></span>iload_2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iload_2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>iload_2 Carrega um inteiro da terceira variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="ad9ef6d586f5d57311d6681eafd22385d" name="ad9ef6d586f5d57311d6681eafd22385d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9ef6d586f5d57311d6681eafd22385d">&#9670;&#160;</a></span>iload_3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iload_3 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>iload_3 Carrega um inteiro da quarta variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a81027035c924fa65665b0a10da3cea25" name="a81027035c924fa65665b0a10da3cea25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81027035c924fa65665b0a10da3cea25">&#9670;&#160;</a></span>imul()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void imul </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>imul Multiplica dois inteiros e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="af148bf9420cc90a563983a5478b78629" name="af148bf9420cc90a563983a5478b78629"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af148bf9420cc90a563983a5478b78629">&#9670;&#160;</a></span>ineg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ineg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ineg Inverte o sinal de um inteiro e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="ac52e22874fa64cd4d723bd9ef1eacb4f" name="ac52e22874fa64cd4d723bd9ef1eacb4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac52e22874fa64cd4d723bd9ef1eacb4f">&#9670;&#160;</a></span>invokestatic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void invokestatic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>invokestatic Invoca um método estático. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a2a6f0c96b1c0a10e456e28a7a9542e9f" name="a2a6f0c96b1c0a10e456e28a7a9542e9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a6f0c96b1c0a10e456e28a7a9542e9f">&#9670;&#160;</a></span>irem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void irem </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>irem Calcula o resto da divisão de dois inteiros e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a581f0f5ba040fec5527e8cac736e0f59" name="a581f0f5ba040fec5527e8cac736e0f59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a581f0f5ba040fec5527e8cac736e0f59">&#9670;&#160;</a></span>isub()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isub </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>isub Subtrai dois inteiros e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="adfc49c06085b0880b79f5219a5395032" name="adfc49c06085b0880b79f5219a5395032"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfc49c06085b0880b79f5219a5395032">&#9670;&#160;</a></span>ixor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ixor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ixor Faz a operação XOR entre dois inteiros e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a024446f4aa382fab43240a607697a5d3" name="a024446f4aa382fab43240a607697a5d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a024446f4aa382fab43240a607697a5d3">&#9670;&#160;</a></span>ladd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ladd </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ladd Soma dois longs e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a1e74a6539c6e18ee770ef1ce6ea0e992" name="a1e74a6539c6e18ee770ef1ce6ea0e992"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e74a6539c6e18ee770ef1ce6ea0e992">&#9670;&#160;</a></span>land()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void land </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>land Faz a operação AND entre dois longs e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a47af3032fa37e9c3d295e538e5bea8b7" name="a47af3032fa37e9c3d295e538e5bea8b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47af3032fa37e9c3d295e538e5bea8b7">&#9670;&#160;</a></span>ldiv_handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ldiv_handler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fdiv_handler Lida com a divisão de longs. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a4e5ff0139712d2216bf3cf99087468ea" name="a4e5ff0139712d2216bf3cf99087468ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e5ff0139712d2216bf3cf99087468ea">&#9670;&#160;</a></span>lload()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lload </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lload Carrega um long de uma variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="af4f74fb6ed2abc6e6629484449156230" name="af4f74fb6ed2abc6e6629484449156230"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4f74fb6ed2abc6e6629484449156230">&#9670;&#160;</a></span>lload_0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lload_0 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lload_0 Carrega um long da primeira variável local </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a3b27544be58ce4ae65d4f361d49bde94" name="a3b27544be58ce4ae65d4f361d49bde94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b27544be58ce4ae65d4f361d49bde94">&#9670;&#160;</a></span>lload_1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lload_1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lload_1 Carrega um long da segunda variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a9ddfc42c5a6b1ad8a67b9be3757a3a79" name="a9ddfc42c5a6b1ad8a67b9be3757a3a79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ddfc42c5a6b1ad8a67b9be3757a3a79">&#9670;&#160;</a></span>lload_2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lload_2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lload_2 Carrega um long da terceira variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a731fc01fe19442462321c362b45df464" name="a731fc01fe19442462321c362b45df464"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a731fc01fe19442462321c362b45df464">&#9670;&#160;</a></span>lload_3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lload_3 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lload_3 Carrega um long da quarta variável local. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="aa7d560d15720ab8097ff673cf980b412" name="aa7d560d15720ab8097ff673cf980b412"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7d560d15720ab8097ff673cf980b412">&#9670;&#160;</a></span>lmul()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lmul </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lmul Multiplica dois longs e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a85775acd1ecc3eca7a8b614a35ea86f9" name="a85775acd1ecc3eca7a8b614a35ea86f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85775acd1ecc3eca7a8b614a35ea86f9">&#9670;&#160;</a></span>lneg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lneg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lneg Inverte o sinal de um long e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a2dac0e4b892d87fe99028b9c655e0b4f" name="a2dac0e4b892d87fe99028b9c655e0b4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dac0e4b892d87fe99028b9c655e0b4f">&#9670;&#160;</a></span>long_to_uint64()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u8_t long_to_uint64 </td>
+          <td>(</td>
+          <td class="paramtype">long long</td>          <td class="paramname"><span class="paramname"><em>number</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>long_to_uint64 Converte long para 64-bit unsigned integer. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>u8_t </dd></dl>
+
+</div>
+</div>
+<a id="a74d0dae90c1418661ff3e24638eeda88" name="a74d0dae90c1418661ff3e24638eeda88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74d0dae90c1418661ff3e24638eeda88">&#9670;&#160;</a></span>lrem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lrem </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lrem Calcula o resto da divisão de dois longs e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a1d19ab628306e86cdd5e99bc56c031ef" name="a1d19ab628306e86cdd5e99bc56c031ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d19ab628306e86cdd5e99bc56c031ef">&#9670;&#160;</a></span>lsub()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lsub </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lsub Subtrai dois longs e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a2de0892ca5d4f99b49cf358e5bb7f89a" name="a2de0892ca5d4f99b49cf358e5bb7f89a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2de0892ca5d4f99b49cf358e5bb7f89a">&#9670;&#160;</a></span>lxor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lxor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lxor Faz a operação XOR entre dois longs e coloca o resultado na pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a08afff2aa08475aa8f4b83d12a222014" name="a08afff2aa08475aa8f4b83d12a222014"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08afff2aa08475aa8f4b83d12a222014">&#9670;&#160;</a></span>make_double()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double make_double </td>
+          <td>(</td>
+          <td class="paramtype">u4_t</td>          <td class="paramname"><span class="paramname"><em>high</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u4_t</td>          <td class="paramname"><span class="paramname"><em>low</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>make_double Converte dois 32-bit unsigned integers para double. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">high</td><td></td></tr>
+    <tr><td class="paramname">low</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>double </dd></dl>
+
+</div>
+</div>
+<a id="a3321d9c81fb80354afd7267fc2363bb2" name="a3321d9c81fb80354afd7267fc2363bb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3321d9c81fb80354afd7267fc2363bb2">&#9670;&#160;</a></span>make_float()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float make_float </td>
+          <td>(</td>
+          <td class="paramtype">u4_t</td>          <td class="paramname"><span class="paramname"><em>number</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>make_float Converte um 32-bit unsigned integer para float. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>float </dd></dl>
+
+</div>
+</div>
+<a id="a9076900c1ba7e4f47fbaf291798bc26c" name="a9076900c1ba7e4f47fbaf291798bc26c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9076900c1ba7e4f47fbaf291798bc26c">&#9670;&#160;</a></span>make_long()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long make_long </td>
+          <td>(</td>
+          <td class="paramtype">u4_t</td>          <td class="paramname"><span class="paramname"><em>high</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u4_t</td>          <td class="paramname"><span class="paramname"><em>low</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>make_long Converte dois 32-bit unsigned integers para long. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">high</td><td></td></tr>
+    <tr><td class="paramname">low</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>long long </dd></dl>
+
+</div>
+</div>
+<a id="a2d6b96a1e7a6a4347e5cf2b42472cb73" name="a2d6b96a1e7a6a4347e5cf2b42472cb73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d6b96a1e7a6a4347e5cf2b42472cb73">&#9670;&#160;</a></span>nop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void nop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>nop Não faz nada. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="aca4c225a80f03ffdd5c02dbda302c6eb" name="aca4c225a80f03ffdd5c02dbda302c6eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca4c225a80f03ffdd5c02dbda302c6eb">&#9670;&#160;</a></span>pop_op()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pop_op </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/df2/structframe__t.html">frame_t</a> *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>pop_op Remove um valor do topo da pilha. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>void </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>
