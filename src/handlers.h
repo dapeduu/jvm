@@ -51,6 +51,10 @@ void ineg(frame_t *frame);
 void lneg(frame_t *frame);
 void fneg(frame_t *frame);
 void dneg(frame_t *frame);
+void iconst5(frame_t *frame);
+void bipush(frame_t *frame);
+void invokestatic(frame_t *frame);
+
 
 void (*inst_vector[256])(frame_t *) = {
     /* 0x00 (0) */ nop,
@@ -61,7 +65,7 @@ void (*inst_vector[256])(frame_t *) = {
     /* 0x05 (5) */ NULL,
     /* 0x06 (6) */ NULL,
     /* 0x07 (7) */ NULL,
-    /* 0x08 (8) */ NULL,
+    /* 0x08 (8) */ iconst5,
     /* 0x09 (9) */ NULL,
     /* 0x0a (10) */ NULL,
     /* 0x0b (11) */ NULL,
@@ -69,7 +73,7 @@ void (*inst_vector[256])(frame_t *) = {
     /* 0x0d (13) */ NULL,
     /* 0x0e (14) */ NULL,
     /* 0x0f (15) */ NULL,
-    /* 0x10 (16) */ NULL,
+    /* 0x10 (16) */ bipush,
     /* 0x11 (17) */ NULL,
     /* 0x12 (18) */ NULL,
     /* 0x13 (19) */ NULL,
@@ -237,7 +241,7 @@ void (*inst_vector[256])(frame_t *) = {
     /* 0xb5 (181) */ NULL,
     /* 0xb6 (182) */ NULL,
     /* 0xb7 (183) */ NULL,
-    /* 0xb8 (184) */ NULL,
+    /* 0xb8 (184) */ invokestatic,
     /* 0xb9 (185) */ NULL,
     /* 0xba (186) */ NULL,
     /* 0xbb (187) */ NULL,

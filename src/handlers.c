@@ -280,3 +280,52 @@ void dneg(frame_t *frame) {
   push(frame, res_hi);
   push(frame, res_lo);
 }
+
+void iconst5(frame_t *frame) {
+  push(frame, 5);
+}
+
+void bipush(frame_t *frame) {
+  frame->instruction_pointer++;
+  u1_t value = frame->code[frame->instruction_pointer];
+  push(frame, (u4_t)value);
+}
+
+void invokestatic(frame_t *frame) {
+  frame->instruction_pointer++;
+  u1_t indexbyte1 = frame->code[frame->instruction_pointer];
+  frame->instruction_pointer++;
+  u1_t indexbyte2 = frame->code[frame->instruction_pointer];
+
+  u2_t index = (indexbyte1 << 8) | indexbyte2;
+
+  cp_info_t method_ref = frame->class_data->constant_pool[index - 1];
+  cp_info_t class_index = frame->class_data->constant_pool[
+    method_ref.info.methodref.class_index - 1
+  ];
+  cp_info_t class_utf8_index = frame->class_data->constant_pool[ 
+    class_index.info.class.name_index - 1
+  ];
+
+  char * class_name = get_constant_pool_value(
+    frame->class_data->constant_pool,
+    class_index.info.class.name_index
+    );
+  
+  printf("classname: %s", class_name);
+
+
+
+
+  // cp_info_t name_and_type_index = frame->class_data->constant_pool[
+  //   method_ref.info.methodref.name_and_type_index - 1
+  // ];
+
+
+
+
+
+  // u1_t index_hi = frame->instruction_pointer;
+  // u4_t value_hi = frame->locals[index_hi];
+  // u4_t value_lo = frame->locals[index_hi + 1]; 
+}

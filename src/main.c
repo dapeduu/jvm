@@ -37,40 +37,19 @@ int main(int argc, char *argv[]) {
 
     if (is_not_reader) {
         printf("Carregador:\n");
-        load_class(class_file, file_path);
         printf("Execução:\n");
 
         // encontrar main
         loaded_classes_t * classes = load_class(class_file, file_path);
 
-        field_method_info_t * main_method_info;
-        for (size_t i = 0; i < classes->class_file->methods_count; i++)
-        {
-            field_method_info_t * current_method = &classes->class_file->methods[i];
-            u2_t name_index = current_method->name_index;
-            char * method_name = get_constant_pool_value(classes->class_file->constant_pool, name_index);
-
-            if (strcmp(method_name, "main")) { continue; }
-
-            main_method_info = current_method;
-        }
-        
-        if (main_method_info == NULL) {
-            printf("Erro: Não existe o método main nessa classe");
-            exit(1);
-        }
-
-
         // empilhar frames a partir dela
 
-        // frame_t * frame = get_frame(
-        //             class_file->methods_count,
-        //             class_file->methods,
-        //             "test",
-        //             2,
-        //             args,
-        //             class_file->constant_pool);
-        // u4_t result = run_frame(frame);
+        frame_t * frame = get_frame(
+                    "main",
+                    2,
+                    args,
+                    class_file);
+        u4_t result = run_frame(frame);
         // printf("Resultado da execução: %i\n", result);
 
         printf("Chegou ao fim da execução");

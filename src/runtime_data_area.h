@@ -21,6 +21,9 @@ typedef struct {
     int stack_size;
 } jvm_stack_t;
 
-frame_t * get_frame(int method_count, field_method_info_t * methods ,char * name, int args_count, u4_t * args, cp_info_t * constant_pool);
+frame_t * get_frame(char * name, 
+                    int args_count, 
+                    u4_t * args, 
+                    class_file_t * class_file);
 
 #endif // RUNTIME_DATA_AREA_H

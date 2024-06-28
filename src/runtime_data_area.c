@@ -3,22 +3,20 @@
 #include "class_loader.h"
 #include "runtime_data_area.h"
 
-frame_t * get_frame(int method_count, 
-                    field_method_info_t * methods ,
-                    char * name, 
+frame_t * get_frame(char * name, 
                     int args_count, 
                     u4_t * args, 
-                    cp_info_t * constant_pool) {
-    for (size_t i = 0; i < method_count; i++)
+                    class_file_t * class_file) {
+    for (size_t i = 0; i < class_file->methods_count; i++)
     {
-        field_method_info_t current_method = methods[i];
-        char * method_name = get_constant_pool_value(constant_pool, current_method.name_index);
+        field_method_info_t current_method = class_file->methods[i];
+        char * method_name = get_constant_pool_value(class_file->constant_pool, current_method.name_index);
         if (strcmp(method_name, name)) continue;
 
         for (size_t j = 0; j < current_method.attributes_count; j++)
         {
             attribute_info_t current_attribute = current_method.attributes[j];
-            char * attribute_name = get_constant_pool_value(constant_pool, current_attribute.attribute_name_index);
+            char * attribute_name = get_constant_pool_value(class_file->constant_pool, current_attribute.attribute_name_index);
             if (strcmp(attribute_name, "Code")) continue;
             frame_t * current_frame = malloc(sizeof(frame_t));
 
@@ -41,6 +39,8 @@ frame_t * get_frame(int method_count,
 
             current_frame->stack = malloc(current_frame->max_stack * sizeof(u4_t));
             current_frame->stack_count = 0;
+
+            current_frame->class_data = class_file;
 
             return current_frame;
         }
