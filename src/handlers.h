@@ -68,6 +68,9 @@ void fmul(frame_t *frame);
 void lmul(frame_t *frame);
 void dmul(frame_t *frame);
 void idiv(frame_t *frame);
+void ldiv_handler(frame_t *frame);
+void fdiv(frame_t *frame);
+void ddiv(frame_t *frame);
 
 
 void (*inst_vector[256])(frame_t *) = {
@@ -180,9 +183,9 @@ void (*inst_vector[256])(frame_t *) = {
     /* 0x6a (106) */ fmul,
     /* 0x6b (107) */ dmul,
     /* 0x6c (108) */ idiv,
-    /* 0x6d (109) */ NULL,
-    /* 0x6e (110) */ NULL,
-    /* 0x6f (111) */ NULL,
+    /* 0x6d (109) */ ldiv_handler,
+    /* 0x6e (110) */ fdiv,
+    /* 0x6f (111) */ ddiv,
     /* 0x70 (112) */ irem,
     /* 0x71 (113) */ lrem,
     /* 0x72 (114) */ frem,
