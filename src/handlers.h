@@ -54,6 +54,7 @@ void dneg(frame_t *frame);
 void iconst5(frame_t *frame);
 void bipush(frame_t *frame);
 void invokestatic(frame_t *frame);
+void pop_op(frame_t *frame);
 
 
 void (*inst_vector[256])(frame_t *) = {
@@ -144,7 +145,7 @@ void (*inst_vector[256])(frame_t *) = {
     /* 0x54 (84) */ NULL,
     /* 0x55 (85) */ NULL,
     /* 0x56 (86) */ NULL,
-    /* 0x57 (87) */ NULL,
+    /* 0x57 (87) */ pop_op,
     /* 0x58 (88) */ NULL,
     /* 0x59 (89) */ NULL,
     /* 0x5a (90) */ NULL,
