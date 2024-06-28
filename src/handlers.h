@@ -38,6 +38,8 @@ void aload_2(frame_t *frame);
 void aload_3(frame_t *frame);
 void iadd(frame_t *frame);
 void ladd(frame_t *frame);
+void fadd(frame_t *frame);
+void dadd(frame_t *frame);
 void iand(frame_t *frame);
 void land(frame_t *frame);
 void irem(frame_t *frame);
@@ -51,22 +53,33 @@ void ineg(frame_t *frame);
 void lneg(frame_t *frame);
 void fneg(frame_t *frame);
 void dneg(frame_t *frame);
-void iconst5(frame_t *frame);
+void iconst_m1(frame_t *frame);
+void iconst_0(frame_t *frame);
+void iconst_1(frame_t *frame);
+void iconst_2(frame_t *frame);
+void iconst_3(frame_t *frame);
+void iconst_4(frame_t *frame);
+void iconst_5(frame_t *frame);
 void bipush(frame_t *frame);
 void invokestatic(frame_t *frame);
 void pop_op(frame_t *frame);
+void imul(frame_t *frame);
+void fmul(frame_t *frame);
+void lmul(frame_t *frame);
+void dmul(frame_t *frame);
+void idiv(frame_t *frame);
 
 
 void (*inst_vector[256])(frame_t *) = {
     /* 0x00 (0) */ nop,
     /* 0x01 (1) */ NULL,
-    /* 0x02 (2) */ NULL,
-    /* 0x03 (3) */ NULL,
-    /* 0x04 (4) */ NULL,
-    /* 0x05 (5) */ NULL,
-    /* 0x06 (6) */ NULL,
-    /* 0x07 (7) */ NULL,
-    /* 0x08 (8) */ iconst5,
+    /* 0x02 (2) */ iconst_m1,
+    /* 0x03 (3) */ iconst_0,
+    /* 0x04 (4) */ iconst_1,
+    /* 0x05 (5) */ iconst_2,
+    /* 0x06 (6) */ iconst_3,
+    /* 0x07 (7) */ iconst_4,
+    /* 0x08 (8) */ iconst_5,
     /* 0x09 (9) */ NULL,
     /* 0x0a (10) */ NULL,
     /* 0x0b (11) */ NULL,
@@ -156,17 +169,17 @@ void (*inst_vector[256])(frame_t *) = {
     /* 0x5f (95) */ NULL,
     /* 0x60 (96) */ iadd,
     /* 0x61 (97) */ ladd,
-    /* 0x62 (98) */ NULL,
-    /* 0x63 (99) */ NULL,
+    /* 0x62 (98) */ fadd,
+    /* 0x63 (99) */ dadd,
     /* 0x64 (100) */ NULL,
     /* 0x65 (101) */ NULL,
     /* 0x66 (102) */ NULL,
     /* 0x67 (103) */ NULL,
-    /* 0x68 (104) */ NULL,
-    /* 0x69 (105) */ NULL,
-    /* 0x6a (106) */ NULL,
-    /* 0x6b (107) */ NULL,
-    /* 0x6c (108) */ NULL,
+    /* 0x68 (104) */ imul,
+    /* 0x69 (105) */ lmul,
+    /* 0x6a (106) */ fmul,
+    /* 0x6b (107) */ dmul,
+    /* 0x6c (108) */ idiv,
     /* 0x6d (109) */ NULL,
     /* 0x6e (110) */ NULL,
     /* 0x6f (111) */ NULL,
