@@ -8,7 +8,7 @@ float make_float(u4_t number) { return *(float *)&number; }
 long make_long(u4_t high, u4_t low) {
   u8_t number;
   number = (((u8_t)high) << 32) | ((u8_t)low);
-  return *(long *)&number;
+  return *(long long *)&number;
 }
 
 double make_double(u4_t high, u4_t low) {
@@ -22,6 +22,7 @@ double make_double(u4_t high, u4_t low) {
 u4_t float_to_uint32(float number) { return *(u4_t *)&number; }
 
 u8_t double_to_uint64(double number) { return *(u8_t *)&number; }
+u8_t long_to_uint64(long long number) { return *(u8_t *)&number; }
 
 void nop(frame_t *frame) {}
 
@@ -108,6 +109,7 @@ void dload_3(frame_t *frame) {
 void aload(frame_t *frame) {
   frame->instruction_pointer++;
   u4_t index = frame->instruction_pointer;
+  push(frame, frame->locals[index]);
 };
 void aload_0(frame_t *frame) { push(frame, frame->locals[0]); };
 void aload_1(frame_t *frame) { push(frame, frame->locals[1]); };
@@ -120,19 +122,171 @@ void iadd(frame_t *frame) {
   push(frame, value1 + value2);
 }
 
+void fadd(frame_t *frame) {
+  u4_t value1 = pop(frame);
+  u4_t value2 = pop(frame);
+  float res = make_float(value1) + make_float(value2);
+  push(frame, float_to_uint32(res));
+}
+
 void ladd(frame_t *frame) {
   u4_t value1_hi = pop(frame);
   u4_t value1_lo = pop(frame);
   u4_t value2_hi = pop(frame);
   u4_t value2_lo = pop(frame);
 
-  long value1 = make_long(value1_hi, value1_lo);
-  long value2 = make_long(value2_hi, value2_lo);
-  long res = value1 + value2;
+  long long value1 = make_long(value1_hi, value1_lo);
+  long long value2 = make_long(value2_hi, value2_lo);
+  long long res = value1 + value2;
 
   u4_t res_hi = (u4_t)(res >> 32) & 0x00000000FFFFFFFF;
   u4_t res_lo = (u4_t)res & 0x00000000FFFFFFFF;
 
+  push(frame, res_hi);
+  push(frame, res_lo);
+}
+
+void dadd(frame_t *frame) {
+  u4_t value1_hi = pop(frame);
+  u4_t value1_lo = pop(frame);
+  u4_t value2_hi = pop(frame);
+  u4_t value2_lo = pop(frame);
+  double value1 = make_double(value1_hi, value1_lo);
+  double value2 = make_double(value2_hi, value2_lo);
+
+  u8_t res = double_to_uint64(value1 + value2);
+  u4_t res_hi = (u4_t)(res >> 32) & 0x00000000FFFFFFFF;
+  u4_t res_lo = (u4_t)(res & 0x00000000FFFFFFFF);
+  push(frame, res_hi);
+  push(frame, res_lo);
+}
+
+void isub(frame_t *frame) {
+  u4_t value1 = pop(frame);
+  u4_t value2 = pop(frame);
+  push(frame, value1 - value2);
+}
+
+void fsub(frame_t *frame) {
+  u4_t value1 = pop(frame);
+  u4_t value2 = pop(frame);
+  float res = make_float(value1) - make_float(value2);
+  push(frame, float_to_uint32(res));
+}
+
+void lsub(frame_t *frame) {
+  u4_t value1_hi = pop(frame);
+  u4_t value1_lo = pop(frame);
+  u4_t value2_hi = pop(frame);
+  u4_t value2_lo = pop(frame);
+
+  long long value1 = make_long(value1_hi, value1_lo);
+  long long value2 = make_long(value2_hi, value2_lo);
+  long long res = value1 - value2;
+
+  u4_t res_hi = (u4_t)(res >> 32) & 0x00000000FFFFFFFF;
+  u4_t res_lo = (u4_t)res & 0x00000000FFFFFFFF;
+
+  push(frame, res_hi);
+  push(frame, res_lo);
+}
+
+void dsub(frame_t *frame) {
+  u4_t value1_hi = pop(frame);
+  u4_t value1_lo = pop(frame);
+  u4_t value2_hi = pop(frame);
+  u4_t value2_lo = pop(frame);
+  double value1 = make_double(value1_hi, value1_lo);
+  double value2 = make_double(value2_hi, value2_lo);
+
+  u8_t res = double_to_uint64(value1 - value2);
+  u4_t res_hi = (u4_t)(res >> 32) & 0x00000000FFFFFFFF;
+  u4_t res_lo = (u4_t)(res & 0x00000000FFFFFFFF);
+  push(frame, res_hi);
+  push(frame, res_lo);
+}
+
+void idiv(frame_t *frame) {
+  u4_t value1 = pop(frame);
+  u4_t value2 = pop(frame);
+  push(frame, value1 / value2);
+}
+
+void ldiv_handler(frame_t *frame) {
+  u4_t value1_hi = pop(frame);
+  u4_t value1_lo = pop(frame);
+  u4_t value2_hi = pop(frame);
+  u4_t value2_lo = pop(frame);
+  long long value1 = make_long(value1_hi, value1_lo);
+  long long value2 = make_long(value2_hi, value2_lo);
+
+  u8_t res = long_to_uint64(value1 / value2);
+  u4_t res_hi = (u4_t)(res >> 32) & 0x00000000FFFFFFFF;
+  u4_t res_lo = (u4_t)(res & 0x00000000FFFFFFFF);
+  push(frame, res_hi);
+  push(frame, res_lo);
+}
+
+void fdiv(frame_t *frame) {
+  u4_t value1 = pop(frame);
+  u4_t value2 = pop(frame);
+  u4_t result = make_float(value1) / make_float(value2);
+  push(frame, float_to_uint32(result));
+}
+
+void ddiv(frame_t *frame) {
+  u4_t value1_hi = pop(frame);
+  u4_t value1_lo = pop(frame);
+  u4_t value2_hi = pop(frame);
+  u4_t value2_lo = pop(frame);
+  double value1 = make_double(value1_hi, value1_lo);
+  double value2 = make_double(value2_hi, value2_lo);
+
+  u8_t res = double_to_uint64(value1 / value2);
+  u4_t res_hi = (u4_t)(res >> 32) & 0x00000000FFFFFFFF;
+  u4_t res_lo = (u4_t)(res & 0x00000000FFFFFFFF);
+  push(frame, res_hi);
+  push(frame, res_lo);
+}
+
+void imul(frame_t *frame) {
+  u4_t value1 = pop(frame);
+  u4_t value2 = pop(frame);
+  push(frame, value1 * value2);
+}
+
+void lmul(frame_t *frame) {
+  u4_t value1_hi = pop(frame);
+  u4_t value1_lo = pop(frame);
+  u4_t value2_hi = pop(frame);
+  u4_t value2_lo = pop(frame);
+
+  long long value1 = make_long(value1_hi, value1_lo);
+  long long value2 = make_long(value2_hi, value2_lo);
+  u8_t res = long_to_uint64(value1 * value2);
+  u4_t res_hi = (u4_t)(res >> 32) & 0x00000000FFFFFFFF;
+  u4_t res_lo = (u4_t)res & 0x00000000FFFFFFFF;
+  push(frame, res_hi);
+  push(frame, res_lo);
+}
+
+void fmul(frame_t *frame) {
+  u4_t value1 = pop(frame);
+  u4_t value2 = pop(frame);
+  push(frame, make_float(value1) * make_float(value2));
+}
+
+void dmul(frame_t *frame) {
+  u4_t value1_hi = pop(frame);
+  u4_t value1_lo = pop(frame);
+  u4_t value2_hi = pop(frame);
+  u4_t value2_lo = pop(frame);
+
+  double value1 = make_double(value1_hi, value1_lo);
+  double value2 = make_double(value2_hi, value2_lo);
+  u8_t res = double_to_uint64(value1 * value2);
+  u4_t res_hi = (u4_t)(res >> 32) & 0x00000000FFFFFFFF;
+  u4_t res_lo = (u4_t)res & 0x00000000FFFFFFFF;
   push(frame, res_hi);
   push(frame, res_lo);
 }
@@ -150,9 +304,9 @@ void land(frame_t *frame) {
   u4_t value2_hi = pop(frame);
   u4_t value2_lo = pop(frame);
 
-  long value1 = make_long(value1_hi, value1_lo);
-  long value2 = make_long(value2_hi, value2_lo);
-  long res = value1 &= value2;
+  long long value1 = make_long(value1_hi, value1_lo);
+  long long value2 = make_long(value2_hi, value2_lo);
+  long long res = value1 &= value2;
 
   u4_t res_hi = (u4_t)(res >> 32) & 0x00000000FFFFFFFF;
   u4_t res_lo = (u4_t)res & 0x00000000FFFFFFFF;
@@ -227,9 +381,9 @@ void lxor(frame_t *frame) {
   u4_t value2_hi = pop(frame);
   u4_t value2_lo = pop(frame);
 
-  long value1 = make_long(value1_hi, value1_lo);
-  long value2 = make_long(value2_hi, value2_lo);
-  long res = value1 ^= value2;
+  long long value1 = make_long(value1_hi, value1_lo);
+  long long value2 = make_long(value2_hi, value2_lo);
+  long long res = value1 ^= value2;
 
   u4_t res_hi = (u4_t)(res >> 32) & 0x00000000FFFFFFFF;
   u4_t res_lo = (u4_t)res & 0x00000000FFFFFFFF;
@@ -251,8 +405,8 @@ void lneg(frame_t *frame) {
   u4_t value_hi = pop(frame);
   u4_t value_lo = pop(frame);
 
-  long value = make_long(value_hi, value_lo);
-  long res = -value;
+  long long value = make_long(value_hi, value_lo);
+  long long res = -value;
 
   u4_t res_hi = (u4_t)(res >> 32) & 0x00000000FFFFFFFF;
   u4_t res_lo = (u4_t)res & 0x00000000FFFFFFFF;
@@ -281,7 +435,13 @@ void dneg(frame_t *frame) {
   push(frame, res_lo);
 }
 
-void iconst5(frame_t *frame) { push(frame, 5); }
+void iconst_m1(frame_t *frame) { push(frame, -1); }
+void iconst_0(frame_t *frame) { push(frame, 0); }
+void iconst_1(frame_t *frame) { push(frame, 1); }
+void iconst_2(frame_t *frame) { push(frame, 2); }
+void iconst_3(frame_t *frame) { push(frame, 3); }
+void iconst_4(frame_t *frame) { push(frame, 4); }
+void iconst_5(frame_t *frame) { push(frame, 5); }
 
 void bipush(frame_t *frame) {
   frame->instruction_pointer++;
