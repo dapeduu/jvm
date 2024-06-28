@@ -1,10 +1,11 @@
 /**
  * @file main.c
- * @brief TESTEEEEEEEE.
+ * @brief Arquivo principal do projeto.
  *
- * Detailed description of the file.
+ * Recebe os argumentos passados pelo terminal, e escolhe entre o modo leitor-exibidor e
+ * o modo execução. No modo leitor-exibidor, exibe as informações do arquivo .class passado
+ * como argumento. No modo execução, faz a execução do arquivo .class passado como argumento.
  */
-
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,6 +15,14 @@
 #include "runtime_data_area.h"
 #include "execution_engine.h"
 
+/**
+ * @brief Função main.
+ *
+ * Escolhe entre o modo leitor-exibidor e o modo execução.
+ *
+ * @param[in]  param1  argc, argv.
+ * @return 1 em caso de erro, 0 em caso de sucesso.
+ */
 
 int main(int argc, char *argv[]) {
     if (argc != 3) {
@@ -51,7 +60,6 @@ int main(int argc, char *argv[]) {
         loaded_classes_t * classes = load_class(class_file, file_path);
 
         // empilhar frames a partir dela
-
         frame_t * frame = get_frame(
                     "main",
                     2,

@@ -16,11 +16,11 @@ Este documento descreve o trabalho da Máquina Virtual Java (JVM) desenvolvida p
   Avaliação do grupo: 10  
   *
 
-### Estrutura
+## Estrutura
 
 Diagrama lógico:
 
-### Funcionamento
+## Funcionamento
 
 ### Instalar dependências
 
