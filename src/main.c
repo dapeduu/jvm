@@ -53,11 +53,7 @@ int main(int argc, char *argv[]) {
     args[1] = 3;
 
     if (is_not_reader) {
-        printf("Carregador:\n");
-        printf("Execução:\n");
-
-        // encontrar main
-        loaded_classes_t * classes = load_class(class_file, file_path);
+        printf("Execução:\n\n");
 
         // empilhar frames a partir dela
         frame_t * frame = get_frame(
@@ -65,11 +61,9 @@ int main(int argc, char *argv[]) {
                     0,
                     NULL,
                     class_file);
-                    
-        u4_t result = run_frame(frame);
-        // printf("Resultado da execução: %i\n", result);
+        run_frame(frame);
 
-        printf("Chegou ao fim da execução");
+        printf("Chegou ao fim da execução.");
     } else {
         printf("Exibidor:\n");
         display_class_file(class_file, FILE_PATH);
