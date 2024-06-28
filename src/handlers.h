@@ -40,6 +40,10 @@ void iadd(frame_t *frame);
 void ladd(frame_t *frame);
 void fadd(frame_t *frame);
 void dadd(frame_t *frame);
+void isub(frame_t *frame);
+void lsub(frame_t *frame);
+void fsub(frame_t *frame);
+void dsub(frame_t *frame);
 void iand(frame_t *frame);
 void land(frame_t *frame);
 void irem(frame_t *frame);
@@ -174,10 +178,10 @@ void (*inst_vector[256])(frame_t *) = {
     /* 0x61 (97) */ ladd,
     /* 0x62 (98) */ fadd,
     /* 0x63 (99) */ dadd,
-    /* 0x64 (100) */ NULL,
-    /* 0x65 (101) */ NULL,
-    /* 0x66 (102) */ NULL,
-    /* 0x67 (103) */ NULL,
+    /* 0x64 (100) */ isub,
+    /* 0x65 (101) */ lsub,
+    /* 0x66 (102) */ fsub,
+    /* 0x67 (103) */ dsub,
     /* 0x68 (104) */ imul,
     /* 0x69 (105) */ lmul,
     /* 0x6a (106) */ fmul,
