@@ -58,14 +58,14 @@ u4_t run_frame(frame_t * frame) {
         }
         printf("\n");
 
-        // if (opcode == 172) {
-        //     pop(frame);
-        // }
+        if (opcode == 172) {
+            return pop(frame);
+        }
 
         if (inst_vector[opcode]) {
             inst_vector[opcode](frame);
         } else {
-            printf("Instrução não encontrada. Opcode: %i\n", opcode);
+            printf("Instrução não encontrada. Opcode: %x\n", opcode);
             exit(1);
         }
 
