@@ -1,5 +1,5 @@
 CC = gcc 
-CFLAGS = -std=c99 -g -Wall -arch arm64
+CFLAGS = -m32 -std=c99 -g -Wall
 OBJECTS = main.o class_loader.o display.o runtime_data_area.o execution_engine.o handlers.o
 LIB = -lm
 
