@@ -1,0 +1,35 @@
+\doxysection{runtime\+\_\+data\+\_\+area.\+h}
+\hypertarget{runtime__data__area_8h_source}{}\label{runtime__data__area_8h_source}\index{src/runtime\_data\_area.h@{src/runtime\_data\_area.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#if\ !defined(RUNTIME\_DATA\_AREA\_H)}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ RUNTIME\_DATA\_AREA\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}core.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}class\_loader.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{structclass__file__t}{class\_file\_t}}\ *class\_data;}
+\DoxyCodeLine{00009\ \ \ \ \ u4\_t\ instruction\_pointer;}
+\DoxyCodeLine{00010\ \ \ \ \ u1\_t\ *code;}
+\DoxyCodeLine{00011\ \ \ \ \ u4\_t\ code\_length;}
+\DoxyCodeLine{00012\ \ \ \ \ u2\_t\ max\_stack;}
+\DoxyCodeLine{00013\ \ \ \ \ u2\_t\ max\_locals;}
+\DoxyCodeLine{00014\ \ \ \ \ u2\_t\ stack\_count;}
+\DoxyCodeLine{00015\ \ \ \ \ u4\_t\ *locals;}
+\DoxyCodeLine{00016\ \ \ \ \ u4\_t\ *stack;}
+\DoxyCodeLine{00017\ \}\ \mbox{\hyperlink{structframe__t}{frame\_t}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{structframe__t}{frame\_t}}\ *top\_frame;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ stack\_size;}
+\DoxyCodeLine{00022\ \}\ \mbox{\hyperlink{structjvm__stack__t}{jvm\_stack\_t}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \mbox{\hyperlink{structframe__t}{frame\_t}}\ *\ get\_frame(\textcolor{keywordtype}{char}\ *\ name,\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ args\_count,\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ u4\_t\ *\ args,\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structclass__file__t}{class\_file\_t}}\ *\ class\_file);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ RUNTIME\_DATA\_AREA\_H}}
+
+\end{DoxyCode}

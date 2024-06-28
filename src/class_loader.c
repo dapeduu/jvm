@@ -1,10 +1,25 @@
+/**
+ * @file class_loader.c
+ * @brief Implementação das funções de carregamento de classes, métodos e atributos.
+ *        Também implementa funções de leitura de constant pool e atributos.
+ *      
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "core.h"
 #include "class_loader.h"
 
-// Funções para leitura de bytes
+/**
+ * @brief read_u1
+ *
+ * Função que lê um byte de um arquivo.
+ *
+ * @param[in]  param1  Ponteiro para o arquivo.
+ * @return Byte lido.
+ */
+
 u1_t read_u1(FILE *fptr)
 {
     u1_t value;
@@ -13,6 +28,14 @@ u1_t read_u1(FILE *fptr)
 
     return value;
 }
+
+/**
+ * @brief read_u2
+ * 
+ * Função que lê 2 bytes de um arquivo.
+ * @param[in]  param1  Ponteiro para o arquivo.
+ * @return 2 bytes lidos.
+ */
 
 u2_t read_u2(FILE *fptr)
 {
@@ -26,6 +49,14 @@ u2_t read_u2(FILE *fptr)
     return value;
 }
 
+/**
+ * @brief read_u4
+ * 
+ * Função que lê 4 bytes de um arquivo.
+ * @param[in]  param1  Ponteiro para o arquivo.
+ * @return 4 bytes lidos.
+ */
+
 u4_t read_u4(FILE *fptr)
 {
     u4_t value;
@@ -38,7 +69,16 @@ u4_t read_u4(FILE *fptr)
     return value;
 }
 
-// Retorna o valor do constant pool de acordo com o index
+/**
+ * @brief get_constant_pool_value
+ *
+ * Função que retorna o valor do constant pool de acordo com o index.
+ *
+ * @param[in]  param1  Ponteiro para o constant pool.
+ * @param[in] param2  Index do valor a ser retornado.
+ * @return Valor do constant pool.
+ */
+
 char* get_constant_pool_value(cp_info_t * cp_info, u2_t name_index) {
     if ((int)cp_info[name_index-1].tag == CONSTANT_Utf8) {
         return (char *)cp_info[name_index - 1].info.utf8.string;
@@ -49,7 +89,16 @@ char* get_constant_pool_value(cp_info_t * cp_info, u2_t name_index) {
     exit(1);
 }
 
-// Carrega informações de attribute e retorna um ponteiro para um array de attribute_info_t
+/**
+ * @brief get_attributes
+ *
+ * Função que carrega informações de attribute e retorna um ponteiro para um array de attribute_info_t.
+ *
+ * @param[in]  param1  Número de attributes.
+ * @param[in] param2  Ponteiro para o arquivo.
+ * @return Ponteiro para um array de attribute_info_t.
+ */
+
 static attribute_info_t *get_attributes(int attributes_count, FILE *fptr)
 {
     attribute_info_t *attributes = calloc(attributes_count, sizeof(attribute_info_t));
@@ -67,7 +116,16 @@ static attribute_info_t *get_attributes(int attributes_count, FILE *fptr)
     return attributes;
 }
 
-// Carrega informações de field e retorna um ponteiro para um array de field_method_info_t
+/**
+ * @brief get_field_method_info
+ *
+ * Função que carrega informações de field e retorna um ponteiro para um array de field_method_info_t.
+ *
+ * @param[in]  param1  Número de fields.
+ * @param[in] param2  Ponteiro para o arquivo.
+ * @return Ponteiro para um array de field_method_info_t.
+ */
+
 static field_method_info_t *get_field_method_info(int fields_count, FILE *fptr)
 {
     field_method_info_t *fields = calloc(fields_count, sizeof(field_method_info_t));
@@ -85,7 +143,16 @@ static field_method_info_t *get_field_method_info(int fields_count, FILE *fptr)
     return fields;
 }
 
-// Faz checagem de magic number e versão do class file
+/**
+ * @brief is_linking_check_successful
+ * 
+ * Função que faz a checagem do magic number e da versão do class file.
+ * 
+ * @param[in]  param1  Ponteiro para o arquivo.
+ * @param[in]  param2  Ponteiro para a struct class_file_t.
+ * @return 1 se a checagem foi bem sucedida, 0 caso contrário.
+ */
+
 int is_linking_check_successful(class_file_t *class_file, FILE *fptr)
 {
     if (class_file->magic != 0xCAFEBABE)
@@ -103,7 +170,19 @@ int is_linking_check_successful(class_file_t *class_file, FILE *fptr)
     return 1;
 }
 
-// Lê o arquivo .class e retorna um ponteiro para a struct class_file_t
+/**
+ * @brief read_class_file
+ * 
+ * Função que lê um arquivo .class e retorna um ponteiro para a struct class_file_t, 
+ * alocando memória para os campos e constant pool.
+ * Leitura do magic number, versão, constant pool count e constant pool.
+ * Após a leitura, é feita a checagem do magic number e da versão do class file, e os campos ficam
+ * salvos na struct class_file_t.
+ * 
+ * @param[in]  param1  Ponteiro para o arquivo.
+ * @return Ponteiro para a struct class_file_t.
+ */
+
 class_file_t *read_class_file(FILE *fptr)
 {
     class_file_t *class_file = malloc(sizeof(class_file_t));
@@ -230,6 +309,18 @@ class_file_t *read_class_file(FILE *fptr)
 
     return class_file;
 }
+
+// Função que carrega uma classe a partir de um arquivo .class
+/**
+ * @brief load_class
+ *
+ * Faz a leitura de um arquivo .class e carrega as informações em uma estrutura de loaded_classes_t
+ * para sinalizar que a classe foi carregada.
+ *
+ * @param[in]  param1  class_file_t que contém as informações da classe.
+ * @param[in] param2  filepath que contém o caminho do arquivo .class.
+ * @return loaded_classes_t* que contém as informações da classe carregada.
+ */
 
 loaded_classes_t* load_class(class_file_t *class_file, const char *filepath) {
     loaded_classes_t *loaded_class = malloc(sizeof(loaded_classes_t));

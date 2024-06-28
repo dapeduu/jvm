@@ -1,0 +1,47 @@
+\doxysection{Referência do Arquivo src/main.c}
+\hypertarget{main_8c}{}\label{main_8c}\index{src/main.c@{src/main.c}}
+
+
+Arquivo principal do projeto.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}display.\+h"{}}\newline
+{\ttfamily \#include "{}class\+\_\+loader.\+h"{}}\newline
+{\ttfamily \#include "{}runtime\+\_\+data\+\_\+area.\+h"{}}\newline
+{\ttfamily \#include "{}execution\+\_\+engine.\+h"{}}\newline
+\doxysubsubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Função main. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Arquivo principal do projeto. 
+
+Recebe os argumentos passados pelo terminal, e escolhe entre o modo leitor-\/exibidor e o modo execução. No modo leitor-\/exibidor, exibe as informações do arquivo .class passado como argumento. No modo execução, faz a execução do arquivo .class passado como argumento. 
+
+\doxysubsection{Funções}
+\Hypertarget{main_8c_a0ddf1224851353fc92bfbff6f499fa97}\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8c_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Função main. 
+
+Escolhe entre o modo leitor-\/exibidor e o modo execução.
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\texttt{ in}}  & {\em param1} & argc, argv. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+1 em caso de erro, 0 em caso de sucesso. 
+\end{DoxyReturn}
