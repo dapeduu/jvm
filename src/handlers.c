@@ -891,10 +891,73 @@ void iconst_4(frame_t *frame) { push(frame, 4); }
 void iconst_5(frame_t *frame) { push(frame, 5); }
 
 /**
+ * @brief istore
+ * Tira um vaor da pilha de operandos e coloca no índice especificado do vetor de variáveis locais
+ *
+ * @param frame 
+ * @return void
+ */
+void istore(frame_t *frame) {
+  frame->instruction_pointer++;
+  u1_t index = frame->code[frame->instruction_pointer];
+  u4_t value = pop(frame);
+  frame->locals[index] = value;
+};
+
+/**
+ * @brief istore_0
+ * Tira um valor da pilha de operandos e coloca no endereço 0 do vetor de variáveis locais
+ *
+ * @param frame
+ * @return void
+ */
+void istore_0(frame_t *frame) {
+  u4_t value = pop(frame);
+  frame->locals[0] = value;
+};
+
+/**
+ * @brief istore_1
+ * Tira um valor da pilha de operandos e coloca no endereço 1 do vetor de variáveis locais
+ *
+ * @param frame
+ * @return void
+ */
+void istore_1(frame_t *frame) {
+  u4_t value = pop(frame);
+  frame->locals[1] = value;
+};
+
+/**
+ * @brief istore_2
+ * Tira um valor da pilha de operandos e coloca no endereço 2 do vetor de variáveis locais
+ *
+ * @param frame
+ * @return void
+ */
+void istore_2(frame_t *frame) {
+  u4_t value = pop(frame);
+  frame->locals[2] = value;
+};
+
+/**
+ * @brief istore_3
+ * Tira um valor da pilha de operandos e coloca no endereço 3 do vetor de variáveis locais
+ *
+ * @param frame
+ * @return void
+ */
+void istore_3(frame_t *frame) {
+  u4_t value = pop(frame);
+  frame->locals[3] = value;
+};
+
+
+/**
  * @brief bipush
  * Coloca um byte na pilha.
- * 
- * @param frame 
+ *
+ * @param frame
  * @return void
  */
 void bipush(frame_t *frame) {

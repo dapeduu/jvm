@@ -75,6 +75,11 @@ void idiv(frame_t *frame);
 void ldiv_handler(frame_t *frame);
 void fdiv(frame_t *frame);
 void ddiv(frame_t *frame);
+void istore(frame_t *frame);
+void istore_0(frame_t *frame);
+void istore_1(frame_t *frame);
+void istore_2(frame_t *frame);
+void istore_3(frame_t *frame);
 
 
 void (*inst_vector[256])(frame_t *) = {
@@ -132,15 +137,15 @@ void (*inst_vector[256])(frame_t *) = {
     /* 0x33 (51) */ NULL,
     /* 0x34 (52) */ NULL,
     /* 0x35 (53) */ NULL,
-    /* 0x36 (54) */ NULL,
+    /* 0x36 (54) */ istore,
     /* 0x37 (55) */ NULL,
     /* 0x38 (56) */ NULL,
     /* 0x39 (57) */ NULL,
     /* 0x3a (58) */ NULL,
-    /* 0x3b (59) */ NULL,
-    /* 0x3c (60) */ NULL,
-    /* 0x3d (61) */ NULL,
-    /* 0x3e (62) */ NULL,
+    /* 0x3b (59) */ istore_0,
+    /* 0x3c (60) */ istore_1,
+    /* 0x3d (61) */ istore_2,
+    /* 0x3e (62) */ istore_3,
     /* 0x3f (63) */ NULL,
     /* 0x40 (64) */ NULL,
     /* 0x41 (65) */ NULL,
