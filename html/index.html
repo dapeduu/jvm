@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Trabalho Final - Máquina Virtual Java: Página Principal</title>
+<title>Trabalho Final - Máquina Virtual Java: Máquina Virtual Java - Disciplina de Software Básico</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,10 +83,69 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">Documentação de Trabalho Final - Máquina Virtual Java</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Máquina Virtual Java - Disciplina de Software Básico </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_docs"></a> </p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Introdução</h1>
+<p>Este documento descreve o trabalho da Máquina Virtual Java (JVM) desenvolvida para a disciplina de Software Básico. A JVM é responsável por interpretar e executar arquivos <code>.class</code> gerados a partir de códigos Java.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Grupo:</h1>
+<ul>
+<li>Bruno Fernandes Teixeira <br  />
+ Avaliação do grupo: 10 <br  />
+<ul>
+<li></li>
+</ul>
+</li>
+<li>Maria Clara Mendes Gonçalves <br  />
+ Avaliação do grupo: 10 <br  />
+<ul>
+<li></li>
+</ul>
+</li>
+<li>Pedro Henrique Dos Santos <br  />
+ Avaliação do grupo: 10 <br  />
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Estrutura</h2>
+<p>Diagrama lógico:</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Funcionamento</h2>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Instalar dependências</h2>
+<div class="fragment"><div class="line">sudo apt update</div>
+<div class="line">sudo apt install build-essential cppcheck gcc-multilib</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+Como rodar</h2>
+<div class="fragment"><div class="line"># Para rodar um arquivo especifico</div>
+<div class="line">make</div>
+<div class="line">./build/jvm.exe caminho/para/class</div>
+<div class="line"> </div>
+<div class="line"># Para rodar todos os arquivos</div>
+<div class="line"># - O comando busca todos os arquivos na pasta ./test</div>
+<div class="line"># - Depois executa o ./build/jvm passando cada um como argumento</div>
+<div class="line"> </div>
+<div class="line">make</div>
+<div class="line">find ./test -type f | xargs -I {} ./build/jvm &quot;{}&quot;</div>
+<div class="line"> </div>
+<div class="line"># Para leitor e exibidor: (a partir do diretório JVM)</div>
+<div class="line">make &amp;&amp; ./build/jvm -r test/nome_da_classe.class</div>
+<div class="line"> </div>
+<div class="line"># Para interpretador: (a partir do diretório JVM)</div>
+<div class="line">make &amp;&amp; ./build/jvm -e test/nome_da_classe</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+Conteúdos úteis</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=jnpuRvRdTgI">Java Virtual Machine Architecture Explained for Beginners</a> </li>
+</ul>
+</div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"/>
 </div><!-- contents -->
 <!-- start footer part -->

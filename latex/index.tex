@@ -1,0 +1,61 @@
+\chapter{Máquina Virtual Java -\/ Disciplina de Software Básico}
+\hypertarget{index}{}\label{index}\index{Máquina Virtual Java -\/ Disciplina de Software Básico@{Máquina Virtual Java -\/ Disciplina de Software Básico}}
+\label{index_md_docs}%
+\Hypertarget{index_md_docs}%
+ \hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Introdução}{Introdução}}\label{index_autotoc_md1}
+Este documento descreve o trabalho da Máquina Virtual Java (JVM) desenvolvida para a disciplina de Software Básico. A JVM é responsável por interpretar e executar arquivos {\ttfamily .class} gerados a partir de códigos Java.\hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{Grupo\+:}{Grupo\+:}}\label{index_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Bruno Fernandes Teixeira ~\newline
+ Avaliação do grupo\+: 10 ~\newline
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+\item Maria Clara Mendes Gonçalves ~\newline
+ Avaliação do grupo\+: 10 ~\newline
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+\item Pedro Henrique Dos Santos ~\newline
+ Avaliação do grupo\+: 10 ~\newline
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{index_autotoc_md3}{}\doxysubsection{\texorpdfstring{Estrutura}{Estrutura}}\label{index_autotoc_md3}
+Diagrama lógico\+:\hypertarget{index_autotoc_md4}{}\doxysubsection{\texorpdfstring{Funcionamento}{Funcionamento}}\label{index_autotoc_md4}
+\hypertarget{index_autotoc_md5}{}\doxysubsection{\texorpdfstring{Instalar dependências}{Instalar dependências}}\label{index_autotoc_md5}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo\ apt\ update}
+\DoxyCodeLine{sudo\ apt\ install\ build-\/essential\ cppcheck\ gcc-\/multilib}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md6}{}\doxysubsection{\texorpdfstring{Como rodar}{Como rodar}}\label{index_autotoc_md6}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Para\ rodar\ um\ arquivo\ especifico}
+\DoxyCodeLine{make}
+\DoxyCodeLine{./build/jvm.exe\ caminho/para/class}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Para\ rodar\ todos\ os\ arquivos}
+\DoxyCodeLine{\#\ -\/\ O\ comando\ busca\ todos\ os\ arquivos\ na\ pasta\ ./test}
+\DoxyCodeLine{\#\ -\/\ Depois\ executa\ o\ ./build/jvm\ passando\ cada\ um\ como\ argumento}
+\DoxyCodeLine{}
+\DoxyCodeLine{make}
+\DoxyCodeLine{find\ ./test\ -\/type\ f\ |\ xargs\ -\/I\ \{\}\ ./build/jvm\ "{}\{\}"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Para\ leitor\ e\ exibidor:\ (a\ partir\ do\ diretório\ JVM)}
+\DoxyCodeLine{make\ \&\&\ ./build/jvm\ -\/r\ test/nome\_da\_classe.class}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Para\ interpretador:\ (a\ partir\ do\ diretório\ JVM)}
+\DoxyCodeLine{make\ \&\&\ ./build/jvm\ -\/e\ test/nome\_da\_classe}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md7}{}\doxysubsection{\texorpdfstring{Conteúdos úteis}{Conteúdos úteis}}\label{index_autotoc_md7}
+
+\begin{DoxyItemize}
+\item \href{https://www.youtube.com/watch?v=jnpuRvRdTgI}{\texttt{ Java Virtual Machine Architecture Explained for Beginners}} 
+\end{DoxyItemize}
