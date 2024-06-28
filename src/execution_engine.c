@@ -11,7 +11,6 @@
 #include "runtime_data_area.h"
 #include "execution_engine.h"
 
-// Operação de push no frame (colocar um argumento na pilha)
 /**
  * @brief Função push.
  *
@@ -27,7 +26,6 @@ void push(frame_t * frame, u4_t argument) {
     frame->stack_count += 1;
 }
 
-// Operação de pop no frame (retirar o último argumento da pilha)
 /**
  * @brief Função pop.
  *
