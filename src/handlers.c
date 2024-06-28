@@ -313,8 +313,17 @@ void invokestatic(frame_t *frame) {
       frame->class_data->constant_pool[class_index.info.methodref.name_and_type_index - 1];
   char *method_name = get_constant_pool_value(frame->class_data->constant_pool,
                                              method_utf8_index.info.name_and_type.name_index);
+
   printf("class name: %s\n", class_name);
   printf("method name: %s\n", method_name);
+
+  // TODO: 
+  //  - carregar a classe
+  //  - inicializar classe
+  //  - montar o frame do método
+  //  - carregar valores da pilha de operandos do frame atual para as variaveis locais do frame novo
+  //  - empilhar frame novo
+  //  - setar pc da jvm (?) para o opcode da primeira instrução do frame novo
 
   // cp_info_t name_and_type_index = frame->class_data->constant_pool[
   //   method_ref.info.methodref.name_and_type_index - 1
