@@ -1,0 +1,272 @@
+\doxysection{handlers.\+h}
+\hypertarget{handlers_8h_source}{}\label{handlers_8h_source}\index{src/handlers.h@{src/handlers.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ HANDLERS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ HANDLERS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}core.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}runtime\_data\_area.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keywordtype}{long}\ make\_long(u4\_t\ high,\ u4\_t\ low);}
+\DoxyCodeLine{00008\ \textcolor{keywordtype}{float}\ make\_float(u4\_t\ number);}
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{double}\ make\_double(u4\_t\ high,\ u4\_t\ low);}
+\DoxyCodeLine{00010\ u4\_t\ float\_to\_uint32(\textcolor{keywordtype}{float}\ number);}
+\DoxyCodeLine{00011\ u8\_t\ double\_to\_uint64(\textcolor{keywordtype}{double}\ number);}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keywordtype}{void}\ nop(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{void}\ iload(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ iload\_0(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{void}\ iload\_1(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{void}\ iload\_2(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{void}\ iload\_3(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ lload(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}\ lload\_0(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ lload\_1(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ lload\_2(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ lload\_3(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{void}\ fload(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ fload\_0(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ fload\_1(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ fload\_2(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}\ fload\_3(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ dload(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ dload\_0(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ dload\_1(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ dload\_2(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ dload\_3(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ aload(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ aload\_0(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ aload\_1(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ aload\_2(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ aload\_3(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{void}\ iadd(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ ladd(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ iand(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ land(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ irem(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ lrem(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ frem(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}\ drem\_handler(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}\ ixor(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ lxor(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ ireturn(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ ineg(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}\ lneg(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ fneg(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ dneg(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{void}\ iconst5(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{void}\ bipush(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ invokestatic(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ pop\_op(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *frame);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ void\ (*inst\_vector[256])(\mbox{\hyperlink{structframe__t}{frame\_t}}\ *)\ =\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{/*\ 0x00\ (0)\ */}\ nop,}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{/*\ 0x01\ (1)\ */}\ NULL,}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{/*\ 0x02\ (2)\ */}\ NULL,}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{/*\ 0x03\ (3)\ */}\ NULL,}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{/*\ 0x04\ (4)\ */}\ NULL,}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{/*\ 0x05\ (5)\ */}\ NULL,}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{/*\ 0x06\ (6)\ */}\ NULL,}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{/*\ 0x07\ (7)\ */}\ NULL,}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{/*\ 0x08\ (8)\ */}\ iconst5,}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{/*\ 0x09\ (9)\ */}\ NULL,}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{/*\ 0x0a\ (10)\ */}\ NULL,}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{/*\ 0x0b\ (11)\ */}\ NULL,}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{/*\ 0x0c\ (12)\ */}\ NULL,}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{/*\ 0x0d\ (13)\ */}\ NULL,}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{/*\ 0x0e\ (14)\ */}\ NULL,}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{/*\ 0x0f\ (15)\ */}\ NULL,}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{/*\ 0x10\ (16)\ */}\ bipush,}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{/*\ 0x11\ (17)\ */}\ NULL,}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{/*\ 0x12\ (18)\ */}\ NULL,}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{/*\ 0x13\ (19)\ */}\ NULL,}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{/*\ 0x14\ (20)\ */}\ NULL,}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{/*\ 0x15\ (21)\ */}\ iload,}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{/*\ 0x16\ (22)\ */}\ lload,}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{/*\ 0x17\ (23)\ */}\ fload,}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{/*\ 0x18\ (24)\ */}\ dload,}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{/*\ 0x19\ (25)\ */}\ aload,}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{/*\ 0x1a\ (26)\ */}\ iload\_0,}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{/*\ 0x1b\ (27)\ */}\ iload\_1,}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{/*\ 0x1c\ (28)\ */}\ iload\_2,}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{/*\ 0x1d\ (29)\ */}\ iload\_3,}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{/*\ 0x1e\ (30)\ */}\ lload\_0,}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{/*\ 0x1f\ (31)\ */}\ lload\_1,}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{/*\ 0x20\ (32)\ */}\ lload\_2,}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{/*\ 0x21\ (33)\ */}\ lload\_3,}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{/*\ 0x22\ (34)\ */}\ fload\_0,}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{comment}{/*\ 0x23\ (35)\ */}\ fload\_1,}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{comment}{/*\ 0x24\ (36)\ */}\ fload\_2,}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{/*\ 0x25\ (37)\ */}\ fload\_3,}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{/*\ 0x26\ (38)\ */}\ dload\_0,}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{/*\ 0x27\ (39)\ */}\ dload\_1,}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{/*\ 0x28\ (40)\ */}\ dload\_2,}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{comment}{/*\ 0x29\ (41)\ */}\ dload\_3,}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{/*\ 0x2a\ (42)\ */}\ aload\_0,}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{comment}{/*\ 0x2b\ (43)\ */}\ aload\_1,}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{/*\ 0x2c\ (44)\ */}\ aload\_2,}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{/*\ 0x2d\ (45)\ */}\ aload\_3,}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{comment}{/*\ 0x2e\ (46)\ */}\ NULL,}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{comment}{/*\ 0x2f\ (47)\ */}\ NULL,}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{comment}{/*\ 0x30\ (48)\ */}\ NULL,}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{/*\ 0x31\ (49)\ */}\ NULL,}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{/*\ 0x32\ (50)\ */}\ NULL,}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{comment}{/*\ 0x33\ (51)\ */}\ NULL,}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{/*\ 0x34\ (52)\ */}\ NULL,}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{/*\ 0x35\ (53)\ */}\ NULL,}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{comment}{/*\ 0x36\ (54)\ */}\ NULL,}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{comment}{/*\ 0x37\ (55)\ */}\ NULL,}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{comment}{/*\ 0x38\ (56)\ */}\ NULL,}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{comment}{/*\ 0x39\ (57)\ */}\ NULL,}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{comment}{/*\ 0x3a\ (58)\ */}\ NULL,}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{/*\ 0x3b\ (59)\ */}\ NULL,}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{/*\ 0x3c\ (60)\ */}\ NULL,}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{comment}{/*\ 0x3d\ (61)\ */}\ NULL,}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{/*\ 0x3e\ (62)\ */}\ NULL,}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{/*\ 0x3f\ (63)\ */}\ NULL,}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{/*\ 0x40\ (64)\ */}\ NULL,}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{comment}{/*\ 0x41\ (65)\ */}\ NULL,}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{comment}{/*\ 0x42\ (66)\ */}\ NULL,}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{comment}{/*\ 0x43\ (67)\ */}\ NULL,}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{comment}{/*\ 0x44\ (68)\ */}\ NULL,}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{/*\ 0x45\ (69)\ */}\ NULL,}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{/*\ 0x46\ (70)\ */}\ NULL,}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{comment}{/*\ 0x47\ (71)\ */}\ NULL,}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{comment}{/*\ 0x48\ (72)\ */}\ NULL,}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{/*\ 0x49\ (73)\ */}\ NULL,}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{/*\ 0x4a\ (74)\ */}\ NULL,}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{/*\ 0x4b\ (75)\ */}\ NULL,}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{/*\ 0x4c\ (76)\ */}\ NULL,}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{/*\ 0x4d\ (77)\ */}\ NULL,}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{/*\ 0x4e\ (78)\ */}\ NULL,}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{/*\ 0x4f\ (79)\ */}\ NULL,}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{comment}{/*\ 0x50\ (80)\ */}\ NULL,}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{/*\ 0x51\ (81)\ */}\ NULL,}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{comment}{/*\ 0x52\ (82)\ */}\ NULL,}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{comment}{/*\ 0x53\ (83)\ */}\ NULL,}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{comment}{/*\ 0x54\ (84)\ */}\ NULL,}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{comment}{/*\ 0x55\ (85)\ */}\ NULL,}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{comment}{/*\ 0x56\ (86)\ */}\ NULL,}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{comment}{/*\ 0x57\ (87)\ */}\ pop\_op,}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{comment}{/*\ 0x58\ (88)\ */}\ NULL,}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{comment}{/*\ 0x59\ (89)\ */}\ NULL,}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{/*\ 0x5a\ (90)\ */}\ NULL,}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{comment}{/*\ 0x5b\ (91)\ */}\ NULL,}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{comment}{/*\ 0x5c\ (92)\ */}\ NULL,}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{comment}{/*\ 0x5d\ (93)\ */}\ NULL,}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{comment}{/*\ 0x5e\ (94)\ */}\ NULL,}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{comment}{/*\ 0x5f\ (95)\ */}\ NULL,}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{/*\ 0x60\ (96)\ */}\ iadd,}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{comment}{/*\ 0x61\ (97)\ */}\ ladd,}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{comment}{/*\ 0x62\ (98)\ */}\ NULL,}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{comment}{/*\ 0x63\ (99)\ */}\ NULL,}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{comment}{/*\ 0x64\ (100)\ */}\ NULL,}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{comment}{/*\ 0x65\ (101)\ */}\ NULL,}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{comment}{/*\ 0x66\ (102)\ */}\ NULL,}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{comment}{/*\ 0x67\ (103)\ */}\ NULL,}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{comment}{/*\ 0x68\ (104)\ */}\ NULL,}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{comment}{/*\ 0x69\ (105)\ */}\ NULL,}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{comment}{/*\ 0x6a\ (106)\ */}\ NULL,}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{comment}{/*\ 0x6b\ (107)\ */}\ NULL,}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{comment}{/*\ 0x6c\ (108)\ */}\ NULL,}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{comment}{/*\ 0x6d\ (109)\ */}\ NULL,}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{comment}{/*\ 0x6e\ (110)\ */}\ NULL,}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{comment}{/*\ 0x6f\ (111)\ */}\ NULL,}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{comment}{/*\ 0x70\ (112)\ */}\ irem,}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{comment}{/*\ 0x71\ (113)\ */}\ lrem,}
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{comment}{/*\ 0x72\ (114)\ */}\ frem,}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{comment}{/*\ 0x73\ (115)\ */}\ drem\_handler,}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{comment}{/*\ 0x74\ (116)\ */}\ ineg,}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{comment}{/*\ 0x75\ (117)\ */}\ lneg,}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{comment}{/*\ 0x76\ (118)\ */}\ fneg,}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{comment}{/*\ 0x77\ (119)\ */}\ dneg,}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{comment}{/*\ 0x78\ (120)\ */}\ NULL,}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{comment}{/*\ 0x79\ (121)\ */}\ NULL,}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{comment}{/*\ 0x7a\ (122)\ */}\ NULL,}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{comment}{/*\ 0x7b\ (123)\ */}\ NULL,}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{comment}{/*\ 0x7c\ (124)\ */}\ NULL,}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{comment}{/*\ 0x7d\ (125)\ */}\ NULL,}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{comment}{/*\ 0x7e\ (126)\ */}\ iand,}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{comment}{/*\ 0x7f\ (127)\ */}\ land,}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{comment}{/*\ 0x80\ (128)\ */}\ NULL,}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{comment}{/*\ 0x81\ (129)\ */}\ NULL,}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{comment}{/*\ 0x82\ (130)\ */}\ ixor,}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{comment}{/*\ 0x83\ (131)\ */}\ lxor,}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{comment}{/*\ 0x84\ (132)\ */}\ NULL,}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{comment}{/*\ 0x85\ (133)\ */}\ NULL,}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{comment}{/*\ 0x86\ (134)\ */}\ NULL,}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{comment}{/*\ 0x87\ (135)\ */}\ NULL,}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{comment}{/*\ 0x88\ (136)\ */}\ NULL,}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{comment}{/*\ 0x89\ (137)\ */}\ NULL,}
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{comment}{/*\ 0x8a\ (138)\ */}\ NULL,}
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{comment}{/*\ 0x8b\ (139)\ */}\ NULL,}
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{comment}{/*\ 0x8c\ (140)\ */}\ NULL,}
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{comment}{/*\ 0x8d\ (141)\ */}\ NULL,}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{comment}{/*\ 0x8e\ (142)\ */}\ NULL,}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{comment}{/*\ 0x8f\ (143)\ */}\ NULL,}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{comment}{/*\ 0x90\ (144)\ */}\ NULL,}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{comment}{/*\ 0x91\ (145)\ */}\ NULL,}
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{comment}{/*\ 0x92\ (146)\ */}\ NULL,}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{comment}{/*\ 0x93\ (147)\ */}\ NULL,}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{comment}{/*\ 0x94\ (148)\ */}\ NULL,}
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{comment}{/*\ 0x95\ (149)\ */}\ NULL,}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{comment}{/*\ 0x96\ (150)\ */}\ NULL,}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{comment}{/*\ 0x97\ (151)\ */}\ NULL,}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{comment}{/*\ 0x98\ (152)\ */}\ NULL,}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{comment}{/*\ 0x99\ (153)\ */}\ NULL,}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{comment}{/*\ 0x9a\ (154)\ */}\ NULL,}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{comment}{/*\ 0x9b\ (155)\ */}\ NULL,}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{comment}{/*\ 0x9c\ (156)\ */}\ NULL,}
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{comment}{/*\ 0x9d\ (157)\ */}\ NULL,}
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{comment}{/*\ 0x9e\ (158)\ */}\ NULL,}
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{comment}{/*\ 0x9f\ (159)\ */}\ NULL,}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{comment}{/*\ 0xa0\ (160)\ */}\ NULL,}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{comment}{/*\ 0xa1\ (161)\ */}\ NULL,}
+\DoxyCodeLine{00223\ \ \ \ \ \textcolor{comment}{/*\ 0xa2\ (162)\ */}\ NULL,}
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{comment}{/*\ 0xa3\ (163)\ */}\ NULL,}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{comment}{/*\ 0xa4\ (164)\ */}\ NULL,}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{comment}{/*\ 0xa5\ (165)\ */}\ NULL,}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{comment}{/*\ 0xa6\ (166)\ */}\ NULL,}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{comment}{/*\ 0xa7\ (167)\ */}\ NULL,}
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{comment}{/*\ 0xa8\ (168)\ */}\ NULL,}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{comment}{/*\ 0xa9\ (169)\ */}\ NULL,}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{comment}{/*\ 0xaa\ (170)\ */}\ NULL,}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{comment}{/*\ 0xab\ (171)\ */}\ NULL,}
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{comment}{/*\ 0xac\ (172)\ */}\ ireturn,}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{comment}{/*\ 0xad\ (173)\ */}\ NULL,}
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{comment}{/*\ 0xae\ (174)\ */}\ NULL,}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{comment}{/*\ 0xaf\ (175)\ */}\ NULL,}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{comment}{/*\ 0xb0\ (176)\ */}\ NULL,}
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{comment}{/*\ 0xb1\ (177)\ */}\ NULL,}
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{comment}{/*\ 0xb2\ (178)\ */}\ NULL,}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{comment}{/*\ 0xb3\ (179)\ */}\ NULL,}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{comment}{/*\ 0xb4\ (180)\ */}\ NULL,}
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{comment}{/*\ 0xb5\ (181)\ */}\ NULL,}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{comment}{/*\ 0xb6\ (182)\ */}\ NULL,}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{comment}{/*\ 0xb7\ (183)\ */}\ NULL,}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{comment}{/*\ 0xb8\ (184)\ */}\ invokestatic,}
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{comment}{/*\ 0xb9\ (185)\ */}\ NULL,}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{comment}{/*\ 0xba\ (186)\ */}\ NULL,}
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{comment}{/*\ 0xbb\ (187)\ */}\ NULL,}
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{comment}{/*\ 0xbc\ (188)\ */}\ NULL,}
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{comment}{/*\ 0xbd\ (189)\ */}\ NULL,}
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{comment}{/*\ 0xbe\ (190)\ */}\ NULL,}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{comment}{/*\ 0xbf\ (191)\ */}\ NULL,}
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{comment}{/*\ 0xc0\ (192)\ */}\ NULL,}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{comment}{/*\ 0xc1\ (193)\ */}\ NULL,}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{comment}{/*\ 0xc2\ (194)\ */}\ NULL,}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{comment}{/*\ 0xc3\ (195)\ */}\ NULL,}
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{comment}{/*\ 0xc4\ (196)\ */}\ NULL,}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{comment}{/*\ 0xc5\ (197)\ */}\ NULL,}
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{comment}{/*\ 0xc6\ (198)\ */}\ NULL,}
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{comment}{/*\ 0xc7\ (199)\ */}\ NULL,}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{comment}{/*\ 0xc8\ (200)\ */}\ NULL,}
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{comment}{/*\ 0xc9\ (201)\ */}\ NULL,}
+\DoxyCodeLine{00263\ \ \ \ \ [0xca\ ...\ 0xff]\ =\ NULL,}
+\DoxyCodeLine{00264\ \};}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ HANDLERS\_H}}
+
+\end{DoxyCode}

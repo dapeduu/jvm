@@ -1,0 +1,188 @@
+\doxysection{class\+\_\+loader.\+h}
+\hypertarget{class__loader_8h_source}{}\label{class__loader_8h_source}\index{src/class\_loader.h@{src/class\_loader.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#if\ !defined(CLASS\_LOADER\_H)}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CLASS\_LOADER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}core.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Class\ definitions}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ u1\_t\ tag;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{union}}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag:\ 7}}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ name\_index;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \}\ \textcolor{keyword}{class};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag:\ 9}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ class\_index;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ name\_and\_type\_index;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \}\ fieldref;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag:\ 10}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ class\_index;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ name\_and\_type\_index;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}\ methodref;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ tag:\ 11}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ class\_index;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ name\_and\_type\_index;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}\ interface\_methodref;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag:\ 8}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ string\_index;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}\ string;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag:\ 3}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ u4\_t\ bytes;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}\ integer;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag:\ 4}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ u4\_t\ bytes;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}\ float\_num;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag:\ 5}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ u4\_t\ high\_bytes;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ u4\_t\ low\_bytes;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}\ long\_num;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag:\ 6}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ u4\_t\ high\_bytes;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ u4\_t\ low\_bytes;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \}\ double\_num;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag\ 12}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ name\_index;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ descriptor\_index;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}\ name\_and\_type;}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag:\ 1}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ length\_of\_byte\_array;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ u1\_t\ *string;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \}\ utf8;}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag:\ 15}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ u1\_t\ reference\_kind;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ reference\_index;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \}\ method\_handle;}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag:\ 16}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ descriptor\_index;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}\ method\_type;}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag:\ 17}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ bootstrap\_method\_attr\_index;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ name\_and\_type\_index;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \}\ dynamic;}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag:\ 18}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ bootstrap\_method\_attr\_index;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ name\_and\_type\_index;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \}\ invoke\_dynamic;}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag:\ 19}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ name\_index;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \}\ \textcolor{keyword}{module};}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tag:\ 20}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ u2\_t\ name\_index;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}\ package;}
+\DoxyCodeLine{00124\ \ \ \ \ \}\ info;}
+\DoxyCodeLine{00125\ \}\ \mbox{\hyperlink{structcp__info__t}{cp\_info\_t}};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00128\ \ \ \ \ u2\_t\ attribute\_name\_index;}
+\DoxyCodeLine{00129\ \ \ \ \ u4\_t\ attribute\_length;}
+\DoxyCodeLine{00130\ \ \ \ \ u1\_t\ *bytes;}
+\DoxyCodeLine{00131\ \}\ \mbox{\hyperlink{structattribute__info__t}{attribute\_info\_t}};}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00134\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ u2\_t\ access\_flags;}
+\DoxyCodeLine{00136\ \ \ \ \ u2\_t\ name\_index;}
+\DoxyCodeLine{00137\ \ \ \ \ u2\_t\ descriptor\_index;\ }
+\DoxyCodeLine{00138\ \ \ \ \ u2\_t\ attributes\_count;}
+\DoxyCodeLine{00139\ \ \ \ \ \mbox{\hyperlink{structattribute__info__t}{attribute\_info\_t}}\ *attributes;}
+\DoxyCodeLine{00140\ \}\ \mbox{\hyperlink{structfield__method__info__t}{field\_method\_info\_t}};}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00143\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ u4\_t\ magic;}
+\DoxyCodeLine{00145\ \ \ \ \ u2\_t\ minor\_version;}
+\DoxyCodeLine{00146\ \ \ \ \ u2\_t\ major\_version;}
+\DoxyCodeLine{00147\ \ \ \ \ u2\_t\ constant\_pool\_count;}
+\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{structcp__info__t}{cp\_info\_t}}\ *constant\_pool;}
+\DoxyCodeLine{00149\ \ \ \ \ u2\_t\ access\_flags;}
+\DoxyCodeLine{00150\ \ \ \ \ u2\_t\ this\_class;}
+\DoxyCodeLine{00151\ \ \ \ \ u2\_t\ super\_class;}
+\DoxyCodeLine{00152\ \ \ \ \ u2\_t\ interfaces\_count;}
+\DoxyCodeLine{00153\ \ \ \ \ u2\_t\ *\ interfaces;}
+\DoxyCodeLine{00154\ \ \ \ \ u2\_t\ fields\_count;}
+\DoxyCodeLine{00155\ \ \ \ \ \mbox{\hyperlink{structfield__method__info__t}{field\_method\_info\_t}}\ *fields;}
+\DoxyCodeLine{00156\ \ \ \ \ u2\_t\ attributes\_count;}
+\DoxyCodeLine{00157\ \ \ \ \ \mbox{\hyperlink{structattribute__info__t}{attribute\_info\_t}}\ *attributes;}
+\DoxyCodeLine{00158\ \ \ \ \ u2\_t\ methods\_count;}
+\DoxyCodeLine{00159\ \ \ \ \ \mbox{\hyperlink{structfield__method__info__t}{field\_method\_info\_t}}\ *methods;}
+\DoxyCodeLine{00160\ \}\ \mbox{\hyperlink{structclass__file__t}{class\_file\_t}};}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \textcolor{comment}{//\ Reader\ functions}}
+\DoxyCodeLine{00163\ u4\_t\ read\_u4(FILE\ *fptr);}
+\DoxyCodeLine{00164\ u2\_t\ read\_u2(FILE\ *fptr);}
+\DoxyCodeLine{00165\ u1\_t\ read\_u1(FILE\ *fptr);}
+\DoxyCodeLine{00166\ \textcolor{keywordtype}{char}*\ get\_constant\_pool\_value(\mbox{\hyperlink{structcp__info__t}{cp\_info\_t}}\ *\ cp\_info,\ u2\_t\ name\_index);}
+\DoxyCodeLine{00167\ \mbox{\hyperlink{structclass__file__t}{class\_file\_t}}\ *read\_class\_file(FILE\ *fptr);}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \textcolor{comment}{//\ Loaded\ classes\ structure\ with\ name,\ class\ file,\ static\ fields\ and\ next}}
+\DoxyCodeLine{00170\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structloaded__classes}{loaded\_classes}}}
+\DoxyCodeLine{00171\ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \mbox{\hyperlink{structclass__file__t}{class\_file\_t}}*\ class\_file;}
+\DoxyCodeLine{00173\ \ \ \ \ u1\_t*\ name;}
+\DoxyCodeLine{00174\ \ \ \ \ \mbox{\hyperlink{structfield__method__info__t}{field\_method\_info\_t}}*\ static\_fields;}
+\DoxyCodeLine{00175\ \ \ \ \ u2\_t\ static\_fields\_count;}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structloaded__classes}{loaded\_classes}}*\ next;}
+\DoxyCodeLine{00177\ \}\ \mbox{\hyperlink{structloaded__classes}{loaded\_classes\_t}};}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \textcolor{comment}{//\ Class\ loader\ functions}}
+\DoxyCodeLine{00180\ \mbox{\hyperlink{structloaded__classes}{loaded\_classes\_t}}*\ load\_class(\mbox{\hyperlink{structclass__file__t}{class\_file\_t}}\ *class\_file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filepath);}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CLASS\_LOADER\_H}}
+
+\end{DoxyCode}

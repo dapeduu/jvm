@@ -4,16 +4,19 @@
 #include "runtime_data_area.h"
 #include "execution_engine.h"
 
+// Operação de push no frame (colocar um argumento na pilha)
 void push(frame_t * frame, u4_t argument) {
     frame->stack[frame->stack_count] = argument;
     frame->stack_count += 1;
 }
 
+// Operação de pop no frame (retirar o último argumento da pilha)
 u4_t pop(frame_t * frame) {
     frame->stack_count -= 1;
     return frame->stack[frame->stack_count];
 }
 
+// Roda o frame, chamando uma instrução por vez
 u4_t run_frame(frame_t * frame) {
     for (size_t i = 0; i < frame->code_length; i++)
     {

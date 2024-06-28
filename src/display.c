@@ -1,6 +1,7 @@
 #include "core.h"
 #include "class_loader.h"
 
+// Display (exibidor) de arquivos .class
 void display_class_file(class_file_t *class_file, char * filename)
 {
     printf("\n===== %s =====\n", filename);

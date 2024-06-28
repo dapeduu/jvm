@@ -103,7 +103,7 @@ int is_linking_check_successful(class_file_t *class_file, FILE *fptr)
     return 1;
 }
 
-// Lê o arquivo .class e retorna um ponteiro para a struct class_file_t
+// Lê o arquivo .class e retorna um ponteiro para a struct class_file_t, alocando memória para os campos e constant pool
 class_file_t *read_class_file(FILE *fptr)
 {
     class_file_t *class_file = malloc(sizeof(class_file_t));
@@ -231,6 +231,7 @@ class_file_t *read_class_file(FILE *fptr)
     return class_file;
 }
 
+// Função que carrega uma classe a partir de um arquivo .class
 loaded_classes_t* load_class(class_file_t *class_file, const char *filepath) {
     loaded_classes_t *loaded_class = malloc(sizeof(loaded_classes_t));
     if (!loaded_class) {

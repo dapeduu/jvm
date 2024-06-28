@@ -1,3 +1,11 @@
+/**
+ * @file main.c
+ * @brief TESTEEEEEEEE.
+ *
+ * Detailed description of the file.
+ */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
