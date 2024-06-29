@@ -10,6 +10,7 @@ double make_double(u4_t high, u4_t low);
 u4_t float_to_uint32(float number);
 u8_t double_to_uint64(double number);
 
+// INSTRUÇÕES
 void nop(frame_t *frame);
 void iload(frame_t *frame);
 void iload_0(frame_t *frame);

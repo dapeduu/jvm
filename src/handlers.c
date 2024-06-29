@@ -1032,8 +1032,8 @@ void invokestatic(frame_t *frame) {
   cp_info_t class_index =
       frame->class_data
           ->constant_pool[method_ref.info.methodref.class_index - 1];
-  cp_info_t class_utf8_index =
-      frame->class_data->constant_pool[class_index.info.class.name_index - 1];
+  // cp_info_t class_utf8_index =
+  //     frame->class_data->constant_pool[class_index.info.class.name_index - 1];
   char *class_name = get_constant_pool_value(frame->class_data->constant_pool,
                                              class_index.info.class.name_index);
 

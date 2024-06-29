@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
     }
 
     class_file_t *class_file = read_class_file(fptr);
-    char *file_path = argv[2];
+    // char *file_path = argv[2];
 
     int is_not_reader = strcmp(PROGRAM_OPTION, "-r");
     u4_t * args = calloc(2, sizeof(u4_t));

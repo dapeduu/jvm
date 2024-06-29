@@ -1,0 +1,22 @@
+Bruno Fernandes Teixeira - 190097540
+  NOTA MÉDIA DADA PELOS INTEGRANTES - 9,9
+  - leitor de fields
+  - exibição do classfile
+  - instruções aritméticas
+  - contrubuiu com a engine de execução
+
+Maria Clara Mendes Goncalves - 190100168
+  NOTA MÉDIA DADA PELOS INTEGRANTES - 9,9
+  - leitor de métodos
+  - estrutura do frame
+  - instruções lógicas
+  - contrubuiu com a engine de execução
+
+Pedro Henrique dos Santos - 200026127
+  NOTA MÉDIA DADA PELOS INTEGRANTES - 9,9
+  - leitor de constant pool
+  - estrutura do class_file
+  - instruções de carregamento de valores
+  - contrubuiu com a engine de execução
+
+
