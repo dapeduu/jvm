@@ -51,15 +51,25 @@ u4_t run_frame(frame_t * frame) {
     for (size_t i = 0; i < frame->code_length; i++)
     {
         u4_t opcode = frame->code[frame->instruction_pointer];
-        printf("opcode: %02x, stack: ", opcode);
+        printf("opcode: %02x\n", opcode);
+
+        printf("operand stack: ");
         for (size_t j = 0; j < frame->stack_count; j++)
         {
             printf("%i ", frame->stack[j]);
         }
         printf("\n");
 
-        if (opcode == 172) {
-            return pop(frame);
+        printf("locals stack: ");
+        for (size_t j = 0; j < frame->max_locals; j++)
+        {
+            printf("%i ", frame->locals[j]);
+        }
+        printf("\n");
+
+        if (opcode == 172 || opcode == 173 || opcode == 174 || opcode == 175 || opcode == 176 || opcode == 177) {
+            printf("Returned\n");
+            return 0;
         }
 
         if (inst_vector[opcode]) {
@@ -70,6 +80,7 @@ u4_t run_frame(frame_t * frame) {
         }
 
         frame->instruction_pointer++;
+        printf("---\n");
     }
     return 0;
 

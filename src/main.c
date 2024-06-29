@@ -44,7 +44,6 @@ int main(int argc, char *argv[]) {
     }
 
     class_file_t *class_file = read_class_file(fptr);
-    loaded_classes_t *loaded_class = malloc(sizeof(loaded_classes_t));
     char *file_path = argv[2];
 
     int is_not_reader = strcmp(PROGRAM_OPTION, "-r");
@@ -61,6 +60,7 @@ int main(int argc, char *argv[]) {
                     0,
                     NULL,
                     class_file);
+
         run_frame(frame);
 
         printf("Chegou ao fim da execução.");
